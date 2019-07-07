@@ -3,7 +3,7 @@
     <div class="content tile is-child child-tile">
       <div class="pbp-header">
         <i @click="closePbp" class="material-icons close-pbp">close</i>
-        <p>{{ gameData.teams }}</p>
+        <p>{{ gameData.game.vTeam.triCode + " vs " + gameData.game.hTeam.triCode }}</p>
         <p>{{ gameData.date }}</p>
         <p>{{ gameData.gameId }}</p>
       </div>
@@ -24,6 +24,7 @@ export default {
   props: { gameData: {}, active: Boolean },
   data() {
     return {
+      teams: "",
       pbp: [],
       interval: null
     };
@@ -32,13 +33,16 @@ export default {
     closePbp() {
       this.$emit("close-pbp", this.gameData.gameId);
     },
+
     getPlayByPlay() {
       axios
         .get(
           `/json/cms/noseason/game/${this.gameData.date}/${this.gameData.gameId}/pbp_all.json`
         )
         .then(response => {
-          let pbp = response.data.sports_content.game.play.reverse();
+          let game = response.data.sports_content.game;
+          this.teams = game.game_url;
+          let pbp = game.play.reverse();
           console.log(pbp.length, this.pbp.length);
           if (this.pbp.length !== pbp.length) this.pbp = pbp;
         });
@@ -46,6 +50,8 @@ export default {
   },
   mounted() {
     console.log(this.active);
+    console.log(this.gameData.game);
+
     this.getPlayByPlay();
     this.interval = setInterval(() => {
       this.getPlayByPlay();

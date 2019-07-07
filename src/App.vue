@@ -21,7 +21,7 @@
             <pbp
               v-for="game in selectedGames"
               :key="game"
-              :gameData="{ date: todaysDate, gameId: game }"
+              :gameData="{ date: todaysDate, gameId: game, game: todaysGames.filter(e => e.gameId === game)[0] }"
               :active="selectedGames.includes(game)"
               @close-pbp="removeGame"
             ></pbp>
