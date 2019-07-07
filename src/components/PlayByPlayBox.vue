@@ -23,13 +23,11 @@ export default {
   props: { gameData: {}, active: Boolean },
   data() {
     return {
-      //active: false,
       pbp: []
     };
   },
   methods: {
     closePbp() {
-      console.log("TEST");
       this.$emit("close-pbp", this.gameData.gameId);
     }
   },
