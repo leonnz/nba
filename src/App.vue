@@ -31,7 +31,6 @@
     </section>
   </div>
 </template>
-//:gameData="{date: todaysDate, gameId: game.gameId, teams: `${game.vTeam.triCode} vs ${game.hTeam.triCode}`}"
 <script>
 import axios from "./services/axios";
 import pbp from "./components/PlayByPlayBox";

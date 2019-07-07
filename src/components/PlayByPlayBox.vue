@@ -19,12 +19,13 @@
 
 <script>
 import axios from "../services/axios";
-import { setInterval } from "timers";
+import { setInterval, clearInterval } from "timers";
 export default {
   props: { gameData: {}, active: Boolean },
   data() {
     return {
-      pbp: []
+      pbp: [],
+      interval: null
     };
   },
   methods: {
@@ -46,10 +47,14 @@ export default {
   mounted() {
     console.log(this.active);
     this.getPlayByPlay();
-    setInterval(() => {
+    this.interval = setInterval(() => {
       this.getPlayByPlay();
       console.log("polling...");
     }, 5000);
+  },
+  destroyed() {
+    console.log("destroyed");
+    clearInterval(this.interval);
   }
 };
 </script>
