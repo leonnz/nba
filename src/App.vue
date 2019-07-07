@@ -19,10 +19,10 @@
         <div class="column">
           <div class="tile is-ancestor wrap">
             <pbp
-              v-for="game in todaysGames"
-              :key="game.gameId"
-              :gameData="{date: todaysDate, gameId: game.gameId, teams: `${game.vTeam.triCode} vs ${game.hTeam.triCode}`}"
-              :active="selectedGames.includes(game.gameId)"
+              v-for="game in selectedGames"
+              :key="game"
+              :gameData="{ date: todaysDate, gameId: game }"
+              :active="selectedGames.includes(game)"
               @close-pbp="removeGame"
             ></pbp>
           </div>
@@ -31,7 +31,7 @@
     </section>
   </div>
 </template>
-
+//:gameData="{date: todaysDate, gameId: game.gameId, teams: `${game.vTeam.triCode} vs ${game.hTeam.triCode}`}"
 <script>
 import axios from "./services/axios";
 import pbp from "./components/PlayByPlayBox";

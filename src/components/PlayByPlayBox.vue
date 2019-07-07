@@ -19,6 +19,7 @@
 
 <script>
 import axios from "../services/axios";
+import { setInterval } from "timers";
 export default {
   props: { gameData: {}, active: Boolean },
   data() {
@@ -29,17 +30,26 @@ export default {
   methods: {
     closePbp() {
       this.$emit("close-pbp", this.gameData.gameId);
+    },
+    getPlayByPlay() {
+      axios
+        .get(
+          `/json/cms/noseason/game/${this.gameData.date}/${this.gameData.gameId}/pbp_all.json`
+        )
+        .then(response => {
+          let pbp = response.data.sports_content.game.play.reverse();
+          console.log(pbp.length, this.pbp.length);
+          if (this.pbp.length !== pbp.length) this.pbp = pbp;
+        });
     }
   },
   mounted() {
     console.log(this.active);
-    axios
-      .get(
-        `/json/cms/noseason/game/${this.gameData.date}/${this.gameData.gameId}/pbp_all.json`
-      )
-      .then(response => {
-        this.pbp = response.data.sports_content.game.play.reverse();
-      });
+    this.getPlayByPlay();
+    setInterval(() => {
+      this.getPlayByPlay();
+      console.log("polling...");
+    }, 5000);
   }
 };
 </script>
