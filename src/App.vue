@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav class="navbar is-primary has-shadow" role="navigation">
+    <nav class="navbar is-link has-shadow" role="navigation">
       <div class="navbar-brand">
         <a class="navbar-item" href>NBA</a>
       </div>
@@ -10,7 +10,7 @@
         <div class="column is-2">
           <div
             class="game-box box"
-            :class="{ selectedBox: selectedGames.includes(game.gameId) }"
+            :class="{ 'has-background-link': selectedGames.includes(game.gameId), 'has-text-white': selectedGames.includes(game.gameId) }"
             v-for="game in todaysGames"
             :key="game.gameId"
             @click="showGameCard(game.gameId)"
@@ -89,14 +89,10 @@ export default {
 }
 
 .game-box {
-  background-color: aqua;
+  //ackground-color: aqua;
 }
 .game-box:hover {
   cursor: pointer;
-}
-
-.selectedBox {
-  background-color: aqua !important;
 }
 
 .wrap {

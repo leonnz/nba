@@ -1,5 +1,5 @@
 <template>
-  <div v-if="active" class="tile box is-parent is-3 parent-tile">
+  <div v-if="active" class="tile is-parent is-3 parent-tile">
     <div class="content tile is-child child-tile">
       <div class="pbp-header">
         <i @click="closePbp" class="material-icons close-pbp">close</i>
@@ -10,7 +10,7 @@
       <div class="content pbp-box is-size-7" ref="pbp">
         <button
           ref="scrollToTopButton"
-          class="scrollToTopButton button is-small is-info"
+          class="scrollToTopButton button is-small is-link"
           :class="{ buttonEase: scrolling }"
           @click="scrollToTop"
         >back to top</button>
@@ -110,6 +110,8 @@ export default {
 }
 .parent-tile {
   background-color: lightgrey;
+  border-left: 1px solid #efefef;
+  border-bottom: 1px solid #efefef;
   margin: 0.5rem;
   height: 100%;
   padding: 0 !important;
