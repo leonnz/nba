@@ -79,4 +79,20 @@ export default {
 .wrap {
   flex-wrap: wrap;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #efefef;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  height: 20px;
+}
 </style>
