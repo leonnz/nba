@@ -7,10 +7,14 @@
         <p>{{ gameData.date }}</p>
         <p>{{ gameData.gameId }}</p>
       </div>
-      <div class="content pbp-box">
-        <div class="is-size-7 pbp-events">
-          <div v-for="event in pbp" :key="event.event">{{ event.clock + " - " + event.description }}</div>
-        </div>
+      <div class="content pbp-box is-size-7" ref="pbp">
+        <button
+          ref="scrollToTopButton"
+          class="scrollToTopButton button is-small is-info"
+          :class="{ buttonEase: scrolling }"
+          @click="scrollToTop"
+        >back to top</button>
+        <div v-for="event in pbp" :key="event.event">{{ event.clock + " - " + event.description }}</div>
       </div>
     </div>
   </div>
@@ -26,10 +30,21 @@ export default {
     return {
       teams: "",
       pbp: [],
-      interval: null
+      interval: null,
+      scrolling: false
     };
   },
   methods: {
+    showTopButton() {
+      if (this.$refs.pbp.scrollTop > 20) {
+        this.scrolling = true;
+      } else {
+        this.scrolling = false;
+      }
+    },
+    scrollToTop() {
+      this.$refs.pbp.scrollTop = 0;
+    },
     closePbp() {
       this.$emit("close-pbp", this.gameData.gameId);
     },
@@ -49,6 +64,9 @@ export default {
     }
   },
   mounted() {
+    this.$refs.pbp.onscroll = () => {
+      this.showTopButton();
+    };
     console.log(this.active);
     console.log(this.gameData.game);
 
@@ -76,12 +94,14 @@ export default {
   height: 300px;
   overflow: scroll;
   overflow-x: hidden;
-  scroll-behavior: auto;
+  //scroll-behavior: smooth;
 }
 
-.pbp-events > div:first-of-type {
+.pbp-box > div:first-of-type {
   font-weight: bold;
+  margin-top: -2rem;
 }
+
 .close-pbp {
   float: right;
 }
@@ -96,5 +116,19 @@ export default {
 }
 .child-tile {
   background-color: #efefef;
+}
+
+.scrollToTopButton {
+  position: sticky;
+  display: block;
+  margin: auto;
+  top: 0;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.buttonEase {
+  visibility: visible;
+  opacity: 1;
 }
 </style>
