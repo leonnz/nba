@@ -1,13 +1,13 @@
 <template>
-  <div v-if="active" class="tile is-parent is-3 parent-tile">
-    <div class="content tile is-child child-tile">
+  <div v-if="active" class="tile is-parent is-3">
+    <div class="tile is-child pbp-container">
       <div class="pbp-header">
         <i @click="closePbp" class="material-icons close-pbp">close</i>
         <p>{{ gameData.game.vTeam.triCode + " vs " + gameData.game.hTeam.triCode }}</p>
         <p>{{ gameData.date }}</p>
         <p>{{ gameData.gameId }}</p>
       </div>
-      <div class="content pbp-box is-size-7" ref="pbp">
+      <div class="pbp-box is-size-7" ref="pbp">
         <button
           ref="scrollToTopButton"
           class="scrollToTopButton button is-small is-link"
@@ -86,13 +86,15 @@ export default {
 <style lang="scss" scoped>
 .pbp-header {
   padding: 1rem;
+  //background-color: #efefef;
 }
 .pbp-box {
   background-color: white;
+  border-radius: 5px;
   padding: 1rem;
   width: 100%;
   height: 300px;
-  overflow: scroll;
+  overflow: auto;
   overflow-x: hidden;
   //scroll-behavior: smooth;
 }
@@ -108,16 +110,13 @@ export default {
 .close-pbp:hover {
   cursor: pointer;
 }
-.parent-tile {
-  background-color: lightgrey;
-  border-left: 1px solid #efefef;
-  border-bottom: 1px solid #efefef;
-  margin: 0.5rem;
-  height: 100%;
-  padding: 0 !important;
-}
-.child-tile {
+
+.pbp-container {
   background-color: #efefef;
+  border: 1px solid hsl(217, 71%, 53%);
+  border-radius: 5px;
+  overflow: hidden;
+  height: 300px;
 }
 
 .scrollToTopButton {

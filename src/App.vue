@@ -7,19 +7,17 @@
     </nav>
     <section class="section">
       <div class="columns">
-        <div class="column is-2">
+        <div class="column is-2 tile is-ancestor">
           <gameboxes :todaysGames="todaysGames" :selectedGames="selectedGames"></gameboxes>
         </div>
-        <div class="column">
-          <div class="tile is-ancestor wrap">
-            <playbyplay
-              v-for="game in selectedGames"
-              :key="game"
-              :gameData="{ date: todaysDate, gameId: game, game: todaysGames.filter(e => e.gameId === game)[0] }"
-              :active="selectedGames.includes(game)"
-              @close-pbp="removeGame"
-            ></playbyplay>
-          </div>
+        <div class="column tile is-ancestor wrap">
+          <playbyplay
+            v-for="game in selectedGames"
+            :key="game"
+            :gameData="{ date: todaysDate, gameId: game, game: todaysGames.filter(e => e.gameId === game)[0] }"
+            :active="selectedGames.includes(game)"
+            @close-pbp="removeGame"
+          ></playbyplay>
         </div>
       </div>
     </section>
@@ -76,13 +74,6 @@ export default {
   width: 340px;
   margin-right: 1.5rem;
   margin-bottom: 1.5rem;
-}
-
-.game-box {
-  //ackground-color: aqua;
-}
-.game-box:hover {
-  cursor: pointer;
 }
 
 .wrap {
