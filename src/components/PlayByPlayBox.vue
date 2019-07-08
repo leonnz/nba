@@ -67,9 +67,7 @@ export default {
     this.$refs.pbp.onscroll = () => {
       this.showTopButton();
     };
-    console.log(this.active);
     console.log(this.gameData.game);
-
     this.getPlayByPlay();
     this.interval = setInterval(() => {
       this.getPlayByPlay();
@@ -90,11 +88,9 @@ export default {
 }
 .pbp-box {
   background-color: white;
-  border-radius: 5px;
   padding: 1rem;
   width: 100%;
   height: 300px;
-  overflow: auto;
   overflow-x: hidden;
   //scroll-behavior: smooth;
 }
