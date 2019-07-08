@@ -8,23 +8,17 @@
     <section class="section">
       <div class="columns">
         <div class="column is-2">
-          <div
-            class="game-box box"
-            :class="{ 'has-background-link': selectedGames.includes(game.gameId), 'has-text-white': selectedGames.includes(game.gameId) }"
-            v-for="game in todaysGames"
-            :key="game.gameId"
-            @click="showGameCard(game.gameId)"
-          >{{ game.vTeam.triCode + " vs " + game.hTeam.triCode + " " + game.vTeam.score + " - " + game.hTeam.score}}</div>
+          <gameboxes :todaysGames="todaysGames" :selectedGames="selectedGames"></gameboxes>
         </div>
         <div class="column">
           <div class="tile is-ancestor wrap">
-            <pbp
+            <playbyplay
               v-for="game in selectedGames"
               :key="game"
               :gameData="{ date: todaysDate, gameId: game, game: todaysGames.filter(e => e.gameId === game)[0] }"
               :active="selectedGames.includes(game)"
               @close-pbp="removeGame"
-            ></pbp>
+            ></playbyplay>
           </div>
         </div>
       </div>
@@ -33,11 +27,12 @@
 </template>
 <script>
 import axios from "./services/axios";
-import pbp from "./components/PlayByPlayBox";
+import playbyplay from "./components/PlayByPlayBox";
+import gameboxes from "./components/GameBoxes";
 
 export default {
   name: "app",
-  components: { pbp },
+  components: { playbyplay, gameboxes },
   data() {
     return {
       todaysDate: null,
@@ -47,11 +42,6 @@ export default {
     };
   },
   methods: {
-    showGameCard(gameId) {
-      if (this.selectedGames.indexOf(gameId) === -1) {
-        this.selectedGames.push(gameId);
-      }
-    },
     test() {
       console.log("test");
     },
