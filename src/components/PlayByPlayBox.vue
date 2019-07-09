@@ -4,7 +4,6 @@
       <div class="pbp-header">
         <i @click="closePbp" class="material-icons close-pbp">close</i>
         <p>{{ gameData.game.vTeam.triCode + " vs " + gameData.game.hTeam.triCode }}</p>
-        <p>{{ gameData.date }}</p>
         <p>{{ gameData.gameId }}</p>
       </div>
       <div class="pbp-box is-size-7" ref="pbp">
@@ -22,8 +21,8 @@
 
 
 <script>
-import axios from "../services/axios";
-import { setInterval, clearInterval } from "timers";
+import { db } from "../services/firebase";
+
 export default {
   props: { gameData: {}, active: Boolean },
   data() {
@@ -47,20 +46,6 @@ export default {
     },
     closePbp() {
       this.$emit("close-pbp", this.gameData.gameId);
-    },
-
-    getPlayByPlay() {
-      axios
-        .get(
-          `/json/cms/noseason/game/${this.gameData.date}/${this.gameData.gameId}/pbp_all.json`
-        )
-        .then(response => {
-          let game = response.data.sports_content.game;
-          this.teams = game.game_url;
-          let pbp = game.play.reverse();
-          console.log(pbp.length, this.pbp.length);
-          if (this.pbp.length !== pbp.length) this.pbp = pbp;
-        });
     }
   },
   mounted() {
@@ -68,16 +53,18 @@ export default {
       this.showTopButton();
     };
     console.log(this.gameData.game);
-    this.getPlayByPlay();
-    this.interval = setInterval(() => {
-      this.getPlayByPlay();
-      console.log("polling...");
-    }, 5000);
-  },
-  destroyed() {
-    console.log("destroyed");
-    clearInterval(this.interval);
+    const nba = db.collection("playbyplay").doc("game-" + this.gameData.gameId);
+    nba.onSnapshot(doc => {
+      if (doc.exists) {
+        this.pbp = doc.data().plays;
+      } else {
+        console.log("No such document!");
+      }
+    });
   }
+  // destroyed() {
+  //   console.log("destroyed");
+  // }
 };
 </script>
 

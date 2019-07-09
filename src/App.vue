@@ -14,7 +14,7 @@
           <playbyplay
             v-for="game in selectedGames"
             :key="game"
-            :gameData="{ date: todaysDate, gameId: game, game: todaysGames.filter(e => e.gameId === game)[0] }"
+            :gameData="{ gameId: game, game: todaysGames.filter(e => e.gameId === game)[0] }"
             :active="selectedGames.includes(game)"
             @close-pbp="removeGame"
           ></playbyplay>
@@ -24,7 +24,6 @@
   </div>
 </template>
 <script>
-import axios from "./services/axios";
 import playbyplay from "./components/PlayByPlayBox";
 import gameboxes from "./components/GameBoxes";
 import { db } from "./services/firebase";
@@ -34,7 +33,6 @@ export default {
   components: { playbyplay, gameboxes },
   data() {
     return {
-      todaysDate: null,
       todaysGames: [],
       selectedGames: [],
       data: null
@@ -47,34 +45,17 @@ export default {
     removeGame(value) {
       let index = this.selectedGames.indexOf(value);
       if (index !== -1) this.selectedGames.splice(index, 1);
-    },
-
-    // getGames() {
-    //   axios.get("/prod/v3/today.json").then(response => {
-    //     this.todaysDate = response.data.links.currentDate;
-    //     axios
-    //       .get(`/prod/v2/${this.todaysDate}/scoreboard.json`)
-    //       .then(response => {
-    //         this.todaysGames = response.data.games;
-    //       });
-    //   });
-    // }
+    }
   },
   mounted() {
-    //this.getGames();
-    var nba = db.collection("playbyplay").doc("nba");
-    nba
-      .get()
-      .then(doc => {
-        if (doc.exists) {
-          this.todaysGames = doc.data().todaysGames;
-        } else {
-          console.log("No such document!");
-        }
-      })
-      .catch(function(error) {
-        console.log("Error getting document:", error);
-      });
+    const nba = db.collection("playbyplay").doc("nba");
+    nba.onSnapshot(doc => {
+      if (doc.exists) {
+        this.todaysGames = doc.data().todaysGames;
+      } else {
+        console.log("No such document!");
+      }
+    });
   }
 };
 </script>
