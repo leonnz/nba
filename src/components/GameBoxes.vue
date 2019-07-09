@@ -26,6 +26,7 @@ export default {
 <style lang="scss" scoped>
 .game-box {
   padding: 1rem;
+  background-color: #efefef;
   border: 1px solid hsl(0, 0%, 71%);
   border-radius: 5px;
 }

@@ -13,6 +13,10 @@
           :class="{ buttonEase: scrolling }"
           @click="scrollToTop"
         >back to top</button>
+        <div
+          v-if="!gameData.game.isGameActivated && gameData.game.period.current == 0"
+        >Game has not started.</div>
+
         <div v-for="event in pbp" :key="event.event">{{ event.clock + " - " + event.description }}</div>
       </div>
     </div>
