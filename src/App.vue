@@ -27,6 +27,7 @@
 import axios from "./services/axios";
 import playbyplay from "./components/PlayByPlayBox";
 import gameboxes from "./components/GameBoxes";
+import { db } from "./services/firebase";
 
 export default {
   name: "app",
@@ -48,19 +49,32 @@ export default {
       if (index !== -1) this.selectedGames.splice(index, 1);
     },
 
-    getGames() {
-      axios.get("/prod/v3/today.json").then(response => {
-        this.todaysDate = response.data.links.currentDate;
-        axios
-          .get(`/prod/v2/${this.todaysDate}/scoreboard.json`)
-          .then(response => {
-            this.todaysGames = response.data.games;
-          });
-      });
-    }
+    // getGames() {
+    //   axios.get("/prod/v3/today.json").then(response => {
+    //     this.todaysDate = response.data.links.currentDate;
+    //     axios
+    //       .get(`/prod/v2/${this.todaysDate}/scoreboard.json`)
+    //       .then(response => {
+    //         this.todaysGames = response.data.games;
+    //       });
+    //   });
+    // }
   },
   mounted() {
-    this.getGames();
+    //this.getGames();
+    var nba = db.collection("playbyplay").doc("nba");
+    nba
+      .get()
+      .then(doc => {
+        if (doc.exists) {
+          this.todaysGames = doc.data().todaysGames;
+        } else {
+          console.log("No such document!");
+        }
+      })
+      .catch(function(error) {
+        console.log("Error getting document:", error);
+      });
   }
 };
 </script>
