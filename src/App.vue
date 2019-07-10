@@ -7,17 +7,21 @@
     </nav>
     <section class="section">
       <div class="columns">
-        <div class="column is-2 tile is-ancestor">
-          <gameboxes :todaysGames="todaysGames" :selectedGames="selectedGames"></gameboxes>
+        <div class="column is-2">
+          <div class="tile is-ancestor">
+            <gameboxes :todaysGames="todaysGames" :selectedGames="selectedGames"></gameboxes>
+          </div>
         </div>
-        <div class="column tile is-ancestor wrap">
-          <playbyplay
-            v-for="game in selectedGames"
-            :key="game"
-            :gameData="{ gameId: game, game: todaysGames.filter(e => e.gameId === game)[0] }"
-            :active="selectedGames.includes(game)"
-            @close-pbp="removeGame"
-          ></playbyplay>
+        <div class="column wrap">
+          <div class="tile is-ancestor wrap">
+            <playbyplay
+              v-for="game in selectedGames"
+              :key="game"
+              :gameData="{ gameId: game, game: todaysGames.filter(e => e.gameId === game)[0] }"
+              :active="selectedGames.includes(game)"
+              @close-pbp="removeGame"
+            ></playbyplay>
+          </div>
         </div>
       </div>
     </section>
@@ -61,18 +65,9 @@ export default {
 </script>
 
 <style lang="scss">
-.custom-box {
-  height: 400px;
-  overflow: scroll;
-  overflow-x: hidden;
-  scroll-behavior: auto;
-  width: 340px;
-  margin-right: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
 .wrap {
   flex-wrap: wrap;
+  align-items: flex-start;
 }
 
 /* width */

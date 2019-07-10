@@ -81,7 +81,7 @@ export default {
   background-color: white;
   padding: 1rem;
   width: 100%;
-  height: 300px;
+  height: 200px;
   overflow-x: hidden;
   //scroll-behavior: smooth;
 }
@@ -103,7 +103,7 @@ export default {
   border: 1px solid hsl(217, 71%, 53%);
   border-radius: 5px;
   overflow: hidden;
-  height: 300px;
+  height: 200px;
 }
 
 .scrollToTopButton {
