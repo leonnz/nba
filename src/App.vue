@@ -12,7 +12,7 @@
             <gameboxes :todaysGames="todaysGames" :selectedGames="selectedGames"></gameboxes>
           </div>
         </div>
-        <div class="column wrap">
+        <div class="column">
           <div class="tile is-ancestor wrap">
             <playbyplay
               v-for="game in selectedGames"
