@@ -1,12 +1,12 @@
 <template>
-  <div v-if="active" class="tile is-parent is-3">
+  <div v-if="active" class="tile is-parent is-4">
     <div class="tile is-child pbp-container">
-      <div class="pbp-header">
+      <div class="pbp-header is-size-5">
         <i @click="closePbp" class="material-icons close-pbp">close</i>
         <p>{{ gameData.game.vTeam.triCode + " vs " + gameData.game.hTeam.triCode }}</p>
         <p>{{ gameData.gameId }}</p>
       </div>
-      <div class="pbp-box is-size-7" ref="pbp">
+      <div class="pbp-box is-size-6" ref="pbp">
         <button
           ref="scrollToTopButton"
           class="scrollToTopButton button is-small is-link"

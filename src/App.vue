@@ -1,8 +1,11 @@
 <template>
   <div id="app">
     <nav class="navbar is-link has-shadow" role="navigation">
-      <div class="navbar-brand">
-        <a class="navbar-item" href>NBA</a>
+      <div class="navbar-brand is-size-4">
+        <a class="navbar-item" href>
+          <i class="fas fa-basketball-ball fa-2x ball-icon"></i>
+          NBA playbyplay beta
+        </a>
       </div>
     </nav>
     <section class="main-container">
@@ -65,6 +68,10 @@ export default {
 </script>
 
 <style lang="scss">
+.ball-icon {
+  margin-right: 1rem;
+  // color: grey;
+}
 .main-container {
   padding: 1.5rem 1.5rem;
 }
