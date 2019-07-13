@@ -121,10 +121,12 @@ export default {
   top: 0;
   opacity: 0;
   transition: 0.5s;
+  cursor: default;
 }
 
 .buttonEase {
   visibility: visible;
   opacity: 1;
+  cursor: pointer;
 }
 </style>
