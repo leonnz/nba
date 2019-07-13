@@ -6,7 +6,7 @@
       v-for="game in todaysGames"
       :key="game.gameId"
       @click="showGameCard(game.gameId)"
-    >{{ game.vTeam.triCode + " vs " + game.hTeam.triCode + " " + game.vTeam.score + " - " + game.hTeam.score}}</div>
+    >{{ game.vTeam.triCode + " vs " + game.hTeam.triCode }} {{ game.vTeam.score || "0" }} - {{ game.hTeam.score || "0" }}</div>
   </div>
 </template>
 
