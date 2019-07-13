@@ -17,7 +17,11 @@
           v-if="!gameData.game.isGameActivated && gameData.game.period.current == 0"
         >Game has not started.</div>
 
-        <div v-for="event in pbp" :key="event.event">{{ event.clock + " - " + event.description }}</div>
+        <div
+          class="play-event"
+          v-for="event in pbp"
+          :key="event.event"
+        >{{ event.clock + " - " + event.description }}</div>
       </div>
     </div>
   </div>
@@ -81,7 +85,7 @@ export default {
   background-color: white;
   padding: 1rem;
   width: 100%;
-  height: 200px;
+  height: 304px;
   overflow-x: hidden;
   //scroll-behavior: smooth;
 }
@@ -89,6 +93,10 @@ export default {
 .pbp-box > div:first-of-type {
   font-weight: bold;
   margin-top: -2rem;
+}
+
+.play-event {
+  padding: 0.5rem 0rem;
 }
 
 .close-pbp {
@@ -103,7 +111,7 @@ export default {
   border: 1px solid hsl(217, 71%, 53%);
   border-radius: 5px;
   overflow: hidden;
-  height: 200px;
+  height: 304px;
 }
 
 .scrollToTopButton {

@@ -5,7 +5,7 @@
         <a class="navbar-item" href>NBA</a>
       </div>
     </nav>
-    <section class="section">
+    <section class="main-container">
       <div class="columns">
         <div class="column is-2">
           <div class="tile is-ancestor">
@@ -65,6 +65,10 @@ export default {
 </script>
 
 <style lang="scss">
+.main-container {
+  padding: 1.5rem 1.5rem;
+}
+
 .wrap {
   flex-wrap: wrap;
   align-items: flex-start;
