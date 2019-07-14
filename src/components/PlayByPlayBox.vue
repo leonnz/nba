@@ -60,7 +60,7 @@
         <div
           class="play-event"
           v-for="event in pbp"
-          :key="event.event"
+          :key="event.index"
         >{{ event.clock + " - " + event.description }}</div>
       </div>
     </div>
@@ -77,6 +77,8 @@ export default {
     return {
       teams: "",
       pbp: [],
+      pbpQueue: [],
+      pbpQueueStartLength: 100,
       interval: null,
       scrolling: false,
       periodMap: [
@@ -99,6 +101,9 @@ export default {
     },
     playsExist: function() {
       return this.pbp.length > 0 ? true : false;
+    },
+    pbpQueueExists: function() {
+      return this.pbpQueue.length > 0 ? true : false;
     }
   },
   methods: {
@@ -117,6 +122,20 @@ export default {
     },
     getTeamLogo(team) {
       return require("../assets/team_logos/" + team + ".png");
+    },
+    pbpQueueManager() {
+      let startPosition = 0; // This would be starting length of the pbpQueue
+      // Every 5 seconds push a new event onto start of pbp from the pbpQueue if a new event exists
+      setInterval(() => {
+        // if (this.pbpQueueStartLength > this.pbp.length) {
+        // console.log(startPosition, this.pbpQueue.length, this.pbp.length);
+        // Testing version
+        if (startPosition < this.pbp.length) {
+          let event = this.pbpQueue[startPosition];
+          this.pbp.unshift(event);
+          startPosition++;
+        }
+      }, 5000);
     }
   },
   mounted() {
@@ -124,14 +143,33 @@ export default {
       this.showTopButton();
     };
     console.log(this.gameData.game, this.gameData.game.gameId);
+
     const nba = db.collection("playbyplay").doc("game-" + this.gameData.gameId);
+
+    // Set the main pbp events.
+    nba
+      .get()
+      .then(doc => {
+        if (doc.exists) {
+          this.pbp = doc.data().plays.reverse();
+        } else {
+          console.log("No such document!");
+        }
+      })
+      .catch(err => {
+        console.log("Error getting document", err);
+      });
+
+    // Set the pbpQueue and watch for changes, the queue update time is determined
+    // by the node process gameTimeService.js
     nba.onSnapshot(doc => {
       if (doc.exists) {
-        this.pbp = doc.data().plays;
+        this.pbpQueue = doc.data().plays;
       } else {
         console.log("No such document!");
       }
     });
+    this.pbpQueueManager();
   }
   // destroyed() {
   //   console.log("destroyed");
