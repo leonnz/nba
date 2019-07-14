@@ -3,32 +3,37 @@
     <div class="tile is-child pbp-container">
       <div class="pbp-header is-size-5">
         <i @click="closePbp" class="material-icons close-pbp">close</i>
-        <p>{{ gameData.game.vTeam.triCode + " vs " + gameData.game.hTeam.triCode }}</p>
-        <p>{{ gameData.gameId }}</p>
-      </div>
-      <div class="level">
-        <div class="level-item has-text-centered">
-          <div>
-            <p class="heading">{{ gameData.game.vTeam.triCode }}</p>
-            <p class="title">{{ gameData.game.vTeam.score }}</p>
+
+        <div class="level">
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="is-size-5 title">{{ gameData.game.vTeam.triCode }}</p>
+              <p v-if="playsExist" class="title">{{ pbp[0].visitor_score}}</p>
+              <p v-else class="title">0</p>
+            </div>
           </div>
-        </div>
-        <div class="level-item has-text-centered">
-          <div>
-            <span v-if="!gameData.game.isGameActivated && gameData.game.endTimeUTC">Final</span>
-            <span
-              v-if="gameData.game.period.current !== 0"
-            >{{ getPeriod[0][gameData.game.period.current] }}</span>
-            <p
-              v-if="gameData.game.isGameActivated && pbp.length > 0"
-              class="title is-size-5"
-            >{{ pbp[0].clock }}</p>
+          <div class="level-item has-text-centered">
+            <div>
+              <span
+                class="is-size-5 title"
+                v-if="!gameData.game.isGameActivated && gameData.game.endTimeUTC"
+              >Final</span>
+              <span
+                class="title is-size-5 live-tag"
+                v-if="gameData.game.isGameActivated && gameData.game.period.current !== 0 && playsExist"
+              >{{ getPeriod[0][gameData.game.period.current] }}</span>
+              <p
+                v-if="gameData.game.isGameActivated && playsExist"
+                class="title is-size-5 live-tag"
+              >{{ pbp[0].clock }}</p>
+            </div>
           </div>
-        </div>
-        <div class="level-item has-text-centered">
-          <div>
-            <p class="heading">{{ gameData.game.hTeam.triCode }}</p>
-            <p class="title">{{ gameData.game.hTeam.score }}</p>
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="is-size-5 title">{{ gameData.game.hTeam.triCode }}</p>
+              <p v-if="pbp.length > 0" class="title">{{ pbp[0].home_score }}</p>
+              <p v-else class="title">0</p>
+            </div>
           </div>
         </div>
       </div>
@@ -42,6 +47,9 @@
         <div
           v-if="!gameData.game.isGameActivated && gameData.game.period.current == 0"
         >Game has not started.</div>
+        <div
+          v-if="gameData.game.isGameActivated && gameData.game.period.current == 1 && !gameData.game.clock"
+        >Game starting.</div>
 
         <div
           class="play-event"
@@ -66,7 +74,7 @@ export default {
       interval: null,
       scrolling: false,
       periodMap: [
-        { 0: "Q0" },
+        { 0: "" },
         { 1: "Q1" },
         { 2: "Q2" },
         { 3: "Q3" },
@@ -82,6 +90,9 @@ export default {
       return this.periodMap.filter(period => {
         return period[this.gameData.game.period.current];
       });
+    },
+    playsExist: function() {
+      return this.pbp.length > 0 ? true : false;
     }
   },
   methods: {
@@ -147,6 +158,10 @@ export default {
 }
 .close-pbp:hover {
   cursor: pointer;
+}
+
+.live-tag {
+  color: red;
 }
 
 .pbp-container {

@@ -52,7 +52,7 @@ export default {
 }
 
 .final-tag {
-  background-color: black;
+  background-color: grey;
   color: white;
   padding: 0.1rem 0.4rem;
   letter-spacing: 1px;
