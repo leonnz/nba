@@ -6,6 +6,32 @@
         <p>{{ gameData.game.vTeam.triCode + " vs " + gameData.game.hTeam.triCode }}</p>
         <p>{{ gameData.gameId }}</p>
       </div>
+      <div class="level">
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">{{ gameData.game.vTeam.triCode }}</p>
+            <p class="title">{{ gameData.game.vTeam.score }}</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <span v-if="!gameData.game.isGameActivated && gameData.game.endTimeUTC">Final</span>
+            <span
+              v-if="gameData.game.period.current !== 0"
+            >{{ getPeriod[0][gameData.game.period.current] }}</span>
+            <p
+              v-if="gameData.game.isGameActivated && pbp.length > 0"
+              class="title is-size-5"
+            >{{ pbp[0].clock }}</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">{{ gameData.game.hTeam.triCode }}</p>
+            <p class="title">{{ gameData.game.hTeam.score }}</p>
+          </div>
+        </div>
+      </div>
       <div class="pbp-box is-size-6" ref="pbp">
         <button
           ref="scrollToTopButton"
@@ -38,8 +64,25 @@ export default {
       teams: "",
       pbp: [],
       interval: null,
-      scrolling: false
+      scrolling: false,
+      periodMap: [
+        { 0: "Q0" },
+        { 1: "Q1" },
+        { 2: "Q2" },
+        { 3: "Q3" },
+        { 4: "Q4" },
+        { 5: "OT" },
+        { 6: "2OT" },
+        { 7: "3OT" }
+      ]
     };
+  },
+  computed: {
+    getPeriod: function() {
+      return this.periodMap.filter(period => {
+        return period[this.gameData.game.period.current];
+      });
+    }
   },
   methods: {
     showTopButton() {
@@ -60,7 +103,7 @@ export default {
     this.$refs.pbp.onscroll = () => {
       this.showTopButton();
     };
-    console.log(this.gameData.game);
+    console.log(this.gameData.game, this.gameData.game.gameId);
     const nba = db.collection("playbyplay").doc("game-" + this.gameData.gameId);
     nba.onSnapshot(doc => {
       if (doc.exists) {
