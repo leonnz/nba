@@ -12,7 +12,7 @@
             <div>
               <p class="is-size-5 title has-text-white">{{ gameData.game.vTeam.triCode }}</p>
               <p v-if="playsExist" class="title has-text-white">{{ pbp[0].visitor_score}}</p>
-              <p v-else class="title">0</p>
+              <p v-else class="title has-text-white">0</p>
             </div>
           </div>
           <div class="level-item has-text-centered">
@@ -35,7 +35,7 @@
             <div>
               <p class="is-size-5 title has-text-white">{{ gameData.game.hTeam.triCode }}</p>
               <p v-if="pbp.length > 0" class="title has-text-white">{{ pbp[0].home_score }}</p>
-              <p v-else class="title">0</p>
+              <p v-else class="title has-text-white">0</p>
             </div>
           </div>
           <div class="level-item is-hidden-touch">
