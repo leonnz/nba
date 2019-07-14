@@ -1,11 +1,14 @@
 <template>
   <div id="app">
     <nav class="has-shadow header" role="navigation">
-      <div class="is-size-4 banner">
-        <a class="navbar-item is-size-4" href>
-          <i class="fas fa-basketball-ball fa-2x ball-icon"></i>
-          NBA playbyplay beta
-        </a>
+      <div class>
+        <div class="is-size-4 banner">
+          <a class="is-size-4" href>
+            <i class="fas fa-basketball-ball fa-2x ball-icon"></i>
+            NBA playbyplay
+          </a>
+        </div>
+        <div class="beta">beta v0.1</div>
       </div>
     </nav>
     <section class="main-container">
@@ -85,8 +88,15 @@ export default {
 
 .banner {
   display: inline-block;
+  padding: 0.5rem;
 }
 
+.beta {
+  color: white;
+  vertical-align: top; /* here */
+  float: right;
+  padding: 0.5rem;
+}
 .ball-icon {
   margin-right: 1rem;
   // color: grey;
