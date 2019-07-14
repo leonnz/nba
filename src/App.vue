@@ -4,7 +4,7 @@
       <div class>
         <div class="is-size-4 banner">
           <a class="is-size-4" href>
-            <i class="fas fa-basketball-ball fa-2x ball-icon"></i>
+            <i class="fas fa-basketball-ball"></i>
             NBA playbyplay
           </a>
         </div>
@@ -98,7 +98,7 @@ export default {
   padding: 0.5rem;
 }
 .ball-icon {
-  margin-right: 1rem;
+  margin-right: 0.2rem;
   // color: grey;
 }
 .main-container {

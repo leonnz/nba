@@ -1,6 +1,10 @@
 <template>
   <div v-if="active" class="tile is-parent is-4">
     <div class="tile is-child pbp-container">
+      <!-- <button @click="show = !show">Toggle render</button>
+      <transition name="slide-fade">
+        <div v-if="show">test</div>
+      </transition>-->
       <div class="pbp-header is-size-5">
         <i @click="closePbp" class="material-icons close-pbp">close</i>
 
@@ -56,12 +60,7 @@
         <div
           v-if="gameData.game.isGameActivated && gameData.game.period.current == 1 && !gameData.game.clock"
         >Game starting.</div>
-
-        <div
-          class="play-event"
-          v-for="event in pbp"
-          :key="event.index"
-        >{{ event.clock + " - " + event.description }}</div>
+        <playevent v-for="event in pbp" :key="event.index" :event="event"></playevent>
       </div>
     </div>
   </div>
@@ -70,11 +69,14 @@
 
 <script>
 import { db } from "../services/firebase";
+import playevent from "../components/PlayEvent";
 
 export default {
   props: { gameData: {}, active: Boolean },
+  components: { playevent },
   data() {
     return {
+      show: false,
       teams: "",
       pbp: [],
       pbpQueue: [],
@@ -200,6 +202,29 @@ export default {
 
 .white-text {
   color: white;
+}
+
+/* Enter and leave animations can use different */
+/* durations and timing functions.              */
+.slide-fade-enter-active {
+  transition: all 0.3s ease;
+}
+.slide-fade-leave-active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateX(10px);
+  opacity: 0;
+}
+
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .pbp-box > div:first-of-type {
