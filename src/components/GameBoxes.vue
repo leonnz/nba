@@ -36,7 +36,6 @@ export default {
 .game-box {
   padding: 1rem;
   background-color: #cccccc;
-  // border: 1px solid hsl(0, 0%, 71%);
   border-radius: 5px;
 }
 .game-box:hover {
@@ -45,7 +44,6 @@ export default {
 
 .selectedGame {
   background-color: #1d428a;
-  border: 1px solid #1d428a;
 }
 
 .live-tag {
