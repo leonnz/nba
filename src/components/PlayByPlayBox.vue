@@ -147,8 +147,8 @@ export default {
 }
 
 .team-logo {
-  width: 90px;
-  height: 115px;
+  width: 80px;
+  height: 80px;
 }
 
 .pbp-box {
