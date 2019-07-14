@@ -7,8 +7,9 @@
       :key="game.gameId"
       @click="showGameCard(game.gameId)"
     >
+      <span class="live-tag" v-if="game.isGameActivated">{{ "LIVE" }}</span>
       <!-- <img class="image" src="../assets/team_logos/toronto_raptors.gif" /> -->
-      {{ game.vTeam.triCode + " vs " + game.hTeam.triCode }} {{ game.vTeam.score || "0" }} - {{ game.hTeam.score || "0" }}
+      <span>{{ " " + game.vTeam.triCode + " vs " + game.hTeam.triCode }} {{ game.vTeam.score || "0" }} - {{ game.hTeam.score || "0" }}</span>
       <!-- <img
         class="image"
         src="../assets/team_logos/toronto_raptors.gif"
@@ -39,6 +40,14 @@ export default {
 }
 .game-box:hover {
   cursor: pointer;
+}
+
+.live-tag {
+  background-color: red;
+  color: white;
+  padding: 0.1rem 0.4rem;
+  letter-spacing: 1px;
+  border-radius: 3px;
 }
 </style>
 
