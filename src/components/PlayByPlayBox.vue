@@ -5,6 +5,9 @@
         <i @click="closePbp" class="material-icons close-pbp">close</i>
 
         <div class="level">
+          <div class="level-item">
+            <img class="image team-logo" :src="getTeamLogo(gameData.game.vTeam.triCode)" />
+          </div>
           <div class="level-item has-text-centered">
             <div>
               <p class="is-size-5 title">{{ gameData.game.vTeam.triCode }}</p>
@@ -34,6 +37,9 @@
               <p v-if="pbp.length > 0" class="title">{{ pbp[0].home_score }}</p>
               <p v-else class="title">0</p>
             </div>
+          </div>
+          <div class="level-item">
+            <img class="image team-logo" :src="getTeamLogo(gameData.game.hTeam.triCode)" />
           </div>
         </div>
       </div>
@@ -108,6 +114,9 @@ export default {
     },
     closePbp() {
       this.$emit("close-pbp", this.gameData.gameId);
+    },
+    getTeamLogo(team) {
+      return require("../assets/team_logos/" + team + ".png");
     }
   },
   mounted() {
@@ -135,6 +144,12 @@ export default {
   padding: 1rem;
   //background-color: #efefef;
 }
+
+.team-logo {
+  width: 90px;
+  height: 115px;
+}
+
 .pbp-box {
   background-color: white;
   padding: 1rem;
