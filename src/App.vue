@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <nav class="navbar is-link has-shadow" role="navigation">
-      <div class="navbar-brand is-size-4">
-        <a class="navbar-item" href>
+    <nav class="has-shadow header" role="navigation">
+      <div class="is-size-4 banner">
+        <a class="navbar-item is-size-4" href>
           <i class="fas fa-basketball-ball fa-2x ball-icon"></i>
           NBA playbyplay beta
         </a>
@@ -68,6 +68,25 @@ export default {
 </script>
 
 <style lang="scss">
+.header {
+  background-color: #1d428a;
+}
+
+.header a {
+  color: white;
+  width: auto;
+}
+
+.header a:hover {
+  color: white !important;
+  background-color: #1d428a !important;
+  width: auto;
+}
+
+.banner {
+  display: inline-block;
+}
+
 .ball-icon {
   margin-right: 1rem;
   // color: grey;

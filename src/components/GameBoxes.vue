@@ -2,7 +2,7 @@
   <div class="tile is-vertical is-parent">
     <div
       class="tile is-child game-box"
-      :class="{ 'has-background-link': selectedGames.includes(game.gameId), 'has-text-white': selectedGames.includes(game.gameId) }"
+      :class="{ 'selectedGame': selectedGames.includes(game.gameId), 'has-text-white': selectedGames.includes(game.gameId) }"
       v-for="game in todaysGames"
       :key="game.gameId"
       @click="showGameCard(game.gameId)"
@@ -35,12 +35,17 @@ export default {
 <style lang="scss" scoped>
 .game-box {
   padding: 1rem;
-  background-color: #efefef;
-  border: 1px solid hsl(0, 0%, 71%);
+  background-color: #cccccc;
+  // border: 1px solid hsl(0, 0%, 71%);
   border-radius: 5px;
 }
 .game-box:hover {
   cursor: pointer;
+}
+
+.selectedGame {
+  background-color: #1d428a;
+  border: 1px solid #1d428a;
 }
 
 .live-tag {

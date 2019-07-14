@@ -10,15 +10,15 @@
           </div>
           <div class="level-item has-text-centered">
             <div>
-              <p class="is-size-5 title">{{ gameData.game.vTeam.triCode }}</p>
-              <p v-if="playsExist" class="title">{{ pbp[0].visitor_score}}</p>
+              <p class="is-size-5 title has-text-white">{{ gameData.game.vTeam.triCode }}</p>
+              <p v-if="playsExist" class="title has-text-white">{{ pbp[0].visitor_score}}</p>
               <p v-else class="title">0</p>
             </div>
           </div>
           <div class="level-item has-text-centered">
             <div>
               <span
-                class="is-size-5 title"
+                class="is-size-5 title has-text-white"
                 v-if="!gameData.game.isGameActivated && gameData.game.endTimeUTC"
               >Final</span>
               <span
@@ -33,8 +33,8 @@
           </div>
           <div class="level-item has-text-centered">
             <div>
-              <p class="is-size-5 title">{{ gameData.game.hTeam.triCode }}</p>
-              <p v-if="pbp.length > 0" class="title">{{ pbp[0].home_score }}</p>
+              <p class="is-size-5 title has-text-white">{{ gameData.game.hTeam.triCode }}</p>
+              <p v-if="pbp.length > 0" class="title has-text-white">{{ pbp[0].home_score }}</p>
               <p v-else class="title">0</p>
             </div>
           </div>
@@ -142,7 +142,8 @@ export default {
 <style lang="scss" scoped>
 .pbp-header {
   padding: 1rem;
-  //background-color: #efefef;
+  background-color: #1d428a;
+  color: white;
 }
 
 .team-logo {
@@ -157,6 +158,10 @@ export default {
   height: 304px;
   overflow-x: hidden;
   //scroll-behavior: smooth;
+}
+
+.white-text {
+  color: white;
 }
 
 .pbp-box > div:first-of-type {
@@ -177,11 +182,11 @@ export default {
 
 .live-tag {
   color: red;
+  letter-spacing: 2px;
 }
 
 .pbp-container {
-  background-color: #efefef;
-  border: 1px solid hsl(217, 71%, 53%);
+  border: 1px solid #1d428a;
   border-radius: 5px;
   overflow: hidden;
   height: 304px;
@@ -195,6 +200,7 @@ export default {
   opacity: 0;
   transition: 0.5s;
   cursor: default;
+  background-color: #1d428a !important;
 }
 
 .buttonEase {
