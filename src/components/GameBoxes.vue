@@ -7,7 +7,8 @@
       :key="game.gameId"
       @click="showGameCard(game.gameId)"
     >
-      <span class="live-tag" v-if="game.isGameActivated">{{ "LIVE" }}</span>
+      <span class="final-tag" v-if="!game.isGameActivated && game.endTimeUTC">{{ "FINAL" }}</span>
+      <span class="live-tag" v-if="game.isGameActivated && game.period.current !== 0">{{ "LIVE" }}</span>
       <!-- <img class="image" src="../assets/team_logos/toronto_raptors.gif" /> -->
       <span>{{ " " + game.vTeam.triCode + " vs " + game.hTeam.triCode }} {{ game.vTeam.score || "0" }} - {{ game.hTeam.score || "0" }}</span>
       <!-- <img
@@ -44,6 +45,14 @@ export default {
 
 .live-tag {
   background-color: red;
+  color: white;
+  padding: 0.1rem 0.4rem;
+  letter-spacing: 1px;
+  border-radius: 3px;
+}
+
+.final-tag {
+  background-color: black;
   color: white;
   padding: 0.1rem 0.4rem;
   letter-spacing: 1px;
