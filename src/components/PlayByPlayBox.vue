@@ -5,7 +5,7 @@
         <i @click="closePbp" class="material-icons close-pbp">close</i>
 
         <div class="level">
-          <div class="level-item">
+          <div class="level-item is-hidden-touch">
             <img class="image team-logo" :src="getTeamLogo(gameData.game.vTeam.triCode)" />
           </div>
           <div class="level-item has-text-centered">
@@ -38,7 +38,7 @@
               <p v-else class="title">0</p>
             </div>
           </div>
-          <div class="level-item">
+          <div class="level-item is-hidden-touch">
             <img class="image team-logo" :src="getTeamLogo(gameData.game.hTeam.triCode)" />
           </div>
         </div>
@@ -203,3 +203,6 @@ export default {
   cursor: pointer;
 }
 </style>
+
+// Player images
+// https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/203095.png

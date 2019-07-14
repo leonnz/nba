@@ -49,6 +49,10 @@ export default {
   padding: 0.1rem 0.4rem;
   letter-spacing: 1px;
   border-radius: 3px;
+  float: left;
+  width: 60px;
+  text-align: center;
+  margin-right: 1rem;
 }
 
 .final-tag {
@@ -57,6 +61,10 @@ export default {
   padding: 0.1rem 0.4rem;
   letter-spacing: 1px;
   border-radius: 3px;
+  float: left;
+  width: 60px;
+  text-align: center;
+  margin-right: 1rem;
 }
 </style>
 
