@@ -1,10 +1,6 @@
 <template>
   <div v-if="active" class="tile is-parent is-4">
     <div class="tile is-child pbp-container">
-      <!-- <button @click="show = !show">Toggle render</button>
-      <transition name="slide-fade">
-        <div v-if="show">test</div>
-      </transition>-->
       <div class="pbp-header is-size-5">
         <i @click="closePbp" class="material-icons close-pbp">close</i>
 
@@ -16,7 +12,6 @@
             <div>
               <p class="is-size-5 title has-text-white">{{ gameData.game.vTeam.triCode }}</p>
               <p v-if="playsExist" class="title has-text-white">{{ pbp[0].visitor_score || "0" }}</p>
-              <!-- <p v-else class="title has-text-white">0</p> -->
             </div>
           </div>
           <div class="level-item has-text-centered">
@@ -39,7 +34,6 @@
             <div>
               <p class="is-size-5 title has-text-white">{{ gameData.game.hTeam.triCode }}</p>
               <p v-if="pbp.length > 0" class="title has-text-white">{{ pbp[0].home_score || "0" }}</p>
-              <!-- <p v-else class="title has-text-white">0</p> -->
             </div>
           </div>
           <div class="level-item is-hidden-touch">
@@ -60,7 +54,13 @@
         <div
           v-if="gameData.game.isGameActivated && gameData.game.period.current == 1 && !gameData.game.clock"
         >Game starting.</div>
-        <playevent v-for="event in pbp" :key="event.index" :event="event"></playevent>
+        <transition-group name="slide" class="play-event">
+          <div
+            class="play-event-item"
+            v-for="event in pbp"
+            :key="event.event"
+          >{{ event.clock + " - " + event.description }}</div>
+        </transition-group>
       </div>
     </div>
   </div>
@@ -69,14 +69,11 @@
 
 <script>
 import { db } from "../services/firebase";
-import playevent from "../components/PlayEvent";
 
 export default {
   props: { gameData: {}, active: Boolean },
-  components: { playevent },
   data() {
     return {
-      show: false,
       teams: "",
       pbp: [],
       pbpQueue: [],
@@ -195,45 +192,14 @@ export default {
   background-color: white;
   padding: 1rem;
   width: 100%;
-  height: 70vh;
+  height: 56.5vh;
   overflow-x: hidden;
-  //scroll-behavior: smooth;
-}
-
-.white-text {
-  color: white;
-}
-
-/* Enter and leave animations can use different */
-/* durations and timing functions.              */
-.slide-fade-enter-active {
-  transition: all 0.3s ease;
-}
-.slide-fade-leave-active {
-  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
-}
-.slide-fade-enter, .slide-fade-leave-to
-/* .slide-fade-leave-active below version 2.1.8 */ {
-  transform: translateX(10px);
-  opacity: 0;
-}
-
-@keyframes slideInFromTop {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(0);
-  }
+  // scroll-behavior: smooth;
 }
 
 .pbp-box > div:first-of-type {
-  font-weight: bold;
+  text-shadow: 1px 0px 0px black;
   margin-top: -2rem;
-}
-
-.play-event {
-  padding: 0.5rem 0rem;
 }
 
 .close-pbp {
@@ -269,6 +235,26 @@ export default {
   visibility: visible;
   opacity: 1;
   cursor: pointer;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 1s;
+}
+.slide-enter, .slide-leave-to /* .list-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateY(-50px);
+}
+
+.play-event > div:first-of-type {
+  text-shadow: 1px 0px 0px black;
+  margin-top: -2rem;
+  padding: 1rem 0rem;
+}
+
+.play-event-item {
+  transition: all 1s;
+  padding: 0.5rem 0rem;
 }
 </style>
 
