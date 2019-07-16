@@ -56,7 +56,8 @@
         >Game starting.</div>
         <transition-group name="slide" class="play-event">
           <div
-            class="play-event-item"
+            class="playEventItem"
+            :class="{ playEventItemTransition: playEventItemClassActive }"
             v-for="event in pbp"
             :key="event.event"
           >{{ event.clock + " - " + event.description }}</div>
@@ -80,6 +81,7 @@ export default {
       pbpQueueStartLength: 100,
       interval: null,
       scrolling: false,
+      playEventItemClassActive: false,
       periodMap: [
         { 0: "" },
         { 1: "Q1" },
@@ -137,10 +139,7 @@ export default {
       }, 5000);
     }
   },
-  mounted() {
-    this.$refs.pbp.onscroll = () => {
-      this.showTopButton();
-    };
+  created() {
     console.log(this.gameData.game, this.gameData.game.gameId);
 
     const nba = db.collection("playbyplay").doc("game-" + this.gameData.gameId);
@@ -151,6 +150,7 @@ export default {
       .then(doc => {
         if (doc.exists) {
           this.pbp = doc.data().plays.reverse();
+          this.pbpQueue = doc.data().plays;
         } else {
           console.log("No such document!");
         }
@@ -168,7 +168,18 @@ export default {
         console.log("No such document!");
       }
     });
-    this.pbpQueueManager();
+  },
+  mounted() {
+    this.$refs.pbp.onscroll = () => {
+      this.showTopButton();
+    };
+    // Code that will run only after the entire view has been rendered
+    this.$nextTick(function() {
+      this.pbpQueueManager();
+      setTimeout(() => {
+        this.playEventItemClassActive = true;
+      }, 1000);
+    });
   }
   // destroyed() {
   //   console.log("destroyed");
@@ -237,11 +248,10 @@ export default {
   cursor: pointer;
 }
 
-.slide-enter-active,
-.slide-leave-active {
-  transition: all 1s;
+.slide-enter-active {
+  transition: 0s;
 }
-.slide-enter, .slide-leave-to /* .list-leave-active below version 2.1.8 */ {
+.slide-enter/* .list-leave-active below version 2.1.8 */ {
   opacity: 0;
   transform: translateY(-50px);
 }
@@ -252,9 +262,12 @@ export default {
   padding: 1rem 0rem;
 }
 
-.play-event-item {
-  transition: all 1s;
+.playEventItem {
   padding: 0.5rem 0rem;
+}
+
+.playEventItemTransition {
+  transition: all 1s;
 }
 </style>
 
