@@ -1,8 +1,8 @@
 <template>
-  <div v-if="active" class="tile is-parent is-4">
+  <div class="tile is-parent is-4">
     <div class="tile is-child pbp-container">
       <div class="pbp-header is-size-5">
-        <i @click="closePbp" class="material-icons close-pbp">close</i>
+        <i @click="closePbp(gameData.gameId)" class="material-icons close-pbp">close</i>
 
         <div class="level">
           <div class="level-item is-hidden-touch">
@@ -65,7 +65,7 @@
 import { db } from "../services/firebase";
 
 export default {
-  props: { gameData: {}, active: Boolean },
+  props: { gameData: {} },
   data() {
     return {
       teams: "",
@@ -88,6 +88,10 @@ export default {
     };
   },
   computed: {
+    selectedGames() {
+      console.log(this.$store.getters.getSelectedGames);
+      return this.$store.getters.getSelectedGames;
+    },
     getPeriod: function() {
       return this.periodMap.filter(period => {
         return period[this.gameData.game.period.current];
@@ -123,8 +127,12 @@ export default {
     scrollToTop() {
       this.$refs.pbp.scrollTop = 0;
     },
-    closePbp() {
-      this.$emit("close-pbp", this.gameData.gameId);
+    closePbp(gameId) {
+      // this.$emit("close-pbp", this.gameData.gameId);
+      let index = this.$store.getters.getSelectedGames.indexOf(gameId);
+      if (index !== -1) {
+        this.$store.commit("removeSelectedGame", index);
+      }
     },
     getTeamLogo(team) {
       return require("../assets/team_logos/" + team + ".png");

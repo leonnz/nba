@@ -22,7 +22,7 @@
           <div class="tile is-ancestor wrap">
             <playbyplay
               v-for="game in selectedGames"
-              :key="game"
+              :key="game.gameId"
               :gameData="{ gameId: game, game: todaysGames.filter(e => e.gameId === game)[0] }"
               :active="selectedGames.includes(game)"
               @close-pbp="removeGame"
@@ -43,13 +43,15 @@ export default {
   components: { playbyplay, gameboxes },
   data() {
     return {
-      todaysGames: [],
       data: null
     };
   },
   computed: {
     selectedGames() {
       return this.$store.getters.getSelectedGames;
+    },
+    todaysGames() {
+      return this.$store.getters.getTodaysGames;
     }
   },
   methods: {
@@ -65,7 +67,7 @@ export default {
     const nba = db.collection("playbyplay").doc("nba");
     nba.onSnapshot(doc => {
       if (doc.exists) {
-        this.todaysGames = doc.data().todaysGames;
+        this.$store.commit("addTodaysGames", doc.data().todaysGames);
       } else {
         console.log("No such document!");
       }
