@@ -24,8 +24,6 @@
               v-for="game in selectedGames"
               :key="game.gameId"
               :gameData="{ gameId: game, game: todaysGames.filter(e => e.gameId === game)[0] }"
-              :active="selectedGames.includes(game)"
-              @close-pbp="removeGame"
             ></playbyplay>
           </div>
         </div>
@@ -57,10 +55,6 @@ export default {
   methods: {
     test() {
       console.log("test");
-    },
-    removeGame(value) {
-      let index = this.selectedGames.indexOf(value);
-      if (index !== -1) this.selectedGames.splice(index, 1);
     }
   },
   mounted() {
@@ -72,6 +66,8 @@ export default {
         console.log("No such document!");
       }
     });
+    console.log(this.selectedGames);
+    // localStorage.clear();
   }
 };
 </script>

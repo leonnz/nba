@@ -153,7 +153,11 @@ export default {
     }
   },
   created() {
-    console.log(this.gameData.game, this.gameData.game.gameId);
+    console.log(
+      this.gameData.game,
+      this.gameData.game.gameId,
+      this.gameData.gameId
+    );
 
     const nba = db.collection("playbyplay").doc("game-" + this.gameData.gameId);
 
