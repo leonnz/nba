@@ -6,11 +6,11 @@
 
         <div class="level">
           <div class="level-item is-hidden-touch">
-            <img class="image team-logo" :src="getTeamLogo(gameData.game.vTeam.triCode)" />
+            <img class="image team-logo" :src="getTeamLogo(visitingTeam)" />
           </div>
           <div class="level-item has-text-centered">
             <div>
-              <p class="is-size-5 title has-text-white">{{ gameData.game.vTeam.triCode }}</p>
+              <p class="is-size-5 title has-text-white">{{ visitingTeam }}</p>
               <p v-if="playsExist" class="title has-text-white">{{ pbp[0].visitor_score || "0" }}</p>
             </div>
           </div>
@@ -18,26 +18,23 @@
             <div>
               <span
                 class="is-size-5 title has-text-white"
-                v-if="!gameData.game.isGameActivated && gameData.game.endTimeUTC"
+                v-if="!gameActive && gameData.game.endTimeUTC"
               >Final</span>
               <span
                 class="title is-size-5 live-tag"
-                v-if="gameData.game.isGameActivated && gameData.game.period.current !== 0 && playsExist"
-              >{{ getPeriod[0][gameData.game.period.current] }}</span>
-              <p
-                v-if="gameData.game.isGameActivated && playsExist"
-                class="title is-size-5 live-tag"
-              >{{ pbp[0].clock }}</p>
+                v-if="gameActive && gamePeriod !== 0 && playsExist"
+              >{{ getPeriod[0][gamePeriod] }}</span>
+              <p v-if="gameActive && playsExist" class="title is-size-5 live-tag">{{ pbp[0].clock }}</p>
             </div>
           </div>
           <div class="level-item has-text-centered">
             <div>
-              <p class="is-size-5 title has-text-white">{{ gameData.game.hTeam.triCode }}</p>
+              <p class="is-size-5 title has-text-white">{{ homeTeam }}</p>
               <p v-if="pbp.length > 0" class="title has-text-white">{{ pbp[0].home_score || "0" }}</p>
             </div>
           </div>
           <div class="level-item is-hidden-touch">
-            <img class="image team-logo" :src="getTeamLogo(gameData.game.hTeam.triCode)" />
+            <img class="image team-logo" :src="getTeamLogo(homeTeam)" />
           </div>
         </div>
       </div>
@@ -48,12 +45,8 @@
           :class="{ buttonEase: scrolling }"
           @click="scrollToTop"
         >back to top</button>
-        <div
-          v-if="!gameData.game.isGameActivated && gameData.game.period.current == 0"
-        >Game has not started.</div>
-        <div
-          v-if="gameData.game.isGameActivated && gameData.game.period.current == 1 && !gameData.game.clock"
-        >Game starting.</div>
+        <div v-if="!gameActive && gamePeriod == 0">Game has not started.</div>
+        <div v-if="gameActive && gamePeriod == 1 && !gameData.game.clock">Game starting.</div>
         <transition-group name="slide" class="play-event">
           <div
             class="playEventItem"
@@ -105,6 +98,18 @@ export default {
     },
     pbpQueueExists: function() {
       return this.pbpQueue.length > 0 ? true : false;
+    },
+    gameActive: function() {
+      return this.gameData.game.isGameActivated;
+    },
+    gamePeriod: function() {
+      return this.gameData.game.period.current;
+    },
+    visitingTeam: function() {
+      return this.gameData.game.vTeam.triCode;
+    },
+    homeTeam: function() {
+      return this.gameData.game.hTeam.triCode;
     }
   },
   methods: {
@@ -253,7 +258,7 @@ export default {
 }
 .slide-enter/* .list-leave-active below version 2.1.8 */ {
   opacity: 0;
-  transform: translateY(-50px);
+  transform: translateY(-100px);
 }
 
 .play-event > div:first-of-type {
