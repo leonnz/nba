@@ -3,5 +3,10 @@ module.exports = {
   plugins: ['vue'],
   rules: {
     'no-console': 'off'
+  },
+  env: {
+    browser: true,
+    amd: true,
+    node: true
   }
 };

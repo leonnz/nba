@@ -15,7 +15,7 @@
       <div class="columns">
         <div class="column is-2">
           <div class="tile is-ancestor">
-            <gameboxes :todaysGames="todaysGames" :selectedGames="selectedGames"></gameboxes>
+            <gameboxes :todaysGames="todaysGames"></gameboxes>
           </div>
         </div>
         <div class="column">
@@ -44,9 +44,13 @@ export default {
   data() {
     return {
       todaysGames: [],
-      selectedGames: [],
       data: null
     };
+  },
+  computed: {
+    selectedGames() {
+      return this.$store.getters.getSelectedGames;
+    }
   },
   methods: {
     test() {

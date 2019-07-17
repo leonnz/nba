@@ -5,7 +5,7 @@
       :class="{ 'selectedGame': selectedGames.includes(game.gameId), 'has-text-white': selectedGames.includes(game.gameId) }"
       v-for="game in todaysGames"
       :key="game.gameId"
-      @click="showGameCard(game.gameId)"
+      @click="showGamePlayByPlay(game.gameId)"
     >
       <span class="final-tag" v-if="!game.isGameActivated && game.endTimeUTC">{{ "FINAL" }}</span>
       <span class="live-tag" v-if="game.isGameActivated && game.period.current !== 0">{{ "LIVE" }}</span>
@@ -21,11 +21,16 @@
 
 <script>
 export default {
-  props: ["todaysGames", "selectedGames"],
+  props: ["todaysGames"],
+  computed: {
+    selectedGames() {
+      return this.$store.getters.getSelectedGames;
+    }
+  },
   methods: {
-    showGameCard(gameId) {
-      if (this.selectedGames.indexOf(gameId) === -1) {
-        this.selectedGames.push(gameId);
+    showGamePlayByPlay(gameId) {
+      if (this.$store.getters.getSelectedGames.indexOf(gameId) === -1) {
+        this.$store.commit("addSelectedGame", gameId);
       }
     }
   }
