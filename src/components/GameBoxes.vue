@@ -1,16 +1,36 @@
 <template>
-  <div class="tile is-vertical is-parent">
+  <div class="game-boxes">
     <div
-      class="tile is-child game-box"
+      class="game-box test"
       :class="{ 'selectedGame': selectedGames.includes(game.gameId), 'has-text-white': selectedGames.includes(game.gameId) }"
       v-for="game in todaysGames"
       :key="game.gameId"
       @click="showGamePlayByPlay(game.gameId)"
     >
-      <span class="final-tag" v-if="!game.isGameActivated && game.endTimeUTC">{{ "FINAL" }}</span>
-      <span class="live-tag" v-if="game.isGameActivated && game.period.current !== 0">{{ "LIVE" }}</span>
-      <!-- <img class="image" src="../assets/team_logos/toronto_raptors.gif" /> -->
-      <span>{{ " " + game.vTeam.triCode + " vs " + game.hTeam.triCode }} {{ game.vTeam.score || "0" }} - {{ game.hTeam.score || "0" }}</span>
+      <div class="level">
+        <div class="level-item level-left">
+          <div>
+            <div class="is-size-6">{{ game.vTeam.triCode }}</div>
+            <div class="is-size-6">{{ game.hTeam.triCode }}</div>
+          </div>
+        </div>
+
+        <!-- <div
+          class="level-item status-tag final"
+          v-if="!game.isGameActivated && game.endTimeUTC"
+        >{{ "FINAL" }}</div>
+        <div
+          class="level-item status-tag live"
+          v-if="game.isGameActivated && game.period.current !== 0"
+        >{{ "LIVE" }}</div>-->
+        <!-- <img class="image" src="../assets/team_logos/toronto_raptors.gif" /> -->
+        <div class="level-item has-text-centered level-right">
+          <div>
+            <div class="is-size-6">{{ game.vTeam.score || "0" }}</div>
+            <div class="is-size-6">{{ game.hTeam.score || "0" }}</div>
+          </div>
+        </div>
+      </div>
       <!-- <img
         class="image"
         src="../assets/team_logos/toronto_raptors.gif"
@@ -32,47 +52,50 @@ export default {
       if (this.$store.getters.getSelectedGames.indexOf(gameId) === -1) {
         this.$store.commit("addSelectedGame", gameId);
       }
+    },
+    getTeamLogo(team) {
+      return require("../assets/team_logos/" + team + ".png");
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+.game-boxes {
+  // background: black;
+  flex-grow: 0 !important;
+}
 .game-box {
   padding: 1rem;
   background-color: #cccccc;
   border-radius: 5px;
+  margin: 0 1rem 0 0;
+  width: 120px;
 }
 .game-box:hover {
   cursor: pointer;
 }
-
+.team-logo {
+  width: 40px;
+  height: 40px;
+}
 .selectedGame {
   background-color: #1d428a;
 }
 
-.live-tag {
-  background-color: red;
+.status-tag {
   color: white;
   padding: 0.1rem 0.4rem;
   letter-spacing: 1px;
   border-radius: 3px;
-  float: left;
-  width: 60px;
-  text-align: center;
-  margin-right: 1rem;
+  margin: 0 1rem;
+}
+.live {
+  background-color: red;
 }
 
-.final-tag {
+.final {
   background-color: grey;
-  color: white;
-  padding: 0.1rem 0.4rem;
-  letter-spacing: 1px;
-  border-radius: 3px;
-  float: left;
-  width: 60px;
-  text-align: center;
-  margin-right: 1rem;
 }
 </style>
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="tile is-parent is-4">
+  <div class="tile is-parent is-3">
     <div class="tile is-child pbp-container">
       <div class="pbp-header is-size-5">
         <i @click="closePbp(gameData.gameId)" class="material-icons close-pbp">close</i>
@@ -11,7 +11,7 @@
           <div class="level-item has-text-centered">
             <div>
               <p class="is-size-5 title has-text-white">{{ visitingTeam }}</p>
-              <p v-if="playsExist" class="title has-text-white">{{ pbp[0].visitor_score || "0" }}</p>
+              <p v-if="playsExist" class="title has-text-white">{{ visitingTeamScore || "0" }}</p>
             </div>
           </div>
           <div class="level-item has-text-centered">
@@ -30,7 +30,7 @@
           <div class="level-item has-text-centered">
             <div>
               <p class="is-size-5 title has-text-white">{{ homeTeam }}</p>
-              <p v-if="pbp.length > 0" class="title has-text-white">{{ pbp[0].home_score || "0" }}</p>
+              <p v-if="pbp.length > 0" class="title has-text-white">{{ homeTeamScore || "0" }}</p>
             </div>
           </div>
           <div class="level-item is-hidden-touch">
@@ -114,6 +114,12 @@ export default {
     },
     homeTeam: function() {
       return this.gameData.game.hTeam.triCode;
+    },
+    visitingTeamScore: function() {
+      return this.pbp[0].visitor_score;
+    },
+    homeTeamScore: function() {
+      return this.pbp[0].home_score;
     }
   },
   methods: {
@@ -138,7 +144,7 @@ export default {
       return require("../assets/team_logos/" + team + ".png");
     },
     pbpQueueManager() {
-      let startPosition = 0; // This would be starting length of the pbpQueue
+      let startPosition = 100; // This would be starting length of the pbpQueue
       // Every 5 seconds push a new event onto start of pbp from the pbpQueue if a new event exists
       setInterval(() => {
         // if (this.pbpQueueStartLength > this.pbp.length) {
@@ -153,12 +159,6 @@ export default {
     }
   },
   created() {
-    console.log(
-      this.gameData.game,
-      this.gameData.game.gameId,
-      this.gameData.gameId
-    );
-
     const nba = db.collection("playbyplay").doc("game-" + this.gameData.gameId);
 
     // Set the main pbp events.
@@ -195,8 +195,9 @@ export default {
       this.pbpQueueManager();
       setTimeout(() => {
         this.playEventItemClassActive = true;
-      }, 1000);
+      }, 2000);
     });
+    console.log(sessionStorage);
   }
   // destroyed() {
   //   console.log("destroyed");
@@ -265,12 +266,9 @@ export default {
   cursor: pointer;
 }
 
-.slide-enter-active {
-  transition: 0s;
-}
 .slide-enter/* .list-leave-active below version 2.1.8 */ {
-  opacity: 0;
   transform: translate3d(0, -100%, 0);
+  transition-timing-function: ease-out;
 }
 
 .play-event > div:first-of-type {

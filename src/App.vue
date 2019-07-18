@@ -12,12 +12,15 @@
       </div>
     </nav>
     <section class="main-container">
+      <div class="level">
+        <gameboxes class="level-item" :todaysGames="todaysGames"></gameboxes>
+      </div>
       <div class="columns">
-        <div class="column is-2">
+        <!-- <div class="column is-2">
           <div class="tile is-ancestor">
             <gameboxes :todaysGames="todaysGames"></gameboxes>
           </div>
-        </div>
+        </div>-->
         <div class="column">
           <div class="tile is-ancestor wrap">
             <playbyplay
@@ -68,6 +71,7 @@ export default {
     });
     console.log(this.selectedGames);
     console.log(sessionStorage);
+    // sessionStorage.clear();
     // localStorage.clear();
   }
 };
