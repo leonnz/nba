@@ -270,7 +270,7 @@ export default {
 }
 .slide-enter/* .list-leave-active below version 2.1.8 */ {
   opacity: 0;
-  transform: translateY(-100px);
+  transform: translate3d(0, -100%, 0);
 }
 
 .play-event > div:first-of-type {
