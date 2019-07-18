@@ -5,7 +5,12 @@ import createPersistedState from 'vuex-persistedstate';
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
-  plugins: [createPersistedState()],
+  plugins: [
+    createPersistedState({
+      storage: window.sessionStorage
+      // paths: ['selectedGames']
+    })
+  ],
   state: {
     todaysGames: [],
     selectedGames: []

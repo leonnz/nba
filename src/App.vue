@@ -22,7 +22,7 @@
           <div class="tile is-ancestor wrap">
             <playbyplay
               v-for="game in selectedGames"
-              :key="game.gameId"
+              :key="game"
               :gameData="{ gameId: game, game: todaysGames.filter(e => e.gameId === game)[0] }"
             ></playbyplay>
           </div>
@@ -67,6 +67,7 @@ export default {
       }
     });
     console.log(this.selectedGames);
+    console.log(sessionStorage);
     // localStorage.clear();
   }
 };
