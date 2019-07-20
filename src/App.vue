@@ -15,16 +15,12 @@
       </div>
     </nav>
     <section class="main-container">
-      <div class="columns">
-        <div class="column">
-          <div class="tile is-ancestor wrap">
-            <playbyplay
-              v-for="game in selectedGames"
-              :key="game"
-              :gameData="{ gameId: game, game: todaysGames.filter(e => e.gameId === game)[0] }"
-            ></playbyplay>
-          </div>
-        </div>
+      <div class="columns is-multiline">
+        <playbyplay
+          v-for="game in selectedGames"
+          :key="game"
+          :gameData="{ gameId: game, game: todaysGames.filter(e => e.gameId === game)[0] }"
+        ></playbyplay>
       </div>
     </section>
   </div>
@@ -104,11 +100,6 @@ export default {
 }
 .main-container {
   padding: 1.5rem 1.5rem;
-}
-
-.wrap {
-  flex-wrap: wrap;
-  align-items: flex-start;
 }
 
 /* width */

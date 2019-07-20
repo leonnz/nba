@@ -1,64 +1,71 @@
 <template>
-  <div class="tile is-parent is-3">
-    <div class="tile is-child pbp-container">
-      <div class="pbp-header is-size-5">
-        <i @click="closePbp(gameData.gameId)" class="material-icons close-pbp">close</i>
+  <div class="column is-half-tablet is-one-third-tablet is-one-quarter-fullhd">
+    <div class="tile is-ancestor">
+      <div class="tile is-parent">
+        <div class="tile is-child pbp-container">
+          <div class="pbp-header is-size-5">
+            <i @click="closePbp(gameData.gameId)" class="material-icons close-pbp">close</i>
 
-        <div class="level is-mobile">
-          <div
-            class="level-item is-hidden-widescreen-only is-hidden-desktop-only is-hidden-tablet-only"
-          >
-            <img class="image team-logo" :src="getTeamLogo(visitingTeam)" />
-          </div>
-          <div class="level-item has-text-centered">
-            <div>
-              <p class="is-size-5 title has-text-white">{{ visitingTeam }}</p>
-              <p v-if="playsExist" class="title has-text-white">{{ visitingTeamScore || "0" }}</p>
+            <div class="level is-mobile">
+              <div
+                class="level-item is-hidden-widescreen-only is-hidden-desktop-only is-hidden-tablet-only"
+              >
+                <img class="image team-logo" :src="getTeamLogo(visitingTeam)" />
+              </div>
+              <div class="level-item has-text-centered">
+                <div>
+                  <p class="is-size-5 title has-text-white">{{ visitingTeam }}</p>
+                  <p v-if="playsExist" class="title has-text-white">{{ visitingTeamScore || "0" }}</p>
+                </div>
+              </div>
+              <div class="level-item has-text-centered">
+                <div>
+                  <span
+                    class="is-size-5 title has-text-white"
+                    v-if="!gameActive && gameData.game.endTimeUTC"
+                  >Final</span>
+                  <span
+                    class="title is-size-5 live-tag"
+                    v-if="gameActive && gamePeriod !== 0 && playsExist"
+                  >{{ getPeriod[0][gamePeriod] }}</span>
+                  <p
+                    v-if="gameActive && playsExist"
+                    class="title is-size-5 live-tag"
+                  >{{ pbp[0].clock }}</p>
+                </div>
+              </div>
+              <div class="level-item has-text-centered">
+                <div>
+                  <p class="is-size-5 title has-text-white">{{ homeTeam }}</p>
+                  <p v-if="pbp.length > 0" class="title has-text-white">{{ homeTeamScore || "0" }}</p>
+                </div>
+              </div>
+              <div
+                class="level-item is-hidden-widescreen-only is-hidden-desktop-only is-hidden-tablet-only"
+              >
+                <img class="image team-logo" :src="getTeamLogo(homeTeam)" />
+              </div>
             </div>
           </div>
-          <div class="level-item has-text-centered">
-            <div>
-              <span
-                class="is-size-5 title has-text-white"
-                v-if="!gameActive && gameData.game.endTimeUTC"
-              >Final</span>
-              <span
-                class="title is-size-5 live-tag"
-                v-if="gameActive && gamePeriod !== 0 && playsExist"
-              >{{ getPeriod[0][gamePeriod] }}</span>
-              <p v-if="gameActive && playsExist" class="title is-size-5 live-tag">{{ pbp[0].clock }}</p>
-            </div>
-          </div>
-          <div class="level-item has-text-centered">
-            <div>
-              <p class="is-size-5 title has-text-white">{{ homeTeam }}</p>
-              <p v-if="pbp.length > 0" class="title has-text-white">{{ homeTeamScore || "0" }}</p>
-            </div>
-          </div>
-          <div
-            class="level-item is-hidden-widescreen-only is-hidden-desktop-only is-hidden-tablet-only"
-          >
-            <img class="image team-logo" :src="getTeamLogo(homeTeam)" />
+          <div class="pbp-box is-size-6" ref="pbp">
+            <button
+              ref="scrollToTopButton"
+              class="scrollToTopButton button is-small is-link"
+              :class="{ buttonEase: scrolling }"
+              @click="scrollToTop"
+            >back to top</button>
+            <div v-if="!gameActive && gamePeriod == 0">Game has not started.</div>
+            <div v-if="gameActive && gamePeriod == 1 && !gameData.game.clock">Game starting.</div>
+            <transition-group name="slide" class="play-event">
+              <div
+                class="playEventItem"
+                :class="{ playEventItemTransition: playEventItemClassActive }"
+                v-for="event in pbp"
+                :key="event.event"
+              >{{ event.clock + " - " + event.description }}</div>
+            </transition-group>
           </div>
         </div>
-      </div>
-      <div class="pbp-box is-size-6" ref="pbp">
-        <button
-          ref="scrollToTopButton"
-          class="scrollToTopButton button is-small is-link"
-          :class="{ buttonEase: scrolling }"
-          @click="scrollToTop"
-        >back to top</button>
-        <div v-if="!gameActive && gamePeriod == 0">Game has not started.</div>
-        <div v-if="gameActive && gamePeriod == 1 && !gameData.game.clock">Game starting.</div>
-        <transition-group name="slide" class="play-event">
-          <div
-            class="playEventItem"
-            :class="{ playEventItemTransition: playEventItemClassActive }"
-            v-for="event in pbp"
-            :key="event.event"
-          >{{ event.clock + " - " + event.description }}</div>
-        </transition-group>
       </div>
     </div>
   </div>
@@ -216,6 +223,13 @@ export default {
   }
 }
 
+@media screen and (min-width: 769px) and (max-width: 1023px), print {
+  .is-half-tablet {
+    flex: none;
+    width: 50% !important;
+  }
+}
+
 .pbp-header {
   padding: 1rem;
   background-color: #1d428a;
@@ -231,7 +245,7 @@ export default {
   background-color: white;
   padding: 1rem;
   width: 100%;
-  height: 56.5vh;
+  height: 60vh;
   overflow-x: hidden;
   // scroll-behavior: smooth;
 }
