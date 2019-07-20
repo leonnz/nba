@@ -5,7 +5,9 @@
         <i @click="closePbp(gameData.gameId)" class="material-icons close-pbp">close</i>
 
         <div class="level is-mobile">
-          <div class="level-item is-hidden-touch">
+          <div
+            class="level-item is-hidden-widescreen-only is-hidden-desktop-only is-hidden-tablet-only"
+          >
             <img class="image team-logo" :src="getTeamLogo(visitingTeam)" />
           </div>
           <div class="level-item has-text-centered">
@@ -33,7 +35,9 @@
               <p v-if="pbp.length > 0" class="title has-text-white">{{ homeTeamScore || "0" }}</p>
             </div>
           </div>
-          <div class="level-item is-hidden-touch">
+          <div
+            class="level-item is-hidden-widescreen-only is-hidden-desktop-only is-hidden-tablet-only"
+          >
             <img class="image team-logo" :src="getTeamLogo(homeTeam)" />
           </div>
         </div>
@@ -206,6 +210,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@media screen and (min-width: 1216px) and (max-width: 1700px) {
+  .is-hidden-widescreen-only {
+    display: none !important;
+  }
+}
+
 .pbp-header {
   padding: 1rem;
   background-color: #1d428a;

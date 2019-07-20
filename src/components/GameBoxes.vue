@@ -1,13 +1,20 @@
 <template>
   <div class="game-boxes">
     <div
-      class="game-box test"
+      class="game-box"
       :class="{ 'selectedGame': selectedGames.includes(game.gameId), 'has-text-white': selectedGames.includes(game.gameId) }"
       v-for="game in todaysGames"
       :key="game.gameId"
       @click="showGamePlayByPlay(game.gameId)"
     >
-      <div class="level is-mobile">
+      <div>
+        <div class="status-tag final" v-if="!game.isGameActivated && game.endTimeUTC">{{ "FINAL" }}</div>
+        <div
+          class="status-tag live"
+          v-if="game.isGameActivated && game.period.current !== 0"
+        >{{ "LIVE" }}</div>
+      </div>
+      <div class="level is-mobile scores">
         <div class="level-item level-left">
           <div>
             <div class="is-size-6">{{ game.vTeam.triCode }}</div>
@@ -23,7 +30,6 @@
           class="level-item status-tag live"
           v-if="game.isGameActivated && game.period.current !== 0"
         >{{ "LIVE" }}</div>-->
-        <!-- <img class="image" src="../assets/team_logos/toronto_raptors.gif" /> -->
         <div class="level-item has-text-centered level-right">
           <div>
             <div class="is-size-6">{{ game.vTeam.score || "0" }}</div>
@@ -49,7 +55,7 @@ export default {
   },
   methods: {
     showGamePlayByPlay(gameId) {
-      if (this.$store.getters.getSelectedGames.indexOf(gameId) === -1) {
+      if (this.selectedGames.indexOf(gameId) === -1) {
         this.$store.commit("addSelectedGame", gameId);
       }
     },
@@ -62,18 +68,20 @@ export default {
 
 <style lang="scss" scoped>
 .game-boxes {
-  // background: black;
-  flex-grow: 0 !important;
+  justify-content: flex-start;
 }
 .game-box {
-  padding: 1rem;
+  padding: 0.5rem;
   background-color: #cccccc;
   border-radius: 5px;
   margin: 0 1rem 0 0;
-  width: 120px;
+  width: 100px;
 }
 .game-box:hover {
   cursor: pointer;
+}
+.scores {
+  padding: 0 0.3rem;
 }
 .team-logo {
   width: 40px;
@@ -85,10 +93,10 @@ export default {
 
 .status-tag {
   color: white;
-  padding: 0.1rem 0.4rem;
+  text-align: center;
   letter-spacing: 1px;
   border-radius: 3px;
-  margin: 0 1rem;
+  margin: 0.2rem 0.2rem 0.5rem 0.2rem;
 }
 .live {
   background-color: red;
