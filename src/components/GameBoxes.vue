@@ -27,15 +27,6 @@
             >{{ game.hTeam.triCode }}</div>
           </div>
         </div>
-
-        <!-- <div
-          class="level-item status-tag final"
-          v-if="!game.isGameActivated && game.endTimeUTC"
-        >{{ "FINAL" }}</div>
-        <div
-          class="level-item status-tag live"
-          v-if="game.isGameActivated && game.period.current !== 0"
-        >{{ "LIVE" }}</div>-->
         <div class="level-item has-text-centered level-right">
           <div>
             <div
@@ -49,10 +40,6 @@
           </div>
         </div>
       </div>
-      <!-- <img
-        class="image"
-        src="../assets/team_logos/toronto_raptors.gif"
-      />-->
     </div>
   </div>
 </template>
