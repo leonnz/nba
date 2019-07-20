@@ -17,8 +17,14 @@
       <div class="level is-mobile scores">
         <div class="level-item level-left">
           <div>
-            <div class="is-size-6">{{ game.vTeam.triCode }}</div>
-            <div class="is-size-6">{{ game.hTeam.triCode }}</div>
+            <div
+              class="is-size-6"
+              :class="{ 'higher-score': leadingTeam(game) }"
+            >{{ game.vTeam.triCode }}</div>
+            <div
+              class="is-size-6"
+              :class="{ 'higher-score': !leadingTeam(game) }"
+            >{{ game.hTeam.triCode }}</div>
           </div>
         </div>
 
@@ -32,8 +38,14 @@
         >{{ "LIVE" }}</div>-->
         <div class="level-item has-text-centered level-right">
           <div>
-            <div class="is-size-6">{{ game.vTeam.score || "0" }}</div>
-            <div class="is-size-6">{{ game.hTeam.score || "0" }}</div>
+            <div
+              class="is-size-6"
+              :class="{ 'higher-score': leadingTeam(game) }"
+            >{{ game.vTeam.score || "0" }}</div>
+            <div
+              class="is-size-6"
+              :class="{ 'higher-score': !leadingTeam(game) }"
+            >{{ game.hTeam.score || "0" }}</div>
           </div>
         </div>
       </div>
@@ -49,18 +61,23 @@
 export default {
   props: ["todaysGames"],
   computed: {
-    selectedGames() {
+    selectedGames: function() {
       return this.$store.getters.getSelectedGames;
     }
   },
   methods: {
-    showGamePlayByPlay(gameId) {
+    showGamePlayByPlay: function(gameId) {
       if (this.selectedGames.indexOf(gameId) === -1) {
         this.$store.commit("addSelectedGame", gameId);
       }
     },
-    getTeamLogo(team) {
+    getTeamLogo: function(team) {
       return require("../assets/team_logos/" + team + ".png");
+    },
+    leadingTeam: function(game) {
+      let vteamScore = game.vTeam.score;
+      let hteamScore = game.hTeam.score;
+      return vteamScore > hteamScore ? true : false;
     }
   }
 };
@@ -68,6 +85,8 @@ export default {
 
 <style lang="scss" scoped>
 .game-boxes {
+  background: #cccccc;
+  padding: 0.5rem;
   justify-content: flex-start;
 }
 .game-box {
@@ -82,6 +101,9 @@ export default {
 }
 .scores {
   padding: 0 0.3rem;
+}
+.higher-score {
+  font-weight: bold;
 }
 .team-logo {
   width: 40px;

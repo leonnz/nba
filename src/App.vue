@@ -10,11 +10,11 @@
         </div>
         <div class="beta">beta v0.1</div>
       </div>
-    </nav>
-    <section class="main-container">
       <div class="level">
         <gameboxes class="level-item" :todaysGames="todaysGames"></gameboxes>
       </div>
+    </nav>
+    <section class="main-container">
       <div class="columns">
         <!-- <div class="column is-2">
           <div class="tile is-ancestor">
