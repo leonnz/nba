@@ -19,11 +19,11 @@
           <div>
             <div
               class="is-size-6"
-              :class="{ 'higher-score': leadingTeam(game) }"
+              :class="{ 'higher-score': leadingTeam(game) === 'vteam' }"
             >{{ game.vTeam.triCode }}</div>
             <div
               class="is-size-6"
-              :class="{ 'higher-score': !leadingTeam(game) }"
+              :class="{ 'higher-score': leadingTeam(game) === 'hteam' }"
             >{{ game.hTeam.triCode }}</div>
           </div>
         </div>
@@ -31,11 +31,11 @@
           <div>
             <div
               class="is-size-6"
-              :class="{ 'higher-score': leadingTeam(game) }"
+              :class="{ 'higher-score': leadingTeam(game) === 'vteam'  }"
             >{{ game.vTeam.score || "0" }}</div>
             <div
               class="is-size-6"
-              :class="{ 'higher-score': !leadingTeam(game) }"
+              :class="{ 'higher-score': leadingTeam(game) === 'hteam' }"
             >{{ game.hTeam.score || "0" }}</div>
           </div>
         </div>
@@ -62,9 +62,9 @@ export default {
       return require("../assets/team_logos/" + team + ".png");
     },
     leadingTeam: function(game) {
-      let vteamScore = game.vTeam.score;
-      let hteamScore = game.hTeam.score;
-      return vteamScore > hteamScore ? true : false;
+      let vteamScore = parseInt(game.vTeam.score);
+      let hteamScore = parseInt(game.hTeam.score);
+      return vteamScore > hteamScore ? "vteam" : "hteam";
     }
   }
 };
