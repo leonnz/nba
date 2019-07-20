@@ -4,7 +4,7 @@
       <div class="pbp-header is-size-5">
         <i @click="closePbp(gameData.gameId)" class="material-icons close-pbp">close</i>
 
-        <div class="level">
+        <div class="level is-mobile">
           <div class="level-item is-hidden-touch">
             <img class="image team-logo" :src="getTeamLogo(visitingTeam)" />
           </div>

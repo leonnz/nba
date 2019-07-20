@@ -7,7 +7,7 @@
       :key="game.gameId"
       @click="showGamePlayByPlay(game.gameId)"
     >
-      <div class="level">
+      <div class="level is-mobile">
         <div class="level-item level-left">
           <div>
             <div class="is-size-6">{{ game.vTeam.triCode }}</div>
