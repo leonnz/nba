@@ -81,11 +81,16 @@ export default {
 </script>
 
 <style lang="scss">
+html {
+  background-color: #efefef !important;
+}
 .gameBoxCtn {
   background: #cccccc;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  margin-bottom: 0 !important;
 }
+
 .header {
   background-color: #1d428a;
 }

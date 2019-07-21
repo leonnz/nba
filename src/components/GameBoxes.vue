@@ -33,7 +33,7 @@
             >{{ game.hTeam.triCode }}</div>
           </div>
         </div>
-        <div class="level-item has-text-centered level-right">
+        <div class="level-item level-right">
           <div>
             <div
               class="is-size-6"
