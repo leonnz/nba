@@ -11,7 +11,7 @@
         <div class="beta">beta v0.1</div>
       </div>
       <div class="level">
-        <gameboxes class="level-item" :todaysGames="todaysGames"></gameboxes>
+        <gameboxes ref="gameBoxes" class="level-item" :todaysGames="todaysGames"></gameboxes>
       </div>
     </nav>
     <section class="main-container">
@@ -49,7 +49,16 @@ export default {
   methods: {
     test() {
       console.log("test");
+    },
+    gameBoxesOverflowing() {
+      let gameBoxesWidth = this.$refs.gameBoxes.$el.scrollWidth;
+      console.log(gameBoxesWidth > window.innerWidth);
+
+      return gameBoxesWidth > window.innerWidth;
     }
+  },
+  created() {
+    window.addEventListener("resize", this.gameBoxesOverflowing);
   },
   mounted() {
     const nba = db.collection("playbyplay").doc("nba");

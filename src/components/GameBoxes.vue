@@ -1,5 +1,5 @@
 <template>
-  <div class="game-boxes">
+  <div ref="gameBoxesContainer" class="game-boxes">
     <div
       class="game-box"
       :class="{ 'selectedGame': selectedGames.includes(game.gameId), 'has-text-white': selectedGames.includes(game.gameId) }"
@@ -50,6 +50,13 @@ export default {
   computed: {
     selectedGames: function() {
       return this.$store.getters.getSelectedGames;
+    },
+    isOverflown: function() {
+      let element = this.$refs.gameBoxesContainer;
+      console.log(
+        element.scrollHeight > element.clientHeight ||
+          element.scrollWidth > element.clientWidth
+      );
     }
   },
   methods: {
@@ -75,13 +82,15 @@ export default {
   background: #cccccc;
   padding: 0.5rem;
   justify-content: flex-start;
+  flex-grow: 1;
 }
 .game-box {
   padding: 0.5rem;
   background-color: #cccccc;
   border-radius: 5px;
   margin: 0 1rem 0 0;
-  width: 100px;
+  min-width: 105px;
+  min-height: 100px;
 }
 .game-box:hover {
   cursor: pointer;
