@@ -10,7 +10,7 @@
         </div>
         <div class="beta">beta v0.1</div>
       </div>
-      <div ref="gmb" class="level gmb">
+      <div ref="gmb" class="level gameBoxCtn">
         <gameboxes
           ref="gameBoxes"
           class="level-item"
@@ -78,7 +78,7 @@ export default {
 </script>
 
 <style lang="scss">
-.gmb {
+.gameBoxCtn {
   background: #cccccc;
   overflow-x: hidden;
   scroll-behavior: smooth;

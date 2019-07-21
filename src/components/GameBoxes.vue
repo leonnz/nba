@@ -42,7 +42,7 @@
     <div
       :class="{ gameBoxesScrollBtnVisible: gameBoxesOverflowing }"
       class="button gameBoxesScrollBtn"
-      @click="gameBoxesScrollToRight"
+      @mouseover="gameBoxesScrollToRight"
     >></div>
   </div>
 </template>
@@ -86,7 +86,6 @@ export default {
         : (this.gameBoxesOverflowing = false);
     },
     gameBoxesScrollToRight() {
-      // this.$refs.gameBoxesContainer.scrollLeft = 2000;
       this.$emit("scrollGamesRight");
     }
   }
