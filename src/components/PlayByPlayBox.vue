@@ -213,12 +213,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// @media screen and (min-width: 1216px) and (max-width: 1700px) {
-//   .is-hidden-widescreen-only {
-//     display: none !important;
-//   }
-// }
-
 @media screen and (min-width: 769px) and (max-width: 1250px), print {
   .is-half-tablet {
     flex: none;
@@ -230,7 +224,6 @@ export default {
     }
   }
 }
-
 @media screen and (min-width: 1250px) and (max-width: 1600px), print {
   .is-one-third-tablet {
     flex: none;
@@ -242,25 +235,21 @@ export default {
     }
   }
 }
-
 @media screen and (min-width: 1600px), print {
   .is-one-quarter-fullhd {
     flex: none;
     width: 25% !important;
   }
 }
-
 .pbp-header {
   padding: 1rem;
   background-color: #1d428a;
   color: white;
 }
-
 .team-logo {
   width: 70px;
   height: 70px;
 }
-
 .pbp-box {
   background-color: white;
   padding: 1rem;
@@ -269,30 +258,25 @@ export default {
   overflow-x: hidden;
   // scroll-behavior: smooth;
 }
-
 .pbp-box > div:first-of-type {
   text-shadow: 1px 0px 0px black;
   margin-top: -2rem;
 }
-
 .close-pbp {
   float: right;
 }
 .close-pbp:hover {
   cursor: pointer;
 }
-
 .live-tag {
   color: red;
   letter-spacing: 2px;
 }
-
 .pbp-container {
   border: 1px solid #1d428a;
   border-radius: 5px;
   overflow: hidden;
 }
-
 .scrollToTopButton {
   position: sticky;
   display: block;
@@ -303,28 +287,23 @@ export default {
   cursor: default;
   background-color: #1d428a !important;
 }
-
 .buttonEase {
   visibility: visible;
   opacity: 1;
   cursor: pointer;
 }
-
 .slide-enter/* .list-leave-active below version 2.1.8 */ {
   transform: translate3d(0, -100%, 0);
   transition-timing-function: ease-out;
 }
-
 .play-event > div:first-of-type {
   text-shadow: 1px 0px 0px black;
   margin-top: -2rem;
   padding: 1rem 0rem;
 }
-
 .playEventItem {
   padding: 0.5rem 0rem;
 }
-
 .playEventItemTransition {
   transition: all 1s;
 }
