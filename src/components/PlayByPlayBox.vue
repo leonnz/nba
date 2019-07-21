@@ -7,9 +7,7 @@
             <i @click="closePbp(gameData.gameId)" class="material-icons close-pbp">close</i>
 
             <div class="level is-mobile">
-              <div
-                class="level-item is-hidden-widescreen-only is-hidden-desktop-only is-hidden-tablet-only"
-              >
+              <div class="level-item">
                 <img class="image team-logo" :src="getTeamLogo(visitingTeam)" />
               </div>
               <div class="level-item has-text-centered">
@@ -40,9 +38,7 @@
                   <p v-if="pbp.length > 0" class="title has-text-white">{{ homeTeamScore || "0" }}</p>
                 </div>
               </div>
-              <div
-                class="level-item is-hidden-widescreen-only is-hidden-desktop-only is-hidden-tablet-only"
-              >
+              <div class="level-item">
                 <img class="image team-logo" :src="getTeamLogo(homeTeam)" />
               </div>
             </div>
@@ -217,16 +213,30 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@media screen and (min-width: 1216px) and (max-width: 1700px) {
-  .is-hidden-widescreen-only {
-    display: none !important;
-  }
-}
+// @media screen and (min-width: 1216px) and (max-width: 1700px) {
+//   .is-hidden-widescreen-only {
+//     display: none !important;
+//   }
+// }
 
-@media screen and (min-width: 769px) and (max-width: 1023px), print {
+@media screen and (min-width: 769px) and (max-width: 1250px), print {
   .is-half-tablet {
     flex: none;
     width: 50% !important;
+  }
+}
+
+@media screen and (min-width: 1250px) and (max-width: 1600px), print {
+  .is-one-third-tablet {
+    flex: none;
+    width: 33% !important;
+  }
+}
+
+@media screen and (min-width: 1600px), print {
+  .is-one-quarter-fullhd {
+    flex: none;
+    width: 25% !important;
   }
 }
 
