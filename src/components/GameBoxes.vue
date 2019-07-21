@@ -140,11 +140,16 @@ export default {
   padding: 0.5rem;
   justify-content: flex-start;
 }
+
+div.game-box + div.game-box {
+  margin-left: 10px;
+}
+
 .game-box {
   padding: 0.5rem;
   background-color: #cccccc;
   border-radius: 5px;
-  margin: 0;
+  // margin: 0;
   min-width: 105px;
   min-height: 100px;
 }
