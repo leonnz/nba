@@ -10,8 +10,13 @@
         </div>
         <div class="beta">beta v0.1</div>
       </div>
-      <div class="level">
-        <gameboxes ref="gameBoxes" class="level-item" :todaysGames="todaysGames"></gameboxes>
+      <div ref="gmb" class="level gmb">
+        <gameboxes
+          ref="gameBoxes"
+          class="level-item"
+          :todaysGames="todaysGames"
+          @scrollGamesRight="gameBoxesScrollToRight"
+        ></gameboxes>
       </div>
     </nav>
     <section class="main-container">
@@ -50,16 +55,11 @@ export default {
     test() {
       console.log("test");
     },
-    gameBoxesOverflowing() {
-      let gameBoxesWidth = this.$refs.gameBoxes.$el.scrollWidth;
-      console.log(gameBoxesWidth > window.innerWidth);
-
-      return gameBoxesWidth > window.innerWidth;
+    gameBoxesScrollToRight() {
+      this.$refs.gmb.scrollLeft = 2000;
     }
   },
-  created() {
-    window.addEventListener("resize", this.gameBoxesOverflowing);
-  },
+
   mounted() {
     const nba = db.collection("playbyplay").doc("nba");
     nba.onSnapshot(doc => {
@@ -78,26 +78,26 @@ export default {
 </script>
 
 <style lang="scss">
+.gmb {
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+}
 .header {
   background-color: #1d428a;
 }
-
 .header a {
   color: white;
   width: auto;
 }
-
 .header a:hover {
   color: white !important;
   background-color: #1d428a !important;
   width: auto;
 }
-
 .banner {
   display: inline-block;
   padding: 0.5rem;
 }
-
 .beta {
   color: white;
   vertical-align: top; /* here */
@@ -110,17 +110,14 @@ export default {
 .main-container {
   padding: 1.5rem 1.5rem;
 }
-
 /* width */
 ::-webkit-scrollbar {
   width: 15px;
 }
-
 /* Track */
 ::-webkit-scrollbar-track {
   background: #efefef;
 }
-
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #ccc;

@@ -7,13 +7,11 @@
       :key="game.gameId"
       @click="showGamePlayByPlay(game.gameId)"
     >
-      <div>
-        <div class="status-tag final" v-if="!game.isGameActivated && game.endTimeUTC">{{ "FINAL" }}</div>
-        <div
-          class="status-tag live"
-          v-if="game.isGameActivated && game.period.current !== 0"
-        >{{ "LIVE" }}</div>
-      </div>
+      <div class="status-tag final" v-if="!game.isGameActivated && game.endTimeUTC">{{ "FINAL" }}</div>
+      <div
+        class="status-tag live"
+        v-if="game.isGameActivated && game.period.current !== 0"
+      >{{ "LIVE" }}</div>
       <div class="level is-mobile scores">
         <div class="level-item level-left">
           <div>
@@ -41,23 +39,29 @@
         </div>
       </div>
     </div>
+    <div
+      :class="{ gameBoxesScrollBtnVisible: gameBoxesOverflowing }"
+      class="button gameBoxesScrollBtn"
+      @click="gameBoxesScrollToRight"
+    >></div>
   </div>
 </template>
 
 <script>
 export default {
   props: ["todaysGames"],
+  data() {
+    return {
+      gameBoxesOverflowing: false
+    };
+  },
   computed: {
     selectedGames: function() {
       return this.$store.getters.getSelectedGames;
-    },
-    isOverflown: function() {
-      let element = this.$refs.gameBoxesContainer;
-      console.log(
-        element.scrollHeight > element.clientHeight ||
-          element.scrollWidth > element.clientWidth
-      );
     }
+  },
+  created() {
+    window.addEventListener("resize", this.setGameBoxesOverflowing);
   },
   methods: {
     showGamePlayByPlay: function(gameId) {
@@ -72,17 +76,40 @@ export default {
       let vteamScore = parseInt(game.vTeam.score);
       let hteamScore = parseInt(game.hTeam.score);
       return vteamScore > hteamScore ? "vteam" : "hteam";
+    },
+    setGameBoxesOverflowing() {
+      let gameBoxesWidth = this.$refs.gameBoxesContainer.__vue__.$el
+        .scrollWidth;
+      console.log(gameBoxesWidth > window.innerWidth);
+      gameBoxesWidth > window.innerWidth
+        ? (this.gameBoxesOverflowing = true)
+        : (this.gameBoxesOverflowing = false);
+    },
+    gameBoxesScrollToRight() {
+      // this.$refs.gameBoxesContainer.scrollLeft = 2000;
+      this.$emit("scrollGamesRight");
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+.gameBoxesScrollBtn {
+  position: sticky;
+  right: 0;
+  opacity: 0;
+  transition: 0.5s;
+  min-height: 100px;
+}
+.gameBoxesScrollBtnVisible {
+  opacity: 1;
+}
 .game-boxes {
+  // overflow-x: scroll;
+  // scroll-behavior: smooth;
   background: #cccccc;
   padding: 0.5rem;
   justify-content: flex-start;
-  flex-grow: 1;
 }
 .game-box {
   padding: 0.5rem;
@@ -108,7 +135,6 @@ export default {
 .selectedGame {
   background-color: #1d428a;
 }
-
 .status-tag {
   color: white;
   text-align: center;
@@ -119,7 +145,6 @@ export default {
 .live {
   background-color: red;
 }
-
 .final {
   background-color: grey;
 }
