@@ -123,7 +123,7 @@ export default {
 }
 
 .leftBtn {
-  left: 0;
+  left: 10px;
 }
 .rightBtn {
   right: 10px;
