@@ -223,6 +223,11 @@ export default {
   .is-half-tablet {
     flex: none;
     width: 50% !important;
+
+    img.team-logo {
+      width: 60px;
+      height: 60px;
+    }
   }
 }
 
@@ -230,6 +235,11 @@ export default {
   .is-one-third-tablet {
     flex: none;
     width: 33% !important;
+
+    img.team-logo {
+      width: 60px;
+      height: 60px;
+    }
   }
 }
 
