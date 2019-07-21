@@ -299,10 +299,10 @@ export default {
 .play-event > div:first-of-type {
   text-shadow: 1px 0px 0px black;
   margin-top: -2rem;
-  padding: 1rem 0rem;
+  padding: 1rem 1rem;
 }
 .playEventItem {
-  padding: 0.5rem 0rem;
+  padding: 0.5rem 1rem;
 }
 .playEventItemTransition {
   transition: all 1s;
