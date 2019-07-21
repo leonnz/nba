@@ -1,6 +1,14 @@
 <template>
   <div ref="gameBoxesContainer" class="game-boxes">
     <div
+      ref="scrollLeftBtn"
+      :class="{ gameBoxesScrollLeftBtnVisible: gameBoxesOverflowingLeft }"
+      class="button gameBoxesScroll leftBtn"
+      @click="gameBoxesScrollToLeft"
+    >
+      <i class="material-icons">arrow_left</i>
+    </div>
+    <div
       class="game-box"
       :class="{ 'selectedGame': selectedGames.includes(game.gameId), 'has-text-white': selectedGames.includes(game.gameId) }"
       v-for="game in todaysGames"
@@ -40,10 +48,13 @@
       </div>
     </div>
     <div
-      :class="{ gameBoxesScrollBtnVisible: gameBoxesOverflowing }"
-      class="button gameBoxesScrollBtn"
-      @mouseover="gameBoxesScrollToRight"
-    >></div>
+      ref="scrollRightBtn"
+      :class="{ gameBoxesScrollRightBtnVisible: gameBoxesOverflowingRight }"
+      class="button gameBoxesScroll rightBtn"
+      @click="gameBoxesScrollToRight"
+    >
+      <i class="material-icons">arrow_right</i>
+    </div>
   </div>
 </template>
 
@@ -52,7 +63,8 @@ export default {
   props: ["todaysGames"],
   data() {
     return {
-      gameBoxesOverflowing: false
+      gameBoxesOverflowingRight: false,
+      gameBoxesOverflowingLeft: false
     };
   },
   computed: {
@@ -80,27 +92,48 @@ export default {
     setGameBoxesOverflowing() {
       let gameBoxesWidth = this.$refs.gameBoxesContainer.__vue__.$el
         .scrollWidth;
-      console.log(gameBoxesWidth > window.innerWidth);
-      gameBoxesWidth > window.innerWidth
-        ? (this.gameBoxesOverflowing = true)
-        : (this.gameBoxesOverflowing = false);
+      if (gameBoxesWidth > window.innerWidth) {
+        this.gameBoxesOverflowingRight = true;
+      } else {
+        this.gameBoxesOverflowingLeft = false;
+        this.gameBoxesOverflowingRight = false;
+      }
     },
     gameBoxesScrollToRight() {
       this.$emit("scrollGamesRight");
+      this.gameBoxesOverflowingRight = false;
+      this.gameBoxesOverflowingLeft = true;
+    },
+    gameBoxesScrollToLeft() {
+      this.$emit("scrollGamesLeft");
+      this.gameBoxesOverflowingLeft = false;
+      this.gameBoxesOverflowingRight = true;
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.gameBoxesScrollBtn {
-  position: sticky;
-  right: 0;
+.gameBoxesScroll {
+  padding: 5px;
+  position: absolute;
   opacity: 0;
   transition: 0.5s;
   min-height: 100px;
 }
-.gameBoxesScrollBtnVisible {
+
+.leftBtn {
+  left: 0;
+}
+.rightBtn {
+  right: 10px;
+}
+.gameBoxesScrollLeftBtnVisible {
+  cursor: pointer;
+  opacity: 1;
+}
+.gameBoxesScrollRightBtnVisible {
+  cursor: pointer;
   opacity: 1;
 }
 .game-boxes {
@@ -111,7 +144,7 @@ export default {
   padding: 0.5rem;
   background-color: #cccccc;
   border-radius: 5px;
-  margin: 0 1rem 0 0;
+  margin: 0;
   min-width: 105px;
   min-height: 100px;
 }

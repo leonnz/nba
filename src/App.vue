@@ -15,6 +15,7 @@
           ref="gameBoxes"
           class="level-item"
           :todaysGames="todaysGames"
+          @scrollGamesLeft="gameBoxesScrollToLeft"
           @scrollGamesRight="gameBoxesScrollToRight"
         ></gameboxes>
       </div>
@@ -55,11 +56,13 @@ export default {
     test() {
       console.log("test");
     },
+    gameBoxesScrollToLeft() {
+      this.$refs.gmb.scrollLeft = -2000;
+    },
     gameBoxesScrollToRight() {
       this.$refs.gmb.scrollLeft = 2000;
     }
   },
-
   mounted() {
     const nba = db.collection("playbyplay").doc("nba");
     nba.onSnapshot(doc => {
