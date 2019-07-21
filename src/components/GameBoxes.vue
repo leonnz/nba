@@ -105,9 +105,6 @@ export default {
   opacity: 1;
 }
 .game-boxes {
-  // overflow-x: scroll;
-  // scroll-behavior: smooth;
-  background: #cccccc;
   padding: 0.5rem;
   justify-content: flex-start;
 }

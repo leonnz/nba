@@ -79,7 +79,8 @@ export default {
 
 <style lang="scss">
 .gmb {
-  overflow-x: scroll;
+  background: #cccccc;
+  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 .header {
