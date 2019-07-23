@@ -52,14 +52,82 @@
             >back to top</button>
             <div v-if="!gameActive && gamePeriod == 0">Game has not started.</div>
             <div v-if="gameActive && gamePeriod == 1 && !gameData.game.clock">Game starting.</div>
-            <transition-group name="slide" class="play-event">
+            <!-- <div
+              class="latestPlayEvent animated slideInDown"
+              v-for="first in latestEvent"
+              :key="first.event"
+            >{{ first.clock + " - " + first.description }}</div>
+            <transition name="slide">
+              <div v-if="down">{{ latestEvent[0].clock + " - " + latestEvent[0].description }}</div>
+            </transition>-->
+            <!-- <transition-group name="slide" tag="div">
+              <div
+                v-for="latest in latestEvent"
+                :key="latest.event"
+              >{{ latest.clock + " - " + latest.description }}</div>
+            </transition-group>
+            <div>
+              <div
+                v-for="event in restEvents"
+                :key="event.event"
+              >{{ event.clock + " - " + event.description }}</div>
+            </div>-->
+            <!-- <div class="restEvents" :class="{ 'slide-move': playEventItemClassActive }">
+              <div
+                v-for="event in pbp.slice(1, pbp.length)"
+                :key="event.event"
+              >{{ event.clock + " - " + event.description }}</div>
+            </div>-->
+            <!-- <LatestEvent
+              :key="latestEvent.event"
+              :latestEvent="latestEvent"
+              @createdLatestEvent="toggle"
+            ></LatestEvent>-->
+            <!-- <div class :class="{ slideInDown: down }">
+              <div
+                v-for="event in pbp"
+                :key="event.event"
+              >{{ event.clock + " - " + event.description }}</div>
+            </div>-->
+            <!-- <div v-for="event in latestEvent" :key="event.event"> -->
+            <!-- <LatestEvent
+              :key="latestEvent.event"
+              :latestEvent="latestEvent"
+              @createdLatestEvent="toggle"
+            ></LatestEvent>
+            <div class="animated" :class="{ slideInDown: down }">
+              <div
+                v-for="event in restEvents"
+                :key="event.event"
+              >{{ event.clock + " - " + event.description }}</div>
+            </div>-->
+            <!-- <LatestEvent
+              :key="latestEvent.event"
+              :latestEvent="latestEvent"
+              @createdLatestEvent="toggle"
+            ></LatestEvent>
+            <div class="animated" :class="{ slideInDown: down }">
+              <div
+                v-for="event in restEvents"
+                :key="event.event"
+              >{{ event.clock + " - " + event.description }}</div>
+            </div>-->
+            <!-- </div> -->
+            <div class="test-event test-event-transition">
+              <div
+                :class=" { finished: gameActive }"
+                v-for="event in pbp"
+                :key="event.event"
+              >{{ event.clock + " - " + event.description }}</div>
+            </div>
+            <!-- <transition-group name="slide" class="play-event">
               <div
                 class="playEventItem"
                 :class="{ playEventItemTransition: playEventItemClassActive }"
                 v-for="event in pbp"
                 :key="event.event"
               >{{ event.clock + " - " + event.description }}</div>
-            </transition-group>
+            </transition-group>-->
           </div>
         </div>
       </div>
@@ -70,11 +138,17 @@
 
 <script>
 import { db } from "../services/firebase";
+import LatestEvent from "../components/LatestEvent";
 
 export default {
   props: { gameData: {} },
+  components: {
+    LatestEvent
+  },
   data() {
     return {
+      down: false,
+      scroll: false,
       teams: "",
       pbp: [],
       pbpQueue: [],
@@ -95,6 +169,12 @@ export default {
     };
   },
   computed: {
+    latestEvent: function() {
+      return this.pbp.slice(0, 1);
+    },
+    restEvents: function() {
+      return this.pbp.slice(1, this.pbp.length);
+    },
     selectedGames() {
       console.log(this.$store.getters.getSelectedGames);
       return this.$store.getters.getSelectedGames;
@@ -130,6 +210,14 @@ export default {
     }
   },
   methods: {
+    toggle: function() {
+      this.down = true;
+      setTimeout(() => (this.down = false), 1000);
+    },
+    test: function() {
+      console.log("emition");
+      this.down = true;
+    },
     showTopButton() {
       if (this.$refs.pbp.scrollTop > 20) {
         this.scrolling = true;
@@ -160,8 +248,10 @@ export default {
         if (startPosition < this.pbp.length) {
           let event = this.pbpQueue[startPosition];
           this.pbp.unshift(event);
+          this.scroll = true;
           startPosition++;
         }
+        // this.scroll = false;
       }, 5000);
     }
   },
@@ -205,6 +295,9 @@ export default {
       }, 2000);
     });
     console.log(sessionStorage);
+  },
+  updated() {
+    console.log("tick");
   }
   // destroyed() {
   //   console.log("destroyed");
@@ -213,6 +306,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.events > div:first-of-type {
+  display: none;
+}
+@media screen and (max-width: 768px), print {
+  .is-half-tablet {
+    flex: none;
+    width: 100% !important;
+
+    img.team-logo {
+      width: 90px;
+      height: 90px;
+    }
+  }
+}
+
 @media screen and (min-width: 769px) and (max-width: 1250px), print {
   .is-half-tablet {
     flex: none;
@@ -258,10 +366,10 @@ export default {
   overflow-x: hidden;
   // scroll-behavior: smooth;
 }
-.pbp-box > div:first-of-type {
-  text-shadow: 1px 0px 0px black;
-  margin-top: -2rem;
-}
+// .pbp-box > div:first-of-type {
+//   text-shadow: 1px 0px 0px black;
+//   margin-top: -2rem;
+// }
 .close-pbp {
   float: right;
 }
@@ -306,6 +414,44 @@ export default {
 }
 .playEventItemTransition {
   transition: all 1s;
+}
+
+.latestPlayEvent {
+  text-shadow: 1px 0px 0px black;
+  padding: 1rem 1rem;
+}
+
+.restevents {
+  transition: all 1s ease-out;
+}
+.restEvents div {
+  text-shadow: none;
+  padding: 0.5rem 1rem;
+}
+
+.test-event {
+  margin-top: -50px;
+}
+
+.test-event-transition > div {
+  padding: 0.5rem 1rem;
+  transition: all 0.5s linear;
+}
+.test-event > div:first-of-type {
+  text-shadow: 1px 0px 0px black;
+  margin-top: -24px;
+  opacity: 0;
+  height: 0;
+  // padding: 1rem 1rem;
+}
+
+.test-event > div:nth-child(2) {
+  text-shadow: 1px 0px 0px black;
+}
+
+.finished {
+  opacity: 1 !important;
+  height: auto !important;
 }
 </style>
 
