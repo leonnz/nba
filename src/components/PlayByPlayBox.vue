@@ -113,7 +113,7 @@
               >{{ event.clock + " - " + event.description }}</div>
             </div>-->
             <!-- </div> -->
-            <div class="test-event test-event-transition">
+            <div class="test-event test-event-transition" :class="{ 'end-period': gameActive }">
               <div
                 :class=" { finished: gameActive }"
                 v-for="event in pbp"
@@ -443,11 +443,20 @@ export default {
 
 .test-event > div:nth-child(2) {
   text-shadow: 1px 0px 0px black;
+  padding-top: 1rem;
 }
 
 .finished {
   opacity: 1 !important;
   height: auto !important;
+}
+
+.end-period > div:first-of-type {
+  margin-top: 2rem;
+}
+
+.end-period > div:nth-child(2) {
+  text-shadow: none;
 }
 </style>
 
