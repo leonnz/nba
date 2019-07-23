@@ -138,13 +138,9 @@
 
 <script>
 import { db } from "../services/firebase";
-import LatestEvent from "../components/LatestEvent";
 
 export default {
   props: { gameData: {} },
-  components: {
-    LatestEvent
-  },
   data() {
     return {
       down: false,
