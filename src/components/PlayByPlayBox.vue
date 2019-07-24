@@ -52,6 +52,7 @@
             >back to top</button>
             <div v-if="!gameActive && gamePeriod == 0">Game has not started.</div>
             <div v-if="gameActive && gamePeriod == 1 && !gameData.game.clock">Game starting.</div>
+
             <div class="test-event test-event-transition" :class="{ 'end-period': gameActive }">
               <div
                 :class=" { finished: gameActive }"
@@ -59,6 +60,17 @@
                 :key="event.event"
               >{{ event.clock + " - " + event.description }}</div>
             </div>
+            <!-- <transition-group
+              name="slide"
+              class="play-event"
+              :class="{ 'animate-event': gameActive}"
+            >
+              <div
+                class="playEventItem"
+                v-for="event in pbp"
+                :key="event.event"
+              >{{ event.clock + " - " + event.description }}</div>
+            </transition-group>-->
             <!-- <transition-group name="slide" class="play-event">
               <div
                 class="playEventItem"
@@ -102,12 +114,6 @@ export default {
     };
   },
   computed: {
-    latestEvent: function() {
-      return this.pbp.slice(0, 1);
-    },
-    restEvents: function() {
-      return this.pbp.slice(1, this.pbp.length);
-    },
     selectedGames() {
       console.log(this.$store.getters.getSelectedGames);
       return this.$store.getters.getSelectedGames;
@@ -143,6 +149,14 @@ export default {
     }
   },
   methods: {
+    enter: function(el, done) {
+      Velocity(
+        el,
+        { translateY: "24px" },
+        { duration: 1000 },
+        { complete: done }
+      );
+    },
     toggle: function() {
       this.down = true;
       setTimeout(() => (this.down = false), 1000);
@@ -172,7 +186,7 @@ export default {
       return require("../assets/team_logos/" + team + ".png");
     },
     pbpQueueManager() {
-      let startPosition = 415; // This would be starting length of the pbpQueue
+      let startPosition = 400; // This would be starting length of the pbpQueue
       // Every 5 seconds push a new event onto start of pbp from the pbpQueue if a new event exists
       setInterval(() => {
         // if (this.pbpQueueStartLength > this.pbp.length) {
@@ -347,24 +361,16 @@ export default {
   margin-top: -2rem;
   padding: 1rem 1rem;
 }
+
+.animate-event > div:first-of-type {
+  transition: all 1s;
+}
+
 .playEventItem {
   padding: 0.5rem 1rem;
 }
 .playEventItemTransition {
   transition: all 1s;
-}
-
-.latestPlayEvent {
-  text-shadow: 1px 0px 0px black;
-  padding: 1rem 1rem;
-}
-
-.restevents {
-  transition: all 1s ease-out;
-}
-.restEvents div {
-  text-shadow: none;
-  padding: 0.5rem 1rem;
 }
 
 .test-event {
