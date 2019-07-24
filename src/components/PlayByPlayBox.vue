@@ -53,12 +53,40 @@
             <div v-if="!gameActive && gamePeriod == 0">Game has not started.</div>
             <div v-if="gameActive && gamePeriod == 1 && !gameData.game.clock">Game starting.</div>
 
-            <div class="test-event test-event-transition" :class="{ 'end-period': !gameActive }">
+            <div class="test-event test-event-transition" :class="{ 'end-period': gameActive }">
               <div
-                :class=" { finished: !gameActive }"
+                :class=" { finished: gameActive, 'points-scored': event.description.includes('PTS') }"
                 v-for="event in pbp"
                 :key="event.event"
-              >{{ event.clock + " - " + event.description }}</div>
+              >
+                <div class="media" v-if="event.description.includes('PTS)')">
+                  <div class="media-content">
+                    <div class="content event">
+                      <div class="clock">{{ event.clock }}</div>
+                      <div class="description">{{ event.description }}</div>
+                    </div>
+                  </div>
+                  <figure class="media-right">
+                    <img
+                      class="image player"
+                      :src="getPlayerPhoto(event.person_id)"
+                      @error="imgError"
+                    />
+                  </figure>
+                </div>
+                <!-- <div v-if="event.description.includes('PTS)')">
+                  <img
+                    class="image player"
+                    :src="getPlayerPhoto(event.person_id)"
+                    @error="imgError"
+                  />
+                  <div>{{ event.clock + " - " + event.description }}</div>
+                </div>-->
+                <div v-else class="event">
+                  <div class="clock">{{ event.clock }}</div>
+                  <div class="description">{{ event.description}}</div>
+                </div>
+              </div>
             </div>
             <!-- <transition-group
               name="slide"
@@ -149,17 +177,11 @@ export default {
     }
   },
   methods: {
-    enter: function(el, done) {
-      Velocity(
-        el,
-        { translateY: "24px" },
-        { duration: 1000 },
-        { complete: done }
-      );
+    getPlayerPhoto: function(playerId) {
+      return `https://ak-static.cms.nba.com/wp-content/uploads/headshots/dleague/${playerId}.png`;
     },
-    toggle: function() {
-      this.down = true;
-      setTimeout(() => (this.down = false), 1000);
+    imgError: function(img) {
+      img.target.src = "https://png.pngtree.com/svg/20170921/b2d9b8409e.svg";
     },
     test: function() {
       console.log("emition");
@@ -186,7 +208,7 @@ export default {
       return require("../assets/team_logos/" + team + ".png");
     },
     pbpQueueManager() {
-      let startPosition = 1000; // This would be starting length of the pbpQueue
+      let startPosition = 76; // This would be starting length of the pbpQueue
       // Every 5 seconds push a new event onto start of pbp from the pbpQueue if a new event exists
       setInterval(() => {
         // if (this.pbpQueueStartLength > this.pbp.length) {
@@ -249,8 +271,32 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.events > div:first-of-type {
-  display: none;
+.event {
+  display: flex;
+  flex-direction: row;
+  // justify-content: space-around;
+}
+
+.clock {
+  display: flex;
+  flex-direction: column;
+}
+
+.description {
+  margin-left: 1rem;
+  // display: flex;
+  // flex-direction: column;
+}
+.points-scored {
+  text-shadow: 1px 0px 0px black;
+  background: #efefef;
+  // border: 1px solid #efefef;
+  border-radius: 5px;
+  margin-top: 1rem;
+}
+.player {
+  width: 68px;
+  height: 50px;
 }
 @media screen and (max-width: 768px), print {
   .is-half-tablet {
@@ -258,8 +304,8 @@ export default {
     width: 100% !important;
 
     img.team-logo {
-      width: 90px;
-      height: 90px;
+      width: 80px;
+      height: 80px;
     }
   }
 }
@@ -388,7 +434,7 @@ export default {
 }
 
 .test-event > div:nth-child(2) {
-  text-shadow: 1px 0px 0px black;
+  // text-shadow: 1px 0px 0px black;
   padding-top: 1rem;
 }
 
