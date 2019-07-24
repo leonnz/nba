@@ -109,6 +109,9 @@ export default {
       this.gameBoxesOverflowingLeft = false;
       this.gameBoxesOverflowingRight = true;
     }
+  },
+  mounted() {
+    this.setGameBoxesOverflowing();
   }
 };
 </script>

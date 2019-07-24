@@ -53,9 +53,9 @@
             <div v-if="!gameActive && gamePeriod == 0">Game has not started.</div>
             <div v-if="gameActive && gamePeriod == 1 && !gameData.game.clock">Game starting.</div>
 
-            <div class="test-event test-event-transition" :class="{ 'end-period': gameActive }">
+            <div class="test-event test-event-transition" :class="{ 'end-period': !gameActive }">
               <div
-                :class=" { finished: gameActive }"
+                :class=" { finished: !gameActive }"
                 v-for="event in pbp"
                 :key="event.event"
               >{{ event.clock + " - " + event.description }}</div>
@@ -186,7 +186,7 @@ export default {
       return require("../assets/team_logos/" + team + ".png");
     },
     pbpQueueManager() {
-      let startPosition = 400; // This would be starting length of the pbpQueue
+      let startPosition = 1000; // This would be starting length of the pbpQueue
       // Every 5 seconds push a new event onto start of pbp from the pbpQueue if a new event exists
       setInterval(() => {
         // if (this.pbpQueueStartLength > this.pbp.length) {
@@ -237,13 +237,11 @@ export default {
       this.pbpQueueManager();
       setTimeout(() => {
         this.playEventItemClassActive = true;
-      }, 2000);
+      }, 1000);
     });
     console.log(sessionStorage);
-  },
-  updated() {
-    console.log("tick");
   }
+
   // destroyed() {
   //   console.log("destroyed");
   // }
@@ -379,7 +377,7 @@ export default {
 
 .test-event-transition > div {
   padding: 0.5rem 1rem;
-  transition: all 0.5s ease-out;
+  transition: all 0.5s linear;
 }
 .test-event > div:first-of-type {
   text-shadow: 1px 0px 0px black;
