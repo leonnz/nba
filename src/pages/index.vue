@@ -80,31 +80,6 @@ html {
   margin-bottom: 0 !important;
 }
 
-.header {
-  background-color: #1d428a;
-}
-.header a {
-  color: white;
-  width: auto;
-}
-.header a:hover {
-  color: white !important;
-  background-color: #1d428a !important;
-  width: auto;
-}
-.banner {
-  display: inline-block;
-  padding: 0.5rem;
-}
-.beta {
-  color: white;
-  vertical-align: top; /* here */
-  float: right;
-  padding: 0.5rem;
-}
-.ball-icon {
-  color: orange;
-}
 .main-container {
   padding: 1.5rem 1.5rem;
 }
