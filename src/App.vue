@@ -22,7 +22,10 @@
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
+html {
+  background-color: #efefef !important;
+}
 .playbyplay-title {
   margin-left: 5px;
   color: white;

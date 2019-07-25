@@ -70,9 +70,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-html {
-  background-color: #efefef !important;
-}
 .gameBoxCtn {
   background: #cccccc;
   overflow-x: hidden;
