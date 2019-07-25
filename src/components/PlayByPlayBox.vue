@@ -355,6 +355,7 @@ export default {
   cursor: pointer;
 }
 .slide-enter/* .list-leave-active below version 2.1.8 */ {
+  -webkit-transform: translate3d(0, -100px, 0);
   transform: translate3d(0, -100px, 0);
 }
 .play-event > div:first-of-type {
