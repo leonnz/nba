@@ -6,7 +6,7 @@
           <router-link tag="span" to="/">
             <a class="is-size-4" to="/">
               <i class="fas fa-basketball-ball ball-icon"></i>
-              <span class="playbyplay-title">playbyplay</span>
+              <span class="playbyplay-title">nbaplay</span>
             </a>
           </router-link>
         </div>
