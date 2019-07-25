@@ -53,7 +53,10 @@
             <div v-if="!gameActive && gamePeriod == 0">Game has not started.</div>
             <div v-if="gameActive && gamePeriod == 1 && !gameData.game.clock">Game starting.</div>
 
-            <div class="test-event test-event-transition" :class="{ 'end-period': gameActive }">
+            <!-- Start of play by play scrolling events -->
+
+            <!-- Method 1 -->
+            <!-- <div class="test-event test-event-transition" :class="{ 'end-period': gameActive }">
               <div
                 :class=" { finished: gameActive, 'points-scored': event.description.includes('PTS') }"
                 v-for="event in pbp"
@@ -79,7 +82,9 @@
                   <div class="description">{{ event.description}}</div>
                 </div>
               </div>
-            </div>
+            </div>-->
+
+            <!-- Method 2 -->
             <!-- <transition-group
               name="slide"
               class="play-event"
@@ -91,14 +96,14 @@
                 :key="event.event"
               >{{ event.clock + " - " + event.description }}</div>
             </transition-group>-->
-            <!-- <transition-group name="slide" class="play-event">
+            <transition-group name="slide" class="play-event">
               <div
                 class="playEventItem"
                 :class="{ playEventItemTransition: playEventItemClassActive }"
                 v-for="event in pbp"
                 :key="event.event"
               >{{ event.clock + " - " + event.description }}</div>
-            </transition-group>-->
+            </transition-group>
           </div>
         </div>
       </div>
@@ -382,14 +387,7 @@ export default {
   cursor: pointer;
 }
 .slide-enter/* .list-leave-active below version 2.1.8 */ {
-  transform: translate3d(0, -100%, 0);
-  transition-timing-function: ease-out;
-}
-
-.slide-fade-enter/* .list-leave-active below version 2.1.8 */ {
-  // opacity: 0;
-  transform: translate3d(0, -100%, 0);
-  // transition-timing-function: linear;
+  transform: translate3d(0, -100px, 0);
 }
 
 .play-event > div:first-of-type {
@@ -406,7 +404,7 @@ export default {
   padding: 0.5rem 1rem;
 }
 .playEventItemTransition {
-  transition: all 1s;
+  transition: all 0.5s ease-out;
 }
 
 .test-event {
