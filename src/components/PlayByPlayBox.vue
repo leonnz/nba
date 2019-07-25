@@ -52,13 +52,10 @@
             >back to top</button>
             <div v-if="!gameActive && gamePeriod == 0">Game has not started.</div>
             <div v-if="gameActive && gamePeriod == 1 && !gameData.game.clock">Game starting.</div>
-
-            <!-- Start of play by play scrolling events -->
-
-            <!-- Method 1 -->
-            <!-- <div class="test-event test-event-transition" :class="{ 'end-period': gameActive }">
+            <transition-group name="slide" class="play-event">
               <div
-                :class=" { finished: gameActive, 'points-scored': event.description.includes('PTS') }"
+                class="playEventItem"
+                :class="{ playEventItemTransition: playEventItemClassActive, 'points-scored': event.description.includes('PTS') }"
                 v-for="event in pbp"
                 :key="event.event"
               >
@@ -82,27 +79,6 @@
                   <div class="description">{{ event.description}}</div>
                 </div>
               </div>
-            </div>-->
-
-            <!-- Method 2 -->
-            <!-- <transition-group
-              name="slide"
-              class="play-event"
-              :class="{ 'animate-event': gameActive}"
-            >
-              <div
-                class="playEventItem"
-                v-for="event in pbp"
-                :key="event.event"
-              >{{ event.clock + " - " + event.description }}</div>
-            </transition-group>-->
-            <transition-group name="slide" class="play-event">
-              <div
-                class="playEventItem"
-                :class="{ playEventItemTransition: playEventItemClassActive }"
-                v-for="event in pbp"
-                :key="event.event"
-              >{{ event.clock + " - " + event.description }}</div>
             </transition-group>
           </div>
         </div>
@@ -271,12 +247,8 @@ export default {
 .event {
   display: flex;
   flex-direction: row;
-  // justify-content: space-around;
 }
-
 .clock {
-  display: flex;
-  flex-direction: column;
 }
 
 .description {
@@ -352,10 +324,6 @@ export default {
   overflow-x: hidden;
   // scroll-behavior: smooth;
 }
-// .pbp-box > div:first-of-type {
-//   text-shadow: 1px 0px 0px black;
-//   margin-top: -2rem;
-// }
 .close-pbp {
   float: right;
 }
@@ -389,56 +357,16 @@ export default {
 .slide-enter/* .list-leave-active below version 2.1.8 */ {
   transform: translate3d(0, -100px, 0);
 }
-
 .play-event > div:first-of-type {
-  text-shadow: 1px 0px 0px black;
+  // text-shadow: 1px 0px 0px black;
   margin-top: -2rem;
   padding: 1rem 1rem;
 }
-
-.animate-event > div:first-of-type {
-  transition: all 1s;
-}
-
 .playEventItem {
   padding: 0.5rem 1rem;
 }
 .playEventItemTransition {
   transition: all 0.5s ease-out;
-}
-
-.test-event {
-  margin-top: -50px;
-}
-
-.test-event-transition > div {
-  padding: 0.5rem 1rem;
-  transition: all 0.5s linear;
-}
-.test-event > div:first-of-type {
-  text-shadow: 1px 0px 0px black;
-  margin-top: -24px;
-  opacity: 0;
-  height: 0;
-  // padding: 1rem 1rem;
-}
-
-.test-event > div:nth-child(2) {
-  // text-shadow: 1px 0px 0px black;
-  padding-top: 1rem;
-}
-
-.finished {
-  opacity: 1 !important;
-  height: auto !important;
-}
-
-.end-period > div:first-of-type {
-  margin-top: 2rem;
-}
-
-.end-period > div:nth-child(2) {
-  text-shadow: none;
 }
 </style>
 
