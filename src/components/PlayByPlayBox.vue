@@ -74,14 +74,6 @@
                     />
                   </figure>
                 </div>
-                <!-- <div v-if="event.description.includes('PTS)')">
-                  <img
-                    class="image player"
-                    :src="getPlayerPhoto(event.person_id)"
-                    @error="imgError"
-                  />
-                  <div>{{ event.clock + " - " + event.description }}</div>
-                </div>-->
                 <div v-else class="event">
                   <div class="clock">{{ event.clock }}</div>
                   <div class="description">{{ event.description}}</div>
