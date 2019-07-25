@@ -1,10 +1,3 @@
 <template>
-  <div>
-    TEST
-    <p>sdasda</p>
-  </div>
+  <div>Placeholder text</div>
 </template>
-<script>
-export default {};
-</script>
-

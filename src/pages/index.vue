@@ -1,25 +1,14 @@
 <template>
   <div>
-    <nav class="has-shadow header" role="navigation">
-      <div class>
-        <div class="is-size-4 banner">
-          <a class="is-size-4" href>
-            <i class="fas fa-basketball-ball ball-icon"></i>
-            playbyplay
-          </a>
-        </div>
-        <div class="beta">beta v0.1</div>
-      </div>
-      <div ref="gmb" class="level gameBoxCtn">
-        <gameboxes
-          ref="gameBoxes"
-          class="level-item"
-          :todaysGames="todaysGames"
-          @scrollGamesLeft="gameBoxesScrollToLeft"
-          @scrollGamesRight="gameBoxesScrollToRight"
-        ></gameboxes>
-      </div>
-    </nav>
+    <div ref="gmb" class="level gameBoxCtn">
+      <gameboxes
+        ref="gameBoxes"
+        class="level-item"
+        :todaysGames="todaysGames"
+        @scrollGamesLeft="gameBoxesScrollToLeft"
+        @scrollGamesRight="gameBoxesScrollToRight"
+      ></gameboxes>
+    </div>
     <section class="main-container">
       <div class="columns is-multiline">
         <playbyplay
@@ -80,7 +69,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 html {
   background-color: #efefef !important;
 }
