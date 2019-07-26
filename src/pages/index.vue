@@ -75,6 +75,7 @@ export default {
   overflow-x: hidden;
   scroll-behavior: smooth;
   margin-bottom: 0 !important;
+  box-shadow: 0 0 5px 0 rgba(black, 0.5), 0 0 1px rgba(black, 0.1);
 }
 
 .main-container {
