@@ -17,25 +17,12 @@
           </router-link>
           <div class="beta">beta v0.1</div>
           <div id="theme-changer" class="select is-small" v-if="cssCustomPropsSupported">
-            <select name="theme" id="theme">
+            <select v-model="selectedTheme" name="theme" id="theme" @change="themeChange($event)">
               <option
-                data-base-color="#111"
-                data-bg-color="#eee"
-                data-brand-color="green"
-                value="default"
-              >default</option>
-              <option
-                data-base-color="#444"
-                data-bg-color="white"
-                data-brand-color="#222"
-                value="light"
-              >light</option>
-              <option
-                data-base-color="white"
-                data-bg-color="black"
-                data-brand-color="#eee"
-                value="dark"
-              >dark</option>
+                v-for="(option, index) in themeOptions"
+                :key="index"
+                :value="option.team"
+              >{{ option.value }}</option>
             </select>
           </div>
         </div>
@@ -49,8 +36,29 @@
 export default {
   data() {
     return {
+      selectedTheme: "",
+      themeOptions: [
+        {
+          team: "default",
+          value: "Default"
+        },
+        {
+          team: "atlanta",
+          value: "Atlanta Hawks"
+        },
+        {
+          team: "boston",
+          value: "Boston Celtics"
+        }
+      ],
       cssCustomPropsSupported: false
     };
+  },
+  methods: {
+    themeChange: function(event) {
+      let root = document.querySelector(":root");
+      root.className = event.target.value;
+    }
   },
   mounted() {
     if (window.CSS && window.CSS.supports && window.CSS.supports("--a", 0)) {
@@ -66,10 +74,14 @@ export default {
 <style lang="scss">
 :root {
   --baseColor: #1d428a;
-  --brandColor: green;
-  --bgColor: #eee;
-
-  --secondaryColor: orange;
+  --secondColor: #cccccc;
+  --thirdColor: #efefef;
+}
+:root.atlanta {
+  --baseColor: red;
+}
+:root.boston {
+  --baseColor: green;
 }
 html {
   height: 100%;
