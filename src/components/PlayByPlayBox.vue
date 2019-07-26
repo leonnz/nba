@@ -154,7 +154,7 @@ export default {
       return `https://ak-static.cms.nba.com/wp-content/uploads/headshots/dleague/${playerId}.png`;
     },
     imgError: function(img) {
-      img.target.src = "https://png.pngtree.com/svg/20170921/b2d9b8409e.svg";
+      img.target.src = require("../assets/default_player_small.svg");
     },
     test: function() {
       console.log("emition");
