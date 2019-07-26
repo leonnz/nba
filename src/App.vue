@@ -10,11 +10,34 @@
             </a>
           </router-link>
         </div>
+
         <div class="level-item level-right">
           <router-link tag="span" to="/about">
             <a class="about">about</a>
           </router-link>
           <div class="beta">beta v0.1</div>
+          <div id="theme-changer" class="select is-small" v-if="cssCustomPropsSupported">
+            <select name="theme" id="theme">
+              <option
+                data-base-color="#111"
+                data-bg-color="#eee"
+                data-brand-color="green"
+                value="default"
+              >default</option>
+              <option
+                data-base-color="#444"
+                data-bg-color="white"
+                data-brand-color="#222"
+                value="light"
+              >light</option>
+              <option
+                data-base-color="white"
+                data-bg-color="black"
+                data-brand-color="#eee"
+                value="dark"
+              >dark</option>
+            </select>
+          </div>
         </div>
       </div>
     </nav>
@@ -24,10 +47,14 @@
 
 <script>
 export default {
+  data() {
+    return {
+      cssCustomPropsSupported: false
+    };
+  },
   mounted() {
     if (window.CSS && window.CSS.supports && window.CSS.supports("--a", 0)) {
-      // CSS custom properties supported.
-      console.log("Supported");
+      this.cssCustomPropsSupported = true;
     } else {
       // CSS custom properties not supported
       console.log("Not supported");
@@ -35,7 +62,6 @@ export default {
   }
 };
 </script>
-
 
 <style lang="scss">
 :root {
