@@ -338,6 +338,7 @@ export default {
   border: 1px solid #1d428a;
   border-radius: 5px;
   overflow: hidden;
+  box-shadow: 2px 2px 5px 0 rgba(black, 0.4);
 }
 .scrollToTopButton {
   position: sticky;
