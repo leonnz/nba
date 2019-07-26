@@ -24,7 +24,13 @@
 
 <style lang="scss">
 html {
+  height: 100%;
   background-color: #efefef !important;
+  background: url("./assets/site_images/basketball.svg") no-repeat 50% 70%;
+}
+.bball-background {
+  display: block;
+  margin: auto;
 }
 .playbyplay-title {
   margin-left: 5px;
