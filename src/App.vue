@@ -72,17 +72,7 @@ export default {
 </script>
 
 <style lang="scss">
-:root {
-  --baseColor: #1d428a;
-  --secondColor: #cccccc;
-  --thirdColor: #efefef;
-}
-:root.atlanta {
-  --baseColor: red;
-}
-:root.boston {
-  --baseColor: green;
-}
+@import "@/assets/css/themes.scss";
 html {
   height: 100%;
   background-color: #efefef !important;

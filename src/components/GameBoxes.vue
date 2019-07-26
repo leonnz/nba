@@ -170,7 +170,7 @@ div.game-box + div.game-box {
   height: 40px;
 }
 .selectedGame {
-  background-color: #1d428a;
+  background-color: var(--baseColor);
 }
 .status-tag {
   color: white;

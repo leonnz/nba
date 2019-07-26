@@ -1,0 +1,11 @@
+:root {
+  --baseColor: #1d428a;
+  --secondColor: #cccccc;
+  --thirdColor: #efefef;
+}
+:root.atlanta {
+  --baseColor: red;
+}
+:root.boston {
+  --baseColor: green;
+}
