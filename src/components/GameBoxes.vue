@@ -150,7 +150,7 @@ div.game-box + div.game-box {
 
 .game-box {
   padding: 0.5rem;
-  background-color: #cccccc;
+  // background-color: #cccccc;
   border-radius: 5px;
   // margin: 0;
   min-width: 105px;

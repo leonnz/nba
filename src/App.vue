@@ -22,7 +22,29 @@
   </div>
 </template>
 
+<script>
+export default {
+  mounted() {
+    if (window.CSS && window.CSS.supports && window.CSS.supports("--a", 0)) {
+      // CSS custom properties supported.
+      console.log("Supported");
+    } else {
+      // CSS custom properties not supported
+      console.log("Not supported");
+    }
+  }
+};
+</script>
+
+
 <style lang="scss">
+:root {
+  --baseColor: #1d428a;
+  --brandColor: green;
+  --bgColor: #eee;
+
+  --secondaryColor: orange;
+}
 html {
   height: 100%;
   background-color: #efefef !important;
@@ -38,6 +60,7 @@ html {
 }
 .header {
   background-color: #1d428a;
+  background-color: var(--baseColor);
 }
 .banner {
   display: inline-block;
