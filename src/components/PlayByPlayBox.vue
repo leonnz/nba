@@ -341,7 +341,7 @@ export default {
 }
 .pbp-container {
   // border: 1px solid var(--baseColor);
-  border: 1px solid var(--secondColor);
+  border: 1px solid var(--pbpColor);
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 2px 2px 5px 0 rgba(black, 0.4);
@@ -390,7 +390,7 @@ export default {
   width: 0.8em;
   height: 0.8em;
   border-radius: 50%;
-  background-color: var(--secondColor);
+  background-color: var(--headerColor);
   animation: fade 0.8s ease-in-out alternate infinite;
 }
 

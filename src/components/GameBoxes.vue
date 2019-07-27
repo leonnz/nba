@@ -141,7 +141,7 @@ export default {
 }
 .game-boxes {
   padding: 0.5rem;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 div.game-box + div.game-box {
@@ -171,7 +171,7 @@ div.game-box + div.game-box {
 }
 .selectedGame {
   // background-image: linear-gradient(var(--baseColor), var(--baseColorAlt));
-  background-image: linear-gradient(var(--pbpColorAlt), var(--pbpColor));
+  background-image: linear-gradient(var(--pbpColor), var(--pbpColorAlt));
 }
 .status-tag {
   color: white;
