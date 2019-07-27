@@ -43,6 +43,7 @@
               </div>
             </div>
           </div>
+
           <div class="pbp-box is-size-6" ref="pbp">
             <button
               ref="scrollToTopButton"
@@ -52,7 +53,8 @@
             >back to top</button>
             <div v-if="!gameActive && gamePeriod == 0">Game has not started.</div>
             <div v-if="gameActive && gamePeriod == 1 && !gameData.game.clock">Game starting.</div>
-            <transition-group name="slide" class="play-event">
+
+            <transition-group v-if="pbpShow" name="slide" class="play-event">
               <div
                 class="playEventItem"
                 :class="{ playEventItemTransition: playEventItemClassActive, 'points-scored': event.description.includes('PTS') }"
@@ -80,6 +82,11 @@
                 </div>
               </div>
             </transition-group>
+            <div v-if="loading" class="dots">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
           </div>
         </div>
       </div>
@@ -95,6 +102,8 @@ export default {
   props: { gameData: {} },
   data() {
     return {
+      loading: true,
+      pbpShow: false,
       teams: "",
       pbp: [],
       pbpQueue: [],
@@ -222,6 +231,10 @@ export default {
         console.log("No such document!");
       }
     });
+    setTimeout(() => {
+      this.loading = false;
+      this.pbpShow = true;
+    }, 500);
   },
   mounted() {
     this.$refs.pbp.onscroll = () => {
@@ -371,6 +384,40 @@ export default {
 }
 .playEventItemTransition {
   transition: all 0.5s ease-out;
+}
+
+.dots {
+  margin: auto;
+  width: 3.5em;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dots div {
+  width: 0.8em;
+  height: 0.8em;
+  border-radius: 50%;
+  background-color: var(--secondColor);
+  animation: fade 0.8s ease-in-out alternate infinite;
+}
+
+.dots div:nth-of-type(1) {
+  animation-delay: -0.4s;
+}
+
+.dots div:nth-of-type(2) {
+  animation-delay: -0.2s;
+}
+
+@keyframes fade {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 </style>
 
