@@ -49,6 +49,14 @@ export default {
         {
           team: "boston",
           value: "Boston Celtics"
+        },
+        {
+          team: "brooklyn",
+          value: "Brroklyn Nets"
+        },
+        {
+          team: "charlotte",
+          value: "Charlotte Hornets"
         }
       ],
       cssCustomPropsSupported: false

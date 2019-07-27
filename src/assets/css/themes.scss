@@ -1,17 +1,30 @@
 :root {
   --baseColor: #1d428a;
   --baseColorAlt: #335cab;
-
-  --secondColor: #cccccc;
-  --thirdColor: #efefef;
+  --secondColor: #1d428a;
+  --secondColorAlt: #335cab;
 }
 :root.atlanta {
   --baseColor: #e03a3e;
+  --baseColorAlt: #d95255;
+  --secondColor: #919e20;
+  --secondColorAlt: #c1d32f;
 }
 :root.boston {
   --baseColor: #007a33;
   --baseColorAlt: #04913f;
-
   --secondColor: #ba9653;
-  --secondColorAlt: #ba9653;
+  --secondColorAlt: #bfa980;
+}
+:root.brooklyn {
+  --baseColor: #000000;
+  --baseColorAlt: #2b2b2b;
+  --secondColor: #000000;
+  --secondColorAlt: #2b2b2b;
+}
+:root.charlotte {
+  --baseColor: #1d1160;
+  --baseColorAlt: #362980;
+  --secondColor: #00788c;
+  --secondColorAlt: #00a8c4;
 }

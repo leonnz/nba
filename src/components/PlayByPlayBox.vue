@@ -309,9 +309,8 @@ export default {
 }
 .pbp-header {
   padding: 1rem;
-  // background-color: #1d428a;
-  // background-color: var(--baseColor);
-  background-image: linear-gradient(var(--baseColorAlt), var(--baseColor));
+  // background-image: linear-gradient(var(--baseColorAlt), var(--baseColor));
+  background-image: linear-gradient(var(--secondColor), var(--secondColorAlt));
   color: white;
 }
 .team-logo {
@@ -337,7 +336,8 @@ export default {
   letter-spacing: 2px;
 }
 .pbp-container {
-  border: 1px solid #1d428a;
+  // border: 1px solid var(--baseColor);
+  border: 1px solid var(--secondColor);
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 2px 2px 5px 0 rgba(black, 0.4);

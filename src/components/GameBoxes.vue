@@ -170,7 +170,8 @@ div.game-box + div.game-box {
   height: 40px;
 }
 .selectedGame {
-  background-image: linear-gradient(var(--baseColor), var(--baseColorAlt));
+  // background-image: linear-gradient(var(--baseColor), var(--baseColorAlt));
+  background-image: linear-gradient(var(--secondColor), var(--secondColorAlt));
 }
 .status-tag {
   color: white;
