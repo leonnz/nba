@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav class="has-shadow header" role="navigation">
+    <nav class="header" role="navigation">
       <div class="level is-mobile">
         <div class="is-size-4 banner level-item level-left">
           <router-link tag="span" to="/">
@@ -87,8 +87,9 @@ html {
   color: white;
 }
 .header {
-  background-color: #1d428a;
-  background-color: var(--baseColor);
+  // background-color: #1d428a;
+  // background-color: var(--baseColor);
+  background-image: linear-gradient(var(--baseColorAlt), var(--baseColor));
 }
 .banner {
   display: inline-block;

@@ -71,12 +71,11 @@ export default {
 
 <style lang="scss" scoped>
 .gameBoxCtn {
-  // background: #cccccc;
   background-image: linear-gradient(#cccccc, #efefef);
   overflow-x: hidden;
   scroll-behavior: smooth;
   margin-bottom: 0 !important;
-  box-shadow: 0 0 7px 0 rgba(black, 0.7);
+  box-shadow: 0 2px 5px 0 rgba(black, 0.2);
 }
 
 .main-container {

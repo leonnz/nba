@@ -1,11 +1,17 @@
 :root {
   --baseColor: #1d428a;
+  --baseColorAlt: #335cab;
+
   --secondColor: #cccccc;
   --thirdColor: #efefef;
 }
 :root.atlanta {
-  --baseColor: red;
+  --baseColor: #e03a3e;
 }
 :root.boston {
-  --baseColor: green;
+  --baseColor: #007a33;
+  --baseColorAlt: #04913f;
+
+  --secondColor: #ba9653;
+  --secondColorAlt: #ba9653;
 }

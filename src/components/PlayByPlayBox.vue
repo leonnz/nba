@@ -310,7 +310,8 @@ export default {
 .pbp-header {
   padding: 1rem;
   // background-color: #1d428a;
-  background-color: var(--baseColor);
+  // background-color: var(--baseColor);
+  background-image: linear-gradient(var(--baseColorAlt), var(--baseColor));
   color: white;
 }
 .team-logo {
