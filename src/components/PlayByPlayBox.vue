@@ -54,7 +54,7 @@
             <div v-if="!gameActive && gamePeriod == 0">Game has not started.</div>
             <div v-if="gameActive && gamePeriod == 1 && !gameData.game.clock">Game starting.</div>
 
-            <transition-group v-if="pbpShow" name="slide" class="play-event">
+            <transition-group v-if="pbp.length !== 0" name="slide" class="play-event">
               <div
                 class="playEventItem"
                 :class="{ playEventItemTransition: playEventItemClassActive, 'points-scored': event.description.includes('PTS') }"
@@ -82,7 +82,7 @@
                 </div>
               </div>
             </transition-group>
-            <div v-if="loading" class="dots">
+            <div v-if="pbp.length == 0" class="dots">
               <div></div>
               <div></div>
               <div></div>
@@ -102,8 +102,6 @@ export default {
   props: { gameData: {} },
   data() {
     return {
-      loading: true,
-      pbpShow: false,
       teams: "",
       pbp: [],
       pbpQueue: [],
@@ -231,10 +229,6 @@ export default {
         console.log("No such document!");
       }
     });
-    setTimeout(() => {
-      this.loading = false;
-      this.pbpShow = true;
-    }, 500);
   },
   mounted() {
     this.$refs.pbp.onscroll = () => {
@@ -261,9 +255,6 @@ export default {
   display: flex;
   flex-direction: row;
 }
-.clock {
-}
-
 .description {
   margin-left: 1rem;
   // display: flex;
