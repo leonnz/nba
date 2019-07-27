@@ -34,7 +34,7 @@
   --baseColorAlt: #362980;
   --secondColor: #00788c;
   --secondColorAlt: #016b7d;
-  --backgroundTeamLogo: url('./assets/site_images/CHA_bg.png') no-repeat 50% 70%;
+  --backgroundTeamLogo: url('./assets/team_logos/CHA_bg.png') no-repeat 50% 70%;
 }
 :root.chicago {
   --icon: #d4083c;
@@ -112,4 +112,5 @@
   --baseColorAlt: #10315c;
   --secondColor: #7c9cbf;
   --secondColorAlt: #7491b0;
+  --backgroundTeamLogo: url('./assets/team_logos/MEM_bg.png') no-repeat 50% 70%;
 }

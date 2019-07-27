@@ -16,7 +16,15 @@
             <a class="about">about</a>
           </router-link>
           <div class="beta">beta v0.1</div>-->
-          <div class="select is-small theme-changer" v-if="cssCustomPropsSupported">
+          <!-- <div class="level-item level-right">
+            <a class="button themes-select-button" @click="showThemes">
+              <span class="icon">
+                <i class="fas fa-chevron-down"></i>
+              </span>
+            </a>
+          </div>-->
+          <div class="themes-label">Themes</div>
+          <div class="select theme-changer" v-if="cssCustomPropsSupported">
             <select v-model="selectedTheme" name="theme" @change="themeChange($event)">
               <option value disabled selected hidden>Team theme</option>
               <option
@@ -108,6 +116,9 @@ export default {
     };
   },
   methods: {
+    showThemes: function() {
+      console.log("Leon");
+    },
     themeChange: function(event) {
       let theme = event.target.value;
       let root = document.querySelector(":root");
@@ -171,6 +182,13 @@ html {
 }
 .theme-changer {
   margin-right: 1rem;
+}
+.themes-select-button {
+  margin: 0 1rem;
+}
+.themes-label {
+  margin: 0 1rem;
+  color: white;
 }
 </style>
 
