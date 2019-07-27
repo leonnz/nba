@@ -89,13 +89,20 @@ export default {
   },
   methods: {
     themeChange: function(event) {
+      let theme = event.target.value;
       let root = document.querySelector(":root");
-      root.className = event.target.value;
+      root.className = theme;
+      localStorage.setItem("theme", theme);
+      console.log(localStorage);
     }
   },
   mounted() {
     if (window.CSS && window.CSS.supports && window.CSS.supports("--a", 0)) {
       this.cssCustomPropsSupported = true;
+      let theme = localStorage.getItem("theme");
+      this.selectedTheme = theme;
+      let root = document.querySelector(":root");
+      root.className = theme;
     } else {
       // CSS custom properties not supported
       console.log("Not supported");
