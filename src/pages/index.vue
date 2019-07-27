@@ -18,6 +18,9 @@
         ></playbyplay>
       </div>
     </section>
+    <section>
+      <!-- <img src="../assets/site_images/CHA_bg.png" /> -->
+    </section>
   </div>
 </template>
 <script>

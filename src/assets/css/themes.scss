@@ -4,6 +4,8 @@
   --baseColorAlt: #335cab;
   --secondColor: #1d428a;
   --secondColorAlt: #335cab;
+  --backgroundTeamLogo: url('./assets/site_images/basketball.svg') no-repeat 50%
+    70%;
 }
 :root.atlanta {
   --icon: #c1d32f;
@@ -32,6 +34,7 @@
   --baseColorAlt: #362980;
   --secondColor: #00788c;
   --secondColorAlt: #016b7d;
+  --backgroundTeamLogo: url('./assets/site_images/CHA_bg.png') no-repeat 50% 70%;
 }
 :root.chicago {
   --icon: #d4083c;

@@ -135,8 +135,8 @@ export default {
 @import "@/assets/css/themes.scss";
 html {
   height: 100%;
-  background-color: #efefef !important;
-  background: url("./assets/site_images/basketball.svg") no-repeat 50% 70%;
+  background: linear-gradient(rgba(#efefef, 0.96), rgba(#efefef, 0.96)),
+    var(--backgroundTeamLogo);
 }
 .bball-background {
   display: block;
