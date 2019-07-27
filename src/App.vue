@@ -135,8 +135,7 @@ export default {
 @import "@/assets/css/themes.scss";
 html {
   height: 100%;
-  background: linear-gradient(rgba(#efefef, 0.96), rgba(#efefef, 0.96)),
-    var(--backgroundTeamLogo);
+  background: var(--backgroundTeamLogo);
 }
 .bball-background {
   display: block;
