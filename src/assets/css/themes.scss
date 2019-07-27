@@ -33,8 +33,11 @@
   --icon: #00788c;
   --headerColor: #1d1160;
   --headerColorAlt: #362980;
-  --pbpColor: #00788c;
-  --pbpColorAlt: #016b7d;
+  --gamesBarColor: #00788c;
+  --gamesBarColorAlt: #016b7d;
+  --pbpColor: #1d1160;
+  --pbpColorAlt: #362980;
+  --textColor: #ffffff;
   --backgroundTeamLogo: url('./assets/team_logos/CHA_bg.png') no-repeat 50% 70%;
 }
 :root.chicago {
@@ -109,21 +112,23 @@
 }
 :root.memphis {
   --icon: #7c9cbf;
-  --headerColor: #0a2240;
-  --headerColorAlt: #10315c;
-  --pbpColor: #7c9cbf;
-  --pbpColorAlt: #7491b0;
+  --headerColor: #12173f;
+  --headerColorAlt: #0b0f29;
+  --gamesBarColor: #5d76a9;
+  --gamesBarColorAlt: #516794;
+  --pbpColor: #12173f;
+  --pbpColorAlt: #0b0f29;
+  --textColor: #ffffff;
   --backgroundTeamLogo: url('./assets/team_logos/MEM_bg.png') no-repeat 50% 70%;
 }
 :root.miami {
-  --icon: #7c9cbf;
-  --headerColor: #000000;
-  --headerColorAlt: #1f1f1f;
-
-  --gamesBarColor: #98002e;
-  --gamesBarColorAlt: #ad0034;
-  --pbpColor: #f9a01b;
-  --pbpColorAlt: #ff9c08;
-  --textColor: #ffffff;
+  --icon: #f9a01b;
+  --headerColor: #98002e;
+  --headerColorAlt: #ad0034;
+  --gamesBarColor: #f9a01b;
+  --gamesBarColorAlt: #ff9c08;
+  --pbpColor: #98002e;
+  --pbpColorAlt: #ad0034;
+  --textColor: #000000;
   // --backgroundTeamLogo: url('./assets/team_logos/MEM_bg.png') no-repeat 50% 70%;
 }
