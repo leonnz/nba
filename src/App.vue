@@ -12,12 +12,13 @@
         </div>
 
         <div class="level-item level-right">
-          <router-link tag="span" to="/about">
+          <!-- <router-link tag="span" to="/about">
             <a class="about">about</a>
           </router-link>
-          <div class="beta">beta v0.1</div>
+          <div class="beta">beta v0.1</div>-->
           <div class="select is-small theme-changer" v-if="cssCustomPropsSupported">
             <select v-model="selectedTheme" name="theme" @change="themeChange($event)">
+              <option value disabled selected hidden>Team theme</option>
               <option
                 v-for="(option, index) in themeOptions"
                 :key="index"
@@ -52,11 +53,35 @@ export default {
         },
         {
           team: "brooklyn",
-          value: "Brroklyn Nets"
+          value: "Brooklyn Nets"
         },
         {
           team: "charlotte",
           value: "Charlotte Hornets"
+        },
+        {
+          team: "chicago",
+          value: "Chicago Bulls"
+        },
+        {
+          team: "cleveland",
+          value: "Cleveland Cavaliers"
+        },
+        {
+          team: "dallas",
+          value: "Dallas Mavericks"
+        },
+        {
+          team: "denver",
+          value: "Denver Nuggets"
+        },
+        {
+          team: "detroit",
+          value: "Detroit Pistons"
+        },
+        {
+          team: "goldenstate",
+          value: "Golden State Warriors"
         }
       ],
       cssCustomPropsSupported: false
@@ -110,13 +135,13 @@ html {
   padding: 0.5rem;
 }
 .about {
-  color: orange;
+  color: var(--secondColor);
   &:hover {
-    color: orange;
+    color: var(--secondColor);
   }
 }
 .ball-icon {
-  color: orange;
+  color: var(--icon);
 }
 .theme-changer {
   margin-right: 1rem;

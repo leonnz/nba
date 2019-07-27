@@ -171,7 +171,7 @@ div.game-box + div.game-box {
 }
 .selectedGame {
   // background-image: linear-gradient(var(--baseColor), var(--baseColorAlt));
-  background-image: linear-gradient(var(--secondColor), var(--secondColorAlt));
+  background-image: linear-gradient(var(--secondColorAlt), var(--secondColor));
 }
 .status-tag {
   color: white;
