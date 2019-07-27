@@ -16,8 +16,8 @@
             <a class="about">about</a>
           </router-link>
           <div class="beta">beta v0.1</div>
-          <div id="theme-changer" class="select is-small" v-if="cssCustomPropsSupported">
-            <select v-model="selectedTheme" name="theme" id="theme" @change="themeChange($event)">
+          <div class="select is-small theme-changer" v-if="cssCustomPropsSupported">
+            <select v-model="selectedTheme" name="theme" @change="themeChange($event)">
               <option
                 v-for="(option, index) in themeOptions"
                 :key="index"
@@ -108,6 +108,9 @@ html {
 }
 .ball-icon {
   color: orange;
+}
+.theme-changer {
+  margin-right: 1rem;
 }
 </style>
 
