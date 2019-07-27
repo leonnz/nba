@@ -10,7 +10,7 @@
       ></gameboxes>
     </div>
     <section class="main-container">
-      <div class="columns is-multiline">
+      <div class="columns is-multiline pbp-container">
         <playbyplay
           v-for="game in selectedGames"
           :key="game"
@@ -88,6 +88,10 @@ export default {
 
 .main-container {
   padding: 1.5rem 1.5rem;
+}
+
+.pbp-container {
+  justify-content: center;
 }
 /* width */
 ::-webkit-scrollbar {
