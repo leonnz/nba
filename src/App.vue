@@ -82,6 +82,26 @@ export default {
         {
           team: "goldenstate",
           value: "Golden State Warriors"
+        },
+        {
+          team: "houston",
+          value: "Houston Rockets"
+        },
+        {
+          team: "indiana",
+          value: "Indiana Pacers"
+        },
+        {
+          team: "losangelesc",
+          value: "Los Angeles Clippers"
+        },
+        {
+          team: "losangelesl",
+          value: "Los Angeles Lakers"
+        },
+        {
+          team: "memphis",
+          value: "Memphis Grizzlies"
         }
       ],
       cssCustomPropsSupported: false
