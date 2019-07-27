@@ -1,117 +1,129 @@
 :root {
   --icon: orange;
-  --baseColor: #1d428a;
-  --baseColorAlt: #335cab;
-  --secondColor: #1d428a;
-  --secondColorAlt: #335cab;
+  --headerColor: #1d428a;
+  --headerColorAlt: #335cab;
+  --pbpColor: #1d428a;
+  --pbpColorAlt: #335cab;
   --backgroundTeamLogo: url('./assets/site_images/basketball.png') no-repeat 50%
     70%;
 }
 :root.atlanta {
   --icon: #c1d32f;
-  --baseColor: #e03a3e;
-  --baseColorAlt: #d95255;
-  --secondColor: #919e20;
-  --secondColorAlt: #c1d32f;
+  --headerColor: #e03a3e;
+  --headerColorAlt: #d95255;
+  --pbpColor: #919e20;
+  --pbpColorAlt: #c1d32f;
 }
 :root.boston {
   --icon: #bfa980;
-  --baseColor: #007a33;
-  --baseColorAlt: #04913f;
-  --secondColor: #ba9653;
-  --secondColorAlt: #bfa980;
+  --headerColor: #007a33;
+  --headerColorAlt: #04913f;
+  --pbpColor: #ba9653;
+  --pbpColorAlt: #bfa980;
 }
 :root.brooklyn {
   --icon: #cccccc;
-  --baseColor: #000000;
-  --baseColorAlt: #2b2b2b;
-  --secondColor: #000000;
-  --secondColorAlt: #2b2b2b;
+  --headerColor: #000000;
+  --headerColorAlt: #2b2b2b;
+  --pbpColor: #000000;
+  --pbpColorAlt: #2b2b2b;
   --backgroundTeamLogo: url('./assets/team_logos/BKN_bg.png') no-repeat 50% 70%;
 }
 :root.charlotte {
   --icon: #00788c;
-  --baseColor: #1d1160;
-  --baseColorAlt: #362980;
-  --secondColor: #00788c;
-  --secondColorAlt: #016b7d;
+  --headerColor: #1d1160;
+  --headerColorAlt: #362980;
+  --pbpColor: #00788c;
+  --pbpColorAlt: #016b7d;
   --backgroundTeamLogo: url('./assets/team_logos/CHA_bg.png') no-repeat 50% 70%;
 }
 :root.chicago {
   --icon: #d4083c;
-  --baseColor: #ce1141;
-  --baseColorAlt: #d4083c;
-  --secondColor: #ce1141;
-  --secondColorAlt: #d4083c;
+  --headerColor: #ce1141;
+  --headerColorAlt: #d4083c;
+  --pbpColor: #ce1141;
+  --pbpColorAlt: #d4083c;
 }
 :root.cleveland {
   --icon: #f0a80a;
-  --baseColor: #6f263d;
-  --baseColorAlt: #913754;
-  --secondColor: #ffb81c;
-  --secondColorAlt: #f0a80a;
+  --headerColor: #6f263d;
+  --headerColorAlt: #913754;
+  --pbpColor: #ffb81c;
+  --pbpColorAlt: #f0a80a;
 }
 :root.dallas {
   --icon: #abb5ba;
-  --baseColor: #006bb6;
-  --baseColorAlt: #007bd1;
-  --secondColor: #b8c4ca;
-  --secondColorAlt: #abb5ba;
+  --headerColor: #006bb6;
+  --headerColorAlt: #007bd1;
+  --pbpColor: #b8c4ca;
+  --pbpColorAlt: #abb5ba;
 }
 :root.denver {
   --icon: #ebb51c;
-  --baseColor: #0e2240;
-  --baseColorAlt: #19355e;
-  --secondColor: #fec524;
-  --secondColorAlt: #ebb51c;
+  --headerColor: #0e2240;
+  --headerColorAlt: #19355e;
+  --pbpColor: #fec524;
+  --pbpColorAlt: #ebb51c;
 }
 :root.detroit {
   --icon: #006bb6;
-  --baseColor: #c8102e;
-  --baseColorAlt: #db2745;
-  --secondColor: #006bb6;
-  --secondColorAlt: #005ea1;
+  --headerColor: #c8102e;
+  --headerColorAlt: #db2745;
+  --pbpColor: #006bb6;
+  --pbpColorAlt: #005ea1;
 }
 :root.goldenstate {
   --icon: #ffc72c;
-  --baseColor: #1d428a;
-  --baseColorAlt: #2650a3;
-  --secondColor: #ffc72c;
-  --secondColorAlt: #f7c12a;
+  --headerColor: #1d428a;
+  --headerColorAlt: #2650a3;
+  --pbpColor: #ffc72c;
+  --pbpColorAlt: #f7c12a;
 }
 :root.houston {
   --icon: #c4ced4;
-  --baseColor: #ce1141;
-  --baseColorAlt: #e6154a;
-  --secondColor: #c4ced4;
-  --secondColorAlt: #b9c0c4;
+  --headerColor: #ce1141;
+  --headerColorAlt: #e6154a;
+  --pbpColor: #c4ced4;
+  --pbpColorAlt: #b9c0c4;
 }
 :root.indiana {
   --icon: #fdbb30;
-  --baseColor: #002d62;
-  --baseColorAlt: #053d80;
-  --secondColor: #fdbb30;
-  --secondColorAlt: #e8ab2a;
+  --headerColor: #002d62;
+  --headerColorAlt: #053d80;
+  --pbpColor: #fdbb30;
+  --pbpColorAlt: #e8ab2a;
 }
 :root.losangelesc {
   --icon: #fdbb30;
-  --baseColor: #c8102e;
-  --baseColorAlt: #d11d3b;
-  --secondColor: #1d428a;
-  --secondColorAlt: #193c80;
+  --headerColor: #c8102e;
+  --headerColorAlt: #d11d3b;
+  --pbpColor: #1d428a;
+  --pbpColorAlt: #193c80;
 }
 :root.losangelesl {
   --icon: #fdbb30;
-  --baseColor: #552583;
-  --baseColorAlt: #663199;
-  --secondColor: #fdb927;
-  --secondColorAlt: #f0b12b;
+  --headerColor: #552583;
+  --headerColorAlt: #663199;
+  --pbpColor: #fdb927;
+  --pbpColorAlt: #f0b12b;
 }
 :root.memphis {
   --icon: #7c9cbf;
-  --baseColor: #0a2240;
-  --baseColorAlt: #10315c;
-  --secondColor: #7c9cbf;
-  --secondColorAlt: #7491b0;
+  --headerColor: #0a2240;
+  --headerColorAlt: #10315c;
+  --pbpColor: #7c9cbf;
+  --pbpColorAlt: #7491b0;
   --backgroundTeamLogo: url('./assets/team_logos/MEM_bg.png') no-repeat 50% 70%;
+}
+:root.miami {
+  --icon: #7c9cbf;
+  --headerColor: #000000;
+  --headerColorAlt: #1f1f1f;
+
+  --gamesBarColor: #98002e;
+  --gamesBarColorAlt: #ad0034;
+  --pbpColor: #f9a01b;
+  --pbpColorAlt: #ff9c08;
+  --textColor: #ffffff;
+  // --backgroundTeamLogo: url('./assets/team_logos/MEM_bg.png') no-repeat 50% 70%;
 }

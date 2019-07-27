@@ -314,7 +314,7 @@ export default {
 .pbp-header {
   padding: 1rem;
   // background-image: linear-gradient(var(--baseColorAlt), var(--baseColor));
-  background-image: linear-gradient(var(--secondColor), var(--secondColorAlt));
+  background-image: linear-gradient(var(--pbpColor), var(--pbpColorAlt));
   color: white;
 }
 .team-logo {

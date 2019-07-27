@@ -110,6 +110,10 @@ export default {
         {
           team: "memphis",
           value: "Memphis Grizzlies"
+        },
+        {
+          team: "miami",
+          value: "Miami Heat"
         }
       ],
       cssCustomPropsSupported: false
@@ -148,6 +152,9 @@ html {
   height: 100%;
   background: var(--backgroundTeamLogo);
 }
+body {
+  color: #000000 !important;
+}
 .bball-background {
   display: block;
   margin: auto;
@@ -159,7 +166,7 @@ html {
 .header {
   // background-color: #1d428a;
   // background-color: var(--baseColor);
-  background-image: linear-gradient(var(--baseColorAlt), var(--baseColor));
+  background-image: linear-gradient(var(--headerColorAlt), var(--headerColor));
 }
 .banner {
   display: inline-block;

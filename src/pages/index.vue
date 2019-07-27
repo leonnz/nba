@@ -75,7 +75,11 @@ export default {
 <style lang="scss" scoped>
 .gameBoxCtn {
   background-image: linear-gradient(#cccccc, #efefef);
-  // background-image: linear-gradient(var(--secondColor), var(--secondColorAlt));
+  background-image: linear-gradient(
+    var(--gamesBarColor),
+    var(--gamesBarColorAlt)
+  );
+  color: var(--textColor);
   overflow-x: hidden;
   scroll-behavior: smooth;
   margin-bottom: 0 !important;
