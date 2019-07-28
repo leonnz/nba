@@ -1,5 +1,5 @@
 <template>
-  <div ref="gameBoxesContainer" class="game-boxes">
+  <div ref="gameBoxesContainer" class="game-boxes" :class="{ 'justify-boxes': justifyBoxes }">
     <div
       ref="scrollLeftBtn"
       :class="{ gameBoxesScrollLeftBtnVisible: gameBoxesOverflowingLeft }"
@@ -63,6 +63,7 @@ export default {
   props: ["todaysGames"],
   data() {
     return {
+      justifyBoxes: false,
       gameBoxesOverflowingRight: false,
       gameBoxesOverflowingLeft: false
     };
@@ -90,11 +91,14 @@ export default {
       return vteamScore > hteamScore ? "vteam" : "hteam";
     },
     setGameBoxesOverflowing() {
+      console.log(this.justifyBoxes);
       let gameBoxesWidth = this.$refs.gameBoxesContainer.__vue__.$el
         .scrollWidth;
       if (gameBoxesWidth > window.innerWidth) {
         this.gameBoxesOverflowingRight = true;
+        this.justifyBoxes = true;
       } else {
+        this.justifyBoxes = false;
         this.gameBoxesOverflowingLeft = false;
         this.gameBoxesOverflowingRight = false;
       }
@@ -141,7 +145,10 @@ export default {
 }
 .game-boxes {
   padding: 0.5rem;
-  justify-content: center;
+}
+
+.justify-boxes {
+  justify-content: flex-start;
 }
 
 div.game-box + div.game-box {
