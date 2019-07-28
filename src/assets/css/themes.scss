@@ -111,20 +111,26 @@
   --pbpColorAlt: #193c80;
 }
 :root.losangelesl {
-  --icon: #fdbb30;
   --headerColor: #552583;
   --headerColorAlt: #663199;
-  --pbpColor: #fdb927;
-  --pbpColorAlt: #f0b12b;
+  --gamesBarColor: #fdb927;
+  --gamesBarColorAlt: #f0b12b;
+  --pbpColor: #552583;
+  --pbpColorAlt: #663199;
+
+  --icon: #fdbb30;
+  --textColor: #1a1a1a;
+  --statusTag: #1a1a1a;
 }
 :root.memphis {
-  --icon: #7c9cbf;
   --headerColor: #12173f;
   --headerColorAlt: #0b0f29;
   --gamesBarColor: #5d76a9;
   --gamesBarColorAlt: #516794;
   --pbpColor: #12173f;
   --pbpColorAlt: #0b0f29;
+
+  --icon: #7c9cbf;
   --textColor: #ffffff;
   --backgroundTeamLogo: url('./assets/team_logos/MEM_bg.png') no-repeat 50% 70%;
 }
