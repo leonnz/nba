@@ -1,9 +1,14 @@
 :root {
+  --headerColor: #335cab;
+  --headerColorAlt: #1d428a;
+  --gamesBarColor: #efefef;
+  --gamesBarColorAlt: #cccccc;
+  --pbpColor: #335cab;
+  --pbpColorAlt: #1d428a;
+
   --icon: orange;
-  --headerColor: #1d428a;
-  --headerColorAlt: #335cab;
-  --pbpColor: #1d428a;
-  --pbpColorAlt: #335cab;
+  --textColor: #1a1a1a;
+  --statusTag: #919194;
   --backgroundTeamLogo: url('./assets/site_images/basketball.png') no-repeat 50%
     70%;
 }
