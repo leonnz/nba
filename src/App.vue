@@ -23,16 +23,27 @@
               </span>
             </a>
           </div>-->
-          <div class="themes-label">Themes</div>
-          <div class="select theme-changer" v-if="cssCustomPropsSupported">
-            <select v-model="selectedTheme" name="theme" @change="themeChange($event)">
-              <option value disabled selected hidden>Team theme</option>
-              <option
-                v-for="(option, index) in themeOptions"
-                :key="index"
-                :value="option.team"
-              >{{ option.value }}</option>
-            </select>
+
+          <div class="dropdown is-right is-hoverable themes-label" v-if="cssCustomPropsSupported">
+            <div class="dropdown-trigger">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span>Team themes</span>
+                <span class="icon is-small">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+              <div class="dropdown-content">
+                <a
+                  class="dropdown-item"
+                  v-for="(option, index) in themeOptions"
+                  :key="index"
+                  :value="option.team"
+                  @click="themeChange(option.team)"
+                >{{ option.value }}</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -123,13 +134,18 @@ export default {
     showThemes: function() {
       console.log("Leon");
     },
-    themeChange: function(event) {
-      let theme = event.target.value;
-      let root = document.querySelector(":root");
-      root.className = theme;
+    themeChange: function(theme) {
+      document.querySelector(":root").className = theme;
       localStorage.setItem("theme", theme);
-      console.log(localStorage);
+      // console.log(localStorage);
     }
+    // themeChange: function(event) {
+    //   let theme = event.target.value;
+    //   let root = document.querySelector(":root");
+    //   root.className = theme;
+    //   localStorage.setItem("theme", theme);
+    //   console.log(localStorage);
+    // }
   },
   mounted() {
     if (window.CSS && window.CSS.supports && window.CSS.supports("--a", 0)) {
