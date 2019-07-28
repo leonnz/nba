@@ -390,7 +390,7 @@ export default {
   width: 0.8em;
   height: 0.8em;
   border-radius: 50%;
-  background-color: var(--headerColor);
+  background-color: var(--pbpColor);
   animation: fade 0.8s ease-in-out alternate infinite;
 }
 

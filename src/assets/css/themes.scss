@@ -30,14 +30,16 @@
   --backgroundTeamLogo: url('./assets/team_logos/BKN_bg.png') no-repeat 50% 70%;
 }
 :root.charlotte {
-  --icon: #00788c;
-  --headerColor: #1d1160;
-  --headerColorAlt: #362980;
+  --headerColor: #362980;
+  --headerColorAlt: #1d1160;
   --gamesBarColor: #00788c;
   --gamesBarColorAlt: #016b7d;
-  --pbpColor: #1d1160;
-  --pbpColorAlt: #362980;
+  --pbpColor: #362980;
+  --pbpColorAlt: #1d1160;
+
+  --icon: #00788c;
   --textColor: #ffffff;
+  --statusTag: #919194;
   --backgroundTeamLogo: url('./assets/team_logos/CHA_bg.png') no-repeat 50% 70%;
 }
 :root.chicago {
@@ -122,13 +124,15 @@
   --backgroundTeamLogo: url('./assets/team_logos/MEM_bg.png') no-repeat 50% 70%;
 }
 :root.miami {
-  --icon: #f9a01b;
   --headerColor: #98002e;
-  --headerColorAlt: #ad0034;
+  --headerColorAlt: #820329;
   --gamesBarColor: #f9a01b;
-  --gamesBarColorAlt: #ff9c08;
+  --gamesBarColorAlt: #db8d18;
   --pbpColor: #98002e;
-  --pbpColorAlt: #ad0034;
-  --textColor: #000000;
-  // --backgroundTeamLogo: url('./assets/team_logos/MEM_bg.png') no-repeat 50% 70%;
+  --pbpColorAlt: #820329;
+
+  --icon: #f9a01b;
+  --textColor: #1a1a1a;
+  --statusTag: #1a1a1a;
+  --backgroundTeamLogo: url('./assets/team_logos/MIA_bg.png') no-repeat 50% 70%;
 }

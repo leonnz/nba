@@ -166,7 +166,7 @@ body {
 .header {
   // background-color: #1d428a;
   // background-color: var(--baseColor);
-  background-image: linear-gradient(var(--headerColorAlt), var(--headerColor));
+  background-image: linear-gradient(var(--headerColor), var(--headerColorAlt));
 }
 .banner {
   display: inline-block;

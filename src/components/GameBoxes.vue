@@ -184,7 +184,7 @@ div.game-box + div.game-box {
   background-color: red;
 }
 .final {
-  background-color: grey;
+  background-color: var(--statusTag);
 }
 </style>
 
