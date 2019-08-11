@@ -98,5 +98,29 @@
   {
     "team": "phoenix",
     "value": "Phoenix suns"
+  },
+  {
+    "team": "portland",
+    "value": "Portland Trail Blazers"
+  },
+  {
+    "team": "sacramento",
+    "value": "Sacramento Kings"
+  },
+  {
+    "team": "san-antonio",
+    "value": "San Antonio Spurs"
+  },
+  {
+    "team": "toronto",
+    "value": "Toronto Raptors"
+  },
+  {
+    "team": "utah",
+    "value": "Utah Jazz"
+  },
+  {
+    "team": "washington",
+    "value": "Washington Wizards"
   }
 ]
