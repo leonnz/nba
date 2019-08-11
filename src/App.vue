@@ -53,80 +53,12 @@
 </template>
 
 <script>
+import teams from "./assets/data/teams.json";
 export default {
   data() {
     return {
       selectedTheme: "",
-      themeOptions: [
-        {
-          team: "default",
-          value: "Default"
-        },
-        {
-          team: "atlanta",
-          value: "Atlanta Hawks"
-        },
-        {
-          team: "boston",
-          value: "Boston Celtics"
-        },
-        {
-          team: "brooklyn",
-          value: "Brooklyn Nets"
-        },
-        {
-          team: "charlotte",
-          value: "Charlotte Hornets"
-        },
-        {
-          team: "chicago",
-          value: "Chicago Bulls"
-        },
-        {
-          team: "cleveland",
-          value: "Cleveland Cavaliers"
-        },
-        {
-          team: "dallas",
-          value: "Dallas Mavericks"
-        },
-        {
-          team: "denver",
-          value: "Denver Nuggets"
-        },
-        {
-          team: "detroit",
-          value: "Detroit Pistons"
-        },
-        {
-          team: "goldenstate",
-          value: "Golden State Warriors"
-        },
-        {
-          team: "houston",
-          value: "Houston Rockets"
-        },
-        {
-          team: "indiana",
-          value: "Indiana Pacers"
-        },
-        {
-          team: "losangelesc",
-          value: "Los Angeles Clippers"
-        },
-        {
-          team: "losangelesl",
-          value: "Los Angeles Lakers"
-        },
-        {
-          team: "memphis",
-          value: "Memphis Grizzlies"
-        },
-        {
-          team: "miami",
-          value: "Miami Heat"
-        }
-      ],
+      themeOptions: teams,
       cssCustomPropsSupported: false
     };
   },
@@ -137,15 +69,7 @@ export default {
     themeChange: function(theme) {
       document.querySelector(":root").className = theme;
       localStorage.setItem("theme", theme);
-      // console.log(localStorage);
     }
-    // themeChange: function(event) {
-    //   let theme = event.target.value;
-    //   let root = document.querySelector(":root");
-    //   root.className = theme;
-    //   localStorage.setItem("theme", theme);
-    //   console.log(localStorage);
-    // }
   },
   mounted() {
     if (window.CSS && window.CSS.supports && window.CSS.supports("--a", 0)) {
