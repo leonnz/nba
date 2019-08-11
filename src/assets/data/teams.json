@@ -52,11 +52,11 @@
     "value": "Indiana Pacers"
   },
   {
-    "team": "losangelesc",
+    "team": "la-clippers",
     "value": "Los Angeles Clippers"
   },
   {
-    "team": "losangelesl",
+    "team": "la-lakers",
     "value": "Los Angeles Lakers"
   },
   {
@@ -66,5 +66,37 @@
   {
     "team": "miami",
     "value": "Miami Heat"
+  },
+  {
+    "team": "milwaukee",
+    "value": "Milwaukee Bucks"
+  },
+  {
+    "team": "minnesota",
+    "value": "Minnesota Timberwolves"
+  },
+  {
+    "team": "new-orleans",
+    "value": "New Orleans Pelicans"
+  },
+  {
+    "team": "new-york",
+    "value": "New York Knicks"
+  },
+  {
+    "team": "oklahoma-city",
+    "value": "Oklahoma City Thunder"
+  },
+  {
+    "team": "orlando",
+    "value": "Orlando magic"
+  },
+  {
+    "team": "philadelphia",
+    "value": "Philadelphia 76ers"
+  },
+  {
+    "team": "phoenix",
+    "value": "Phoenix suns"
   }
 ]

@@ -181,7 +181,7 @@ div.game-box + div.game-box {
   background-image: linear-gradient(var(--pbpColor), var(--pbpColorAlt));
 }
 .status-tag {
-  color: white;
+  color: #efefef;
   text-align: center;
   letter-spacing: 1px;
   border-radius: 3px;
@@ -191,6 +191,7 @@ div.game-box + div.game-box {
   background-color: red;
 }
 .final {
+  color: var(--statusTagText);
   background-color: var(--statusTag);
 }
 </style>
