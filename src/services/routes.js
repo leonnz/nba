@@ -11,5 +11,15 @@ export const routes = [
     name: 'About',
     path: '/about',
     component: About
+  },
+  {
+    name: 'Sonics',
+    path: '/sonics',
+    component: Index
+  },
+  {
+    name: 'Miami Vice',
+    path: '/miami-vice',
+    component: Index
   }
 ];

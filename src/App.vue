@@ -82,6 +82,13 @@ export default {
       // CSS custom properties not supported
       console.log("Not supported");
     }
+    console.log(this.$route.name);
+    if (this.$route.name === "Sonics") {
+      this.themeChange("seattle");
+    }
+    if (this.$route.name === "Miami Vice") {
+      this.themeChange("miami-vice");
+    }
   }
 };
 </script>
