@@ -36,7 +36,7 @@
             <div class="dropdown-menu" id="dropdown-menu" role="menu">
               <div class="dropdown-content">
                 <a
-                  class="dropdown-item"
+                  class="dropdown-item theme-option"
                   v-for="(option, index) in themeOptions"
                   :key="index"
                   :value="option.team"
@@ -143,6 +143,9 @@ body {
 .themes-label {
   margin: 0 1rem;
   color: white;
+}
+.theme-option {
+  padding: 0.2rem 1rem !important;
 }
 </style>
 
