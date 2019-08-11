@@ -69,59 +69,100 @@
   --pbpColorAlt: #abb5ba;
 }
 :root.denver {
-  --icon: #ebb51c;
   --headerColor: #0e2240;
-  --headerColorAlt: #19355e;
-  --pbpColor: #fec524;
-  --pbpColorAlt: #ebb51c;
+  --headerColorAlt: #0e2240;
+  --gamesBarColor: #fec524;
+  --gamesBarColorAlt: #fec524;
+  --pbpColor: #0e2240;
+  --pbpColorAlt: #0e2240;
+
+  --icon: #8b2131;
+  --textColor: #1a1a1a;
+  --statusTag: #8b2131;
+  --statusTagText: #efefef;
+  --backgroundTeamLogo: url('./assets/team_logos/DEN_bg.png') no-repeat 50% 70%;
 }
 :root.detroit {
-  --icon: #006bb6;
   --headerColor: #c8102e;
-  --headerColorAlt: #db2745;
-  --pbpColor: #006bb6;
-  --pbpColorAlt: #005ea1;
+  --headerColorAlt: #c8102e;
+  --gamesBarColor: #006bb6;
+  --gamesBarColorAlt: #006bb6;
+  --pbpColor: #c8102e;
+  --pbpColorAlt: #c8102e;
+
+  --icon: #006bb6;
+  --textColor: #efefef;
+  --statusTag: #bec0c2;
+  --statusTagText: #1a1a1a;
+  --backgroundTeamLogo: url('./assets/team_logos/DET_bg.png') no-repeat 50% 70%;
 }
 :root.goldenstate {
-  --icon: #ffc72c;
-  --headerColor: #1d428a;
-  --headerColorAlt: #2650a3;
-  --pbpColor: #ffc72c;
-  --pbpColorAlt: #f7c12a;
+  --headerColor: #006bb6;
+  --headerColorAlt: #006bb6;
+  --gamesBarColor: #fdb927;
+  --gamesBarColorAlt: #fdb927;
+  --pbpColor: #006bb6;
+  --pbpColorAlt: #006bb6;
+
+  --icon: #fdb927;
+  --textColor: #1a1a1a;
+  --statusTag: #26282a;
+  --statusTagText: #efefef;
+  --backgroundTeamLogo: url('./assets/team_logos/GSW_bg.png') no-repeat 50% 70%;
 }
 :root.houston {
+  --headerColor: #e6154a;
+  --headerColorAlt: #ce1141;
+  --gamesBarColor: #c4ced4;
+  --gamesBarColorAlt: #c4ced4;
+  --pbpColor: #e6154a;
+  --pbpColorAlt: #ce1141;
+
   --icon: #c4ced4;
-  --headerColor: #ce1141;
-  --headerColorAlt: #e6154a;
-  --pbpColor: #c4ced4;
-  --pbpColorAlt: #b9c0c4;
+  --textColor: #1a1a1a;
+  --statusTag: #000000;
+  --statusTagText: #efefef;
+  --backgroundTeamLogo: url('./assets/team_logos/HOU_bg.png') no-repeat 50% 70%;
 }
 :root.indiana {
-  --icon: #fdbb30;
   --headerColor: #002d62;
-  --headerColorAlt: #053d80;
-  --pbpColor: #fdbb30;
-  --pbpColorAlt: #e8ab2a;
-}
-:root.la-clippers {
-  --icon: #fdbb30;
-  --headerColor: #c8102e;
-  --headerColorAlt: #d11d3b;
-  --pbpColor: #1d428a;
-  --pbpColorAlt: #193c80;
-}
-:root.la-lakers {
-  --headerColor: #552583;
-  --headerColorAlt: #663199;
-  --gamesBarColor: #fdb927;
-  --gamesBarColorAlt: #f0b12b;
-  --pbpColor: #552583;
-  --pbpColorAlt: #663199;
+  --headerColorAlt: #002d62;
+  --gamesBarColor: #fdbb30;
+  --gamesBarColorAlt: #fdbb30;
+  --pbpColor: #002d62;
+  --pbpColorAlt: #002d62;
 
   --icon: #fdbb30;
   --textColor: #1a1a1a;
-  --statusTag: #1a1a1a;
-  --statusTagText: #efefef;
+  --statusTag: #bec0c2;
+  --statusTagText: #1a1a1a;
+  --backgroundTeamLogo: url('./assets/team_logos/IND_bg.png') no-repeat 50% 70%;
+}
+:root.la-clippers {
+  --headerColor: #c8102e;
+  --headerColorAlt: #d11d3b;
+  --gamesBarColor: #1d428a;
+  --gamesBarColorAlt: #1d428a;
+  --pbpColor: #c8102e;
+  --pbpColorAlt: #d11d3b;
+
+  --icon: #1d428a;
+  --textColor: #efefef;
+  --statusTag: #bec0c2;
+  --statusTagText: #1a1a1a;
+  --backgroundTeamLogo: url('./assets/team_logos/LAC_bg.png') no-repeat 50% 70%;
+}
+:root.la-lakers {
+  --headerColor: #663199;
+  --headerColorAlt: #552583;
+  --gamesBarColor: #fdb927;
+  --gamesBarColorAlt: #f0b12b;
+  --pbpColor: #663199;
+  --pbpColorAlt: #552583;
+
+  --icon: #fdbb30;
+
+  --backgroundTeamLogo: url('./assets/team_logos/LAL_bg.png') no-repeat 50% 70%;
 }
 :root.memphis {
   --headerColor: #12173f;
@@ -161,7 +202,7 @@
   --textColor: #1a1a1a;
   --statusTag: #0077c0;
   --statusTagText: #efefef;
-  --backgroundTeamLogo: url('./assets/team_logos/MIA_bg.png') no-repeat 50% 70%;
+  --backgroundTeamLogo: url('./assets/team_logos/MIL_bg.png') no-repeat 50% 70%;
 }
 :root.minnesota {
   --headerColor: #0c2340;
@@ -174,7 +215,7 @@
   --icon: #78be20;
   --textColor: #efefef;
   --statusTag: #78be20;
-  --backgroundTeamLogo: url('./assets/team_logos/MIA_bg.png') no-repeat 50% 70%;
+  --backgroundTeamLogo: url('./assets/team_logos/MIN_bg.png') no-repeat 50% 70%;
 }
 :root.new-orleans {
   --headerColor: #0c2340;
@@ -187,33 +228,34 @@
   --icon: #c8102e;
   --textColor: #efefef;
   --statusTag: #c8102e;
-  --backgroundTeamLogo: url('./assets/team_logos/MIA_bg.png') no-repeat 50% 70%;
+  --backgroundTeamLogo: url('./assets/team_logos/NOP_bg.png') no-repeat 50% 70%;
 }
 :root.new-york {
-  --headerColor: #006bb6;
-  --headerColorAlt: #0063a8;
-  --gamesBarColor: #f58426;
-  --gamesBarColorAlt: #f58426;
-  --pbpColor: #006bb6;
-  --pbpColorAlt: #0063a8;
+  --headerColor: #f58426;
+  --headerColorAlt: #f58426;
+  --gamesBarColor: #0063a8;
+  --gamesBarColorAlt: #0063a8;
+  --pbpColor: #f58426;
+  --pbpColorAlt: #f58426;
 
-  --icon: #f58426;
+  --icon: #0063a8;
   --textColor: #efefef;
   --statusTag: #bec0c2;
-  --backgroundTeamLogo: url('./assets/team_logos/MIA_bg.png') no-repeat 50% 70%;
+  --statusTagText: #1a1a1a;
+  --backgroundTeamLogo: url('./assets/team_logos/NYK_bg.png') no-repeat 50% 70%;
 }
 :root.oklahoma-city {
-  --headerColor: #007ac1;
-  --headerColorAlt: #006cab;
-  --gamesBarColor: #002d62;
-  --gamesBarColorAlt: #002d62;
-  --pbpColor: #007ac1;
-  --pbpColorAlt: #006cab;
+  --headerColor: #002d62;
+  --headerColorAlt: #002d62;
+  --gamesBarColor: #007ac1;
+  --gamesBarColorAlt: #007ac1;
+  --pbpColor: #002d62;
+  --pbpColorAlt: #002d62;
 
   --icon: #ef3b24;
   --textColor: #efefef;
   --statusTag: #ef3b24;
-  --backgroundTeamLogo: url('./assets/team_logos/MIA_bg.png') no-repeat 50% 70%;
+  --backgroundTeamLogo: url('./assets/team_logos/OKC_bg.png') no-repeat 50% 70%;
 }
 :root.orlando {
   --headerColor: #0077c0;
@@ -226,7 +268,8 @@
   --icon: #c4ced4;
   --textColor: #1a1a1a;
   --statusTag: #000000;
-  --backgroundTeamLogo: url('./assets/team_logos/MIA_bg.png') no-repeat 50% 70%;
+  --statusTagText: #efefef;
+  --backgroundTeamLogo: url('./assets/team_logos/ORL_bg.png') no-repeat 50% 70%;
 }
 :root.philadelphia {
   --headerColor: #006bb6;
@@ -240,7 +283,7 @@
   --textColor: #efefef;
   --statusTag: #efefef;
   --statusTagText: #1a1a1a;
-  --backgroundTeamLogo: url('./assets/team_logos/MIA_bg.png') no-repeat 50% 70%;
+  --backgroundTeamLogo: url('./assets/team_logos/PHI_bg.png') no-repeat 50% 70%;
 }
 :root.phoenix {
   --headerColor: #281782;
@@ -254,7 +297,7 @@
   --textColor: #efefef;
   --statusTag: #000000;
   --statusTagText: #efefef;
-  --backgroundTeamLogo: url('./assets/team_logos/MIA_bg.png') no-repeat 50% 70%;
+  --backgroundTeamLogo: url('./assets/team_logos/PHX_bg.png') no-repeat 50% 70%;
 }
 :root.portland {
   --headerColor: #e03a3e;
@@ -268,7 +311,7 @@
   --textColor: #efefef;
   --statusTag: #efefef;
   --statusTagText: #1a1a1a;
-  --backgroundTeamLogo: url('./assets/team_logos/MIA_bg.png') no-repeat 50% 70%;
+  --backgroundTeamLogo: url('./assets/team_logos/POR_bg.png') no-repeat 50% 70%;
 }
 :root.sacramento {
   --headerColor: #5a2d81;
@@ -282,7 +325,7 @@
   --textColor: #efefef;
   --statusTag: #1a1a1a;
   --statusTagText: #efefef;
-  --backgroundTeamLogo: url('./assets/team_logos/MIA_bg.png') no-repeat 50% 70%;
+  --backgroundTeamLogo: url('./assets/team_logos/SAC_bg.png') no-repeat 50% 70%;
 }
 :root.san-antonio {
   --headerColor: #000000;
@@ -296,21 +339,21 @@
   --textColor: #1a1a1a;
   --statusTag: #1a1a1a;
   --statusTagText: #efefef;
-  --backgroundTeamLogo: url('./assets/team_logos/MIA_bg.png') no-repeat 50% 70%;
+  --backgroundTeamLogo: url('./assets/team_logos/SAS_bg.png') no-repeat 50% 70%;
 }
 :root.toronto {
-  --headerColor: #ce1141;
-  --headerColorAlt: #ce1141;
-  --gamesBarColor: #000000;
-  --gamesBarColorAlt: #000000;
-  --pbpColor: #ce1141;
-  --pbpColorAlt: #ce1141;
+  --headerColor: #000000;
+  --headerColorAlt: #000000;
+  --gamesBarColor: #ce1141;
+  --gamesBarColorAlt: #ce1141;
+  --pbpColor: #000000;
+  --pbpColorAlt: #000000;
 
-  --icon: #000000;
+  --icon: #ce1141;
   --textColor: #efefef;
   --statusTag: #a1a1a4;
   --statusTagText: #efefef;
-  --backgroundTeamLogo: url('./assets/team_logos/MIA_bg.png') no-repeat 50% 70%;
+  --backgroundTeamLogo: url('./assets/team_logos/TOR_bg.png') no-repeat 50% 70%;
 }
 :root.utah {
   --headerColor: #002b5c;
@@ -321,10 +364,10 @@
   --pbpColorAlt: #002b5c;
 
   --icon: #00471b;
-  --textColor: #efefef;
+  --textColor: #1a1a1a;
   --statusTag: #00471b;
   --statusTagText: #efefef;
-  --backgroundTeamLogo: url('./assets/team_logos/MIA_bg.png') no-repeat 50% 70%;
+  --backgroundTeamLogo: url('./assets/team_logos/UTA_bg.png') no-repeat 50% 70%;
 }
 :root.washington {
   --headerColor: #002b5c;
@@ -338,7 +381,7 @@
   --textColor: #efefef;
   --statusTag: #c4ced4;
   --statusTagText: #1a1a1a;
-  --backgroundTeamLogo: url('./assets/team_logos/MIA_bg.png') no-repeat 50% 70%;
+  --backgroundTeamLogo: url('./assets/team_logos/WAS_bg.png') no-repeat 50% 70%;
 }
 :root.seattle {
   --headerColor: #046a3c;
