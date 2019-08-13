@@ -101,7 +101,6 @@ export default {
       }
     },
     setGameBoxesOverflowing() {
-      console.log(this.justifyBoxes);
       let gameBoxesWidth = this.$refs.gameBoxesContainer.__vue__.$el
         .scrollWidth;
       if (gameBoxesWidth > window.innerWidth) {
