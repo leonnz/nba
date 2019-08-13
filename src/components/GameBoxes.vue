@@ -18,8 +18,11 @@
       <div class="status-tag final" v-if="!game.isGameActivated && game.endTimeUTC">{{ "FINAL" }}</div>
       <div
         class="status-tag live"
-        v-if="game.isGameActivated && game.period.current !== 0"
+        v-else-if="game.isGameActivated && game.period.current !== 0"
       >{{ "LIVE" }}</div>
+      <div class="status-tag" v-else>
+        <span class="not-started">{{ game.startTimeEastern }}</span>
+      </div>
       <div class="level is-mobile scores">
         <div class="level-item level-left">
           <div>
@@ -181,11 +184,14 @@ div.game-box + div.game-box {
   background-image: linear-gradient(var(--pbpColor), var(--pbpColorAlt));
 }
 .status-tag {
+  height: 100%;
   color: #efefef;
   text-align: center;
   letter-spacing: 1px;
   border-radius: 3px;
   margin: 0.2rem 0.2rem 0.5rem 0.2rem;
+  color: var(--statusTagText);
+  background-color: var(--statusTag);
 }
 .live {
   background-color: red;
@@ -193,6 +199,12 @@ div.game-box + div.game-box {
 .final {
   color: var(--statusTagText);
   background-color: var(--statusTag);
+}
+.not-started {
+  letter-spacing: -0.5px !important;
+  display: inline-block;
+  // vertical-align: middle;
+  font-size: 14px;
 }
 </style>
 
