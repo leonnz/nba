@@ -51,8 +51,11 @@
               :class="{ buttonEase: scrolling }"
               @click="scrollToTop"
             >back to top</button>
-            <div v-if="!gameActive && gamePeriod == 0">Game has not started.</div>
-            <div v-if="gameActive && gamePeriod == 1 && !gameData.game.clock">Game starting.</div>
+            <div class="pbp-message" v-if="!gameActive && gamePeriod == 0">Game has not started.</div>
+            <div
+              class="pbp-message"
+              v-if="gameActive && gamePeriod == 1 && !gameData.game.clock"
+            >Game starting.</div>
 
             <transition-group v-if="pbp.length !== 0" name="slide" class="play-event">
               <div
@@ -82,7 +85,7 @@
                 </div>
               </div>
             </transition-group>
-            <div v-if="pbp.length == 0" class="dots">
+            <div v-if="pbp.length == 0 && gameActive" class="dots">
               <div></div>
               <div></div>
               <div></div>
@@ -320,6 +323,9 @@ export default {
 .team-logo {
   width: 70px;
   height: 70px;
+}
+.pbp-message {
+  text-align: center;
 }
 .pbp-box {
   background-color: white;
