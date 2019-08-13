@@ -91,7 +91,14 @@ export default {
     leadingTeam: function(game) {
       let vteamScore = parseInt(game.vTeam.score);
       let hteamScore = parseInt(game.hTeam.score);
-      return vteamScore > hteamScore ? "vteam" : "hteam";
+
+      if (vteamScore > hteamScore) {
+        return "vteam";
+      } else if (vteamScore < hteamScore) {
+        return "hteam";
+      } else {
+        return;
+      }
     },
     setGameBoxesOverflowing() {
       console.log(this.justifyBoxes);
