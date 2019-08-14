@@ -23,7 +23,7 @@
 
   --icon: #c1d32f;
   --textColor: #000;
-  --statusTag: #26282a;
+  --statusTag: #000;
   --statusTagText: #fff;
   --backgroundTeamLogo: url('./assets/team_logos/ATL_bg.png') no-repeat 50% 70%;
 }
@@ -51,7 +51,7 @@
 
   --icon: #fff;
   --textColor: #000;
-  --statusTag: #444;
+  --statusTag: #000;
   --statusTagText: #fff;
   --backgroundTeamLogo: url('./assets/team_logos/BKN_bg.png') no-repeat 50% 70%;
 }
@@ -65,7 +65,7 @@
 
   --icon: #00788c;
   --textColor: #ffffff;
-  --statusTag: #919194;
+  --statusTag: #fff;
   --backgroundTeamLogo: url('./assets/team_logos/CHA_bg.png') no-repeat 50% 70%;
 }
 :root.chicago {
@@ -134,7 +134,7 @@
 
   --icon: #006bb6;
   --textColor: #fff;
-  --statusTag: #bec0c2;
+  --statusTag: #fff;
   --statusTagText: #000;
   --backgroundTeamLogo: url('./assets/team_logos/DET_bg.png') no-repeat 50% 70%;
 }
@@ -176,7 +176,7 @@
 
   --icon: #fdbb30;
   --textColor: #000;
-  --statusTag: #bec0c2;
+  --statusTag: #fff;
   --statusTagText: #000;
   --backgroundTeamLogo: url('./assets/team_logos/IND_bg.png') no-repeat 50% 70%;
 }
@@ -190,7 +190,7 @@
 
   --icon: #1d428a;
   --textColor: #fff;
-  --statusTag: #bec0c2;
+  --statusTag: #fff;
   --statusTagText: #000;
   --backgroundTeamLogo: url('./assets/team_logos/LAC_bg.png') no-repeat 50% 70%;
 }
@@ -203,7 +203,9 @@
   --pbpColorAlt: #552583;
 
   --icon: #fdbb30;
-
+  --textColor: #000;
+  --statusTag: #fff;
+  --statusTagText: #000;
   --backgroundTeamLogo: url('./assets/team_logos/LAL_bg.png') no-repeat 50% 70%;
 }
 :root.memphis {
@@ -216,6 +218,8 @@
 
   --icon: #7c9cbf;
   --textColor: #ffffff;
+  --statusTag: #fff;
+  --statusTagText: #000;
   --backgroundTeamLogo: url('./assets/team_logos/MEM_bg.png') no-repeat 50% 70%;
 }
 :root.miami {
@@ -284,7 +288,7 @@
 
   --icon: #f58426;
   --textColor: #000;
-  --statusTag: #bec0c2;
+  --statusTag: #fff;
   --statusTagText: #000;
   --backgroundTeamLogo: url('./assets/team_logos/NYK_bg.png') no-repeat 50% 70%;
 }
@@ -396,7 +400,7 @@
 
   --icon: #ce1141;
   --textColor: #fff;
-  --statusTag: #a1a1a4;
+  --statusTag: #000;
   --statusTagText: #fff;
   --backgroundTeamLogo: url('./assets/team_logos/TOR_bg.png') no-repeat 50% 70%;
 }
@@ -424,7 +428,7 @@
 
   --icon: #e31837;
   --textColor: #fff;
-  --statusTag: #c4ced4;
+  --statusTag: #fff;
   --statusTagText: #000;
   --backgroundTeamLogo: url('./assets/team_logos/WAS_bg.png') no-repeat 50% 70%;
 }
