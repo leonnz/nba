@@ -13,7 +13,8 @@
               <div class="level-item has-text-centered">
                 <div>
                   <p class="is-size-5 title has-text-white">{{ visitingTeam }}</p>
-                  <p v-if="playsExist" class="title has-text-white">{{ visitingTeamScore || "0" }}</p>
+                  <p v-if="playsExist" class="title has-text-white">{{ visitingTeamScore }}</p>
+                  <p class="title has-text-white" v-else>0</p>
                 </div>
               </div>
               <div class="level-item has-text-centered">
@@ -35,7 +36,8 @@
               <div class="level-item has-text-centered">
                 <div>
                   <p class="is-size-5 title has-text-white">{{ homeTeam }}</p>
-                  <p v-if="pbp.length > 0" class="title has-text-white">{{ homeTeamScore || "0" }}</p>
+                  <p v-if="pbp.length > 0" class="title has-text-white">{{ homeTeamScore }}</p>
+                  <p class="title has-text-white" v-else>0</p>
                 </div>
               </div>
               <div class="level-item">
