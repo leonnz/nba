@@ -389,7 +389,11 @@ export default {
   opacity: 0;
   transition: 0.5s;
   cursor: default;
-  background-color: #1d428a !important;
+  background-color: var(--mainColor);
+
+  &:hover {
+    background-color: var(--mainColor);
+  }
 }
 .buttonEase {
   visibility: visible;
