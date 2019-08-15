@@ -4,7 +4,11 @@
       <div class="tile is-parent">
         <div class="tile is-child pbp-container">
           <div class="pbp-header is-size-5">
-            <i @click="closePbp(gameData.gameId)" class="material-icons close-pbp">close</i>
+            <i
+              @click="closePbp(gameData.gameId)"
+              class="material-icons close-pbp"
+              >close</i
+            >
 
             <div class="level is-mobile">
               <div class="level-item">
@@ -12,8 +16,12 @@
               </div>
               <div class="level-item has-text-centered">
                 <div>
-                  <p class="is-size-5 title has-text-white">{{ visitingTeam }}</p>
-                  <p v-if="playsExist" class="title has-text-white">{{ visitingTeamScore }}</p>
+                  <p class="is-size-5 title has-text-white">
+                    {{ visitingTeam }}
+                  </p>
+                  <p v-if="playsExist" class="title has-text-white">
+                    {{ visitingTeamScore }}
+                  </p>
                   <p class="title has-text-white" v-else>0</p>
                 </div>
               </div>
@@ -22,21 +30,27 @@
                   <span
                     class="is-size-5 title has-text-white"
                     v-if="!gameActive && gameData.game.endTimeUTC"
-                  >Final</span>
+                    >Final</span
+                  >
                   <span
                     class="title is-size-5 live-tag"
                     v-if="gameActive && gamePeriod !== 0 && playsExist"
-                  >{{ getPeriod[0][gamePeriod] }}</span>
+                    >{{ getPeriod[0][gamePeriod] }}</span
+                  >
                   <p
                     v-if="gameActive && playsExist"
                     class="title is-size-5 live-tag"
-                  >{{ pbp[0].clock }}</p>
+                  >
+                    {{ pbp[0].clock }}
+                  </p>
                 </div>
               </div>
               <div class="level-item has-text-centered">
                 <div>
                   <p class="is-size-5 title has-text-white">{{ homeTeam }}</p>
-                  <p v-if="pbp.length > 0" class="title has-text-white">{{ homeTeamScore }}</p>
+                  <p v-if="pbp.length > 0" class="title has-text-white">
+                    {{ homeTeamScore }}
+                  </p>
                   <p class="title has-text-white" v-else>0</p>
                 </div>
               </div>
@@ -52,17 +66,30 @@
               class="scrollToTopButton button is-small is-link"
               :class="{ buttonEase: scrolling }"
               @click="scrollToTop"
-            >back to top</button>
-            <div class="pbp-message" v-if="!gameActive && gamePeriod == 0">Game has not started.</div>
+            >
+              back to top
+            </button>
+            <div class="pbp-message" v-if="!gameActive && gamePeriod == 0">
+              Game has not started.
+            </div>
             <div
               class="pbp-message"
               v-if="gameActive && gamePeriod == 1 && !gameData.game.clock"
-            >Game starting.</div>
+            >
+              Game starting.
+            </div>
 
-            <transition-group v-if="pbp.length !== 0" name="slide" class="play-event">
+            <transition-group
+              v-if="pbp.length !== 0"
+              name="slide"
+              class="play-event"
+            >
               <div
                 class="playEventItem"
-                :class="{ playEventItemTransition: playEventItemClassActive, 'points-scored': event.description.includes('PTS') }"
+                :class="{
+                  playEventItemTransition: playEventItemClassActive,
+                  'points-scored': event.description.includes('PTS')
+                }"
                 v-for="event in pbp"
                 :key="event.event"
               >
@@ -83,7 +110,7 @@
                 </div>
                 <div v-else class="event">
                   <div class="clock">{{ event.clock }}</div>
-                  <div class="description">{{ event.description}}</div>
+                  <div class="description">{{ event.description }}</div>
                 </div>
               </div>
             </transition-group>
@@ -319,7 +346,7 @@ export default {
 .pbp-header {
   padding: 1rem;
   // background-image: linear-gradient(var(--baseColorAlt), var(--baseColor));
-  background-image: linear-gradient(var(--pbpColor), var(--pbpColorAlt));
+  background-image: linear-gradient(var(--mainColor), var(--mainColorAlt));
   color: white;
 }
 .team-logo {
@@ -349,7 +376,7 @@ export default {
 }
 .pbp-container {
   // border: 1px solid var(--baseColor);
-  border: 1px solid var(--pbpColor);
+  border: 1px solid var(--mainColor);
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 2px 2px 5px 0 rgba(black, 0.4);
@@ -398,7 +425,7 @@ export default {
   width: 0.8em;
   height: 0.8em;
   border-radius: 50%;
-  background-color: var(--pbpColor);
+  background-color: var(--mainColor);
   animation: fade 0.8s ease-in-out alternate infinite;
 }
 

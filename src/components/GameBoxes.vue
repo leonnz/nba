@@ -1,5 +1,9 @@
 <template>
-  <div ref="gameBoxesContainer" class="game-boxes" :class="{ 'justify-boxes': justifyBoxes }">
+  <div
+    ref="gameBoxesContainer"
+    class="game-boxes"
+    :class="{ 'justify-boxes': justifyBoxes }"
+  >
     <div
       ref="scrollLeftBtn"
       :class="{ gameBoxesScrollLeftBtnVisible: gameBoxesOverflowingLeft }"
@@ -10,16 +14,26 @@
     </div>
     <div
       class="game-box"
-      :class="{ 'selectedGame': selectedGames.includes(game.gameId), 'has-text-white': selectedGames.includes(game.gameId) }"
+      :class="{
+        selectedGame: selectedGames.includes(game.gameId),
+        'has-text-white': selectedGames.includes(game.gameId)
+      }"
       v-for="game in todaysGames"
       :key="game.gameId"
       @click="showGamePlayByPlay(game.gameId)"
     >
-      <div class="status-tag final" v-if="!game.isGameActivated && game.endTimeUTC">{{ "FINAL" }}</div>
+      <div
+        class="status-tag final"
+        v-if="!game.isGameActivated && game.endTimeUTC"
+      >
+        {{ "FINAL" }}
+      </div>
       <div
         class="status-tag live"
         v-else-if="game.isGameActivated && game.period.current !== 0"
-      >{{ "LIVE" }}</div>
+      >
+        {{ "LIVE" }}
+      </div>
       <div class="status-tag" v-else>
         <span class="not-started">{{ game.startTimeEastern }}</span>
       </div>
@@ -29,23 +43,31 @@
             <div
               class="is-size-6"
               :class="{ 'higher-score': leadingTeam(game) === 'vteam' }"
-            >{{ game.vTeam.triCode }}</div>
+            >
+              {{ game.vTeam.triCode }}
+            </div>
             <div
               class="is-size-6"
               :class="{ 'higher-score': leadingTeam(game) === 'hteam' }"
-            >{{ game.hTeam.triCode }}</div>
+            >
+              {{ game.hTeam.triCode }}
+            </div>
           </div>
         </div>
         <div class="level-item level-right">
           <div>
             <div
               class="is-size-6"
-              :class="{ 'higher-score': leadingTeam(game) === 'vteam'  }"
-            >{{ game.vTeam.score || "0" }}</div>
+              :class="{ 'higher-score': leadingTeam(game) === 'vteam' }"
+            >
+              {{ game.vTeam.score || "0" }}
+            </div>
             <div
               class="is-size-6"
               :class="{ 'higher-score': leadingTeam(game) === 'hteam' }"
-            >{{ game.hTeam.score || "0" }}</div>
+            >
+              {{ game.hTeam.score || "0" }}
+            </div>
           </div>
         </div>
       </div>
@@ -187,7 +209,7 @@ div.game-box + div.game-box {
 }
 .selectedGame {
   // background-image: linear-gradient(var(--baseColor), var(--baseColorAlt));
-  background-image: linear-gradient(var(--pbpColor), var(--pbpColorAlt));
+  background-image: linear-gradient(var(--mainColor), var(--mainColorAlt));
 }
 .status-tag {
   height: 100%;

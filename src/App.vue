@@ -24,9 +24,16 @@
             </a>
           </div>-->
 
-          <div class="dropdown is-right is-hoverable themes-label" v-if="cssCustomPropsSupported">
+          <div
+            class="dropdown is-right is-hoverable themes-label"
+            v-if="cssCustomPropsSupported"
+          >
             <div class="dropdown-trigger">
-              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+              <button
+                class="button"
+                aria-haspopup="true"
+                aria-controls="dropdown-menu"
+              >
                 <span>Team themes</span>
                 <span class="icon is-small">
                   <i class="fas fa-angle-down" aria-hidden="true"></i>
@@ -41,7 +48,8 @@
                   :key="index"
                   :value="option.team"
                   @click="themeChange(option.team)"
-                >{{ option.value }}</a>
+                  >{{ option.value }}</a
+                >
               </div>
             </div>
           </div>
@@ -113,7 +121,7 @@ body {
 .header {
   // background-color: #1d428a;
   // background-color: var(--baseColor);
-  background-image: linear-gradient(var(--headerColor), var(--headerColorAlt));
+  background-image: linear-gradient(var(--mainColor), var(--mainColorAlt));
 }
 .banner {
   display: inline-block;

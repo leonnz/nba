@@ -14,7 +14,10 @@
         <playbyplay
           v-for="game in selectedGames"
           :key="game"
-          :gameData="{ gameId: game, game: todaysGames.filter(e => e.gameId === game)[0] }"
+          :gameData="{
+            gameId: game,
+            game: todaysGames.filter(e => e.gameId === game)[0]
+          }"
         ></playbyplay>
       </div>
     </section>
@@ -76,8 +79,8 @@ export default {
 .gameBoxCtn {
   // background-image: linear-gradient(#cccccc, #efefef);
   background-image: linear-gradient(
-    var(--gamesBarColor),
-    var(--gamesBarColorAlt)
+    var(--secondaryColor),
+    var(--secondaryColorAlt)
   );
   color: var(--textColor);
   overflow-x: hidden;
