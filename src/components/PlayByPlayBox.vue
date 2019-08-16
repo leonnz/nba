@@ -103,8 +103,11 @@
                   <figure class="media-right">
                     <img
                       class="image player"
-                      :src="getPlayerPhoto(event.person_id)"
-                      @error="imgError"
+                      :src="
+                        playerIds.includes(event.person_id)
+                          ? getPlayerPhoto(event.person_id)
+                          : imgError()
+                      "
                     />
                   </figure>
                 </div>
@@ -129,12 +132,14 @@
 
 <script>
 import { db } from "../services/firebase";
+import playerIds from "../assets/data/playerIds.json";
 
 export default {
   props: { gameData: {} },
   data() {
     return {
       teams: "",
+      playerIds: playerIds,
       pbp: [],
       pbpQueue: [],
       pbpQueueStartLength: 100,
@@ -192,8 +197,8 @@ export default {
     getPlayerPhoto: function(playerId) {
       return `https://ak-static.cms.nba.com/wp-content/uploads/headshots/dleague/${playerId}.png`;
     },
-    imgError: function(img) {
-      img.target.src = require("../assets/site_images/default_player_small.svg");
+    imgError: function() {
+      return require("../assets/site_images/default_player_small.svg");
     },
     test: function() {
       console.log("emition");
