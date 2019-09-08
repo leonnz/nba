@@ -379,7 +379,7 @@
   --textColor: #000;
   --statusTag: #ffffff;
   --statusTagText: #000;
-  --backgroundTeamLogo: url('./assets/team_logos/MIA_bg.png') no-repeat 50% 70%;
+  --backgroundTeamLogo: url('./assets/team_logos/SEA_bg.png') no-repeat 50% 70%;
 }
 :root.miami-vice {
   --mainColor: #db3eb1;
@@ -391,5 +391,6 @@
   --textColor: #fff;
   --statusTag: #fff;
   --statusTagText: #000;
-  --backgroundTeamLogo: url('./assets/team_logos/MIA_bg.png') no-repeat 50% 70%;
+  --backgroundTeamLogo: url('./assets/team_logos/MIA-V_bg.png') no-repeat 50%
+    70%;
 }
