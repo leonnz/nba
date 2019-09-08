@@ -222,7 +222,11 @@ export default {
       }
     },
     getTeamLogo(team) {
-      return require("../assets/team_logos/" + team + ".png");
+      try {
+        return require("../assets/team_logos/" + team + ".png");
+      } catch (error) {
+        console.log("Problem with team images: " + error);
+      }
     },
     pbpQueueManager() {
       let startPosition = 76; // This would be starting length of the pbpQueue
