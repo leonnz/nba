@@ -4,7 +4,7 @@
   --secondaryColor: #c9082a;
   --secondaryColorAlt: #ad0523;
 
-  --icon: orange;
+  --thirdColor: orange;
   --textColor: #fff;
   --statusTag: #fff;
   --statusTagText: #000;
@@ -17,7 +17,7 @@
   --secondaryColor: #c1d32f;
   --secondaryColorAlt: #c1d32f;
 
-  --icon: #c1d32f;
+  --thirdColor: #c1d32f;
   --textColor: #000;
   --statusTag: #fff;
   --statusTagText: #000;
@@ -29,7 +29,7 @@
   --secondaryColor: #ba9653;
   --secondaryColorAlt: #ba9653;
 
-  --icon: #ba9653;
+  --thirdColor: #ba9653;
   --textColor: #000;
   --statusTag: #fff;
   --statusTagText: #000;
@@ -41,7 +41,7 @@
   --secondaryColor: #fff;
   --secondaryColorAlt: #fff;
 
-  --icon: #fff;
+  --thirdColor: #fff;
   --textColor: #000;
   --statusTag: #000;
   --statusTagText: #fff;
@@ -53,7 +53,7 @@
   --secondaryColor: #00788c;
   --secondaryColorAlt: #016b7d;
 
-  --icon: #00788c;
+  --thirdColor: #00788c;
   --textColor: #ffffff;
   --statusTag: #fff;
   --backgroundTeamLogo: url('./assets/team_logos/CHA_bg.png') no-repeat 50% 70%;
@@ -64,7 +64,7 @@
   --secondaryColor: #000000;
   --secondaryColorAlt: #000000;
 
-  --icon: #000000;
+  --thirdColor: #000000;
   --textColor: #ffffff;
   --statusTag: #ffffff;
   --statusTagText: #000000;
@@ -76,7 +76,7 @@
   --secondaryColor: #ffb81c;
   --secondaryColorAlt: #ffb81c;
 
-  --icon: #ffb81c;
+  --thirdColor: #ffb81c;
   --textColor: #000;
   --statusTag: #fff;
   --statusTagText: #000;
@@ -88,7 +88,7 @@
   --secondaryColor: #b8c4ca;
   --secondaryColorAlt: #b8c4ca;
 
-  --icon: #b8c4ca;
+  --thirdColor: #b8c4ca;
   --textColor: #000;
   --statusTag: #ffffff;
   --statusTagText: #000;
@@ -100,7 +100,7 @@
   --secondaryColor: #fec524;
   --secondaryColorAlt: #fec524;
 
-  --icon: #8b2131;
+  --thirdColor: #8b2131;
   --textColor: #000;
   --statusTag: #fff;
   --statusTagText: #000;
@@ -112,7 +112,7 @@
   --secondaryColor: #006bb6;
   --secondaryColorAlt: #006bb6;
 
-  --icon: #006bb6;
+  --thirdColor: #006bb6;
   --textColor: #fff;
   --statusTag: #fff;
   --statusTagText: #000;
@@ -124,7 +124,7 @@
   --secondaryColor: #fdb927;
   --secondaryColorAlt: #fdb927;
 
-  --icon: #fdb927;
+  --thirdColor: #fdb927;
   --textColor: #000;
   --statusTag: #fff;
   --statusTagText: #000;
@@ -136,7 +136,7 @@
   --secondaryColor: #c4ced4;
   --secondaryColorAlt: #c4ced4;
 
-  --icon: #c4ced4;
+  --thirdColor: #c4ced4;
   --textColor: #000;
   --statusTag: #fff;
   --statusTagText: #000;
@@ -148,7 +148,7 @@
   --secondaryColor: #fdbb30;
   --secondaryColorAlt: #fdbb30;
 
-  --icon: #fdbb30;
+  --thirdColor: #fdbb30;
   --textColor: #000;
   --statusTag: #fff;
   --statusTagText: #000;
@@ -160,7 +160,7 @@
   --secondaryColor: #1d428a;
   --secondaryColorAlt: #1d428a;
 
-  --icon: #1d428a;
+  --thirdColor: #1d428a;
   --textColor: #fff;
   --statusTag: #fff;
   --statusTagText: #000;
@@ -171,7 +171,7 @@
   --mainColorAlt: #552583;
   --secondaryColor: #fdb927;
   --secondaryColorAlt: #f0b12b;
-  --icon: #fdbb30;
+  --thirdColor: #f0b12b;
   --textColor: #000;
   --statusTag: #fff;
   --statusTagText: #000;
@@ -183,20 +183,20 @@
   --secondaryColor: #5d76a9;
   --secondaryColorAlt: #516794;
 
-  --icon: #7c9cbf;
+  --thirdColor: #f5b112;
   --textColor: #ffffff;
   --statusTag: #fff;
   --statusTagText: #000;
   --backgroundTeamLogo: url('./assets/team_logos/MEM_bg.png') no-repeat 50% 70%;
 }
 :root.miami {
-  --mainColor: #98002e;
-  --mainColorAlt: #820329;
-  --secondaryColor: #f9a01b;
-  --secondaryColorAlt: #db8d18;
+  --mainColor: #111;
+  --mainColorAlt: #000;
+  --secondaryColor: #98002e;
+  --secondaryColorAlt: #820329;
 
-  --icon: #f9a01b;
-  --textColor: #000;
+  --thirdColor: #f9a01b;
+  --textColor: #fff;
   --statusTag: #fff;
   --statusTagText: #000;
   --backgroundTeamLogo: url('./assets/team_logos/MIA_bg.png') no-repeat 50% 70%;
@@ -207,7 +207,7 @@
   --secondaryColor: #eee1c6;
   --secondaryColorAlt: #eee1c6;
 
-  --icon: #eee1c6;
+  --thirdColor: #eee1c6;
   --textColor: #000;
   --statusTag: #fff;
   --statusTagText: #000;
@@ -219,7 +219,7 @@
   --secondaryColor: #236192;
   --secondaryColorAlt: #236192;
 
-  --icon: #78be20;
+  --thirdColor: #78be20;
   --textColor: #fff;
   --statusTag: #fff;
   --statusTagText: #000;
@@ -231,7 +231,7 @@
   --secondaryColor: #85714d;
   --secondaryColorAlt: #85714d;
 
-  --icon: #c8102e;
+  --thirdColor: #c8102e;
   --textColor: #fff;
   --statusTag: #fff;
   --statusTagText: #000;
@@ -243,7 +243,7 @@
   --secondaryColor: #f58426;
   --secondaryColorAlt: #f58426;
 
-  --icon: #f58426;
+  --thirdColor: #f58426;
   --textColor: #000;
   --statusTag: #fff;
   --statusTagText: #000;
@@ -255,7 +255,7 @@
   --secondaryColor: #007ac1;
   --secondaryColorAlt: #007ac1;
 
-  --icon: #ef3b24;
+  --thirdColor: #ef3b24;
   --textColor: #fff;
   --statusTag: #fff;
   --statusTagText: #000;
@@ -267,7 +267,7 @@
   --secondaryColor: #c4ced4;
   --secondaryColorAlt: #c4ced4;
 
-  --icon: #c4ced4;
+  --thirdColor: #c4ced4;
   --textColor: #000;
   --statusTag: #fff;
   --statusTagText: #000;
@@ -279,7 +279,7 @@
   --secondaryColor: #ed174c;
   --secondaryColorAlt: #ed174c;
 
-  --icon: #ed174c;
+  --thirdColor: #ed174c;
   --textColor: #fff;
   --statusTag: #fff;
   --statusTagText: #000;
@@ -291,7 +291,7 @@
   --secondaryColor: #e56020;
   --secondaryColorAlt: #e56020;
 
-  --icon: #e56020;
+  --thirdColor: #e56020;
   --textColor: #fff;
   --statusTag: #fff;
   --statusTagText: #000;
@@ -303,7 +303,7 @@
   --secondaryColor: #000000;
   --secondaryColorAlt: #000000;
 
-  --icon: #000;
+  --thirdColor: #000;
   --textColor: #fff;
   --statusTag: #fff;
   --statusTagText: #000;
@@ -315,7 +315,7 @@
   --secondaryColor: #63727a;
   --secondaryColorAlt: #4e5a61;
 
-  --icon: #63727a;
+  --thirdColor: #63727a;
   --textColor: #fff;
   --statusTag: #fff;
   --statusTagText: #000;
@@ -327,7 +327,7 @@
   --secondaryColor: #c4ced4;
   --secondaryColorAlt: #c4ced4;
 
-  --icon: #000000;
+  --thirdColor: #000000;
   --textColor: #000;
   --statusTag: #fff;
   --statusTagText: #000;
@@ -339,7 +339,7 @@
   --secondaryColor: #ce1141;
   --secondaryColorAlt: #ce1141;
 
-  --icon: #ce1141;
+  --thirdColor: #ce1141;
   --textColor: #fff;
   --statusTag: #fff;
   --statusTagText: #000;
@@ -351,7 +351,7 @@
   --secondaryColor: #f9a01b;
   --secondaryColorAlt: #e69419;
 
-  --icon: #f9a01b;
+  --thirdColor: #f9a01b;
   --textColor: #000;
   --statusTag: #fff;
   --statusTagText: #000;
@@ -363,7 +363,7 @@
   --secondaryColor: #e31837;
   --secondaryColorAlt: #e31837;
 
-  --icon: #e31837;
+  --thirdColor: #e31837;
   --textColor: #fff;
   --statusTag: #fff;
   --statusTagText: #000;
@@ -375,7 +375,7 @@
   --secondaryColor: #fcbe14;
   --secondaryColorAlt: #fcbe14;
 
-  --icon: #fcbe14;
+  --thirdColor: #fcbe14;
   --textColor: #000;
   --statusTag: #ffffff;
   --statusTagText: #000;
@@ -387,7 +387,7 @@
   --secondaryColor: #41b6e6;
   --secondaryColorAlt: #41b6e6;
 
-  --icon: #41b6e6;
+  --thirdColor: #41b6e6;
   --textColor: #fff;
   --statusTag: #fff;
   --statusTagText: #000;
