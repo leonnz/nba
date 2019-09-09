@@ -26,24 +26,24 @@
 :root.boston {
   --mainColor: #007a33;
   --mainColorAlt: #007a33;
-  --secondaryColor: #ba9653;
-  --secondaryColorAlt: #ba9653;
+  --secondaryColor: #fff;
+  --secondaryColorAlt: #efefef;
 
   --thirdColor: #ba9653;
   --textColor: #000;
-  --statusTag: #fff;
-  --statusTagText: #000;
+  --statusTag: #ba9653;
+  --statusTagText: #fff;
   --backgroundTeamLogo: url('./assets/team_logos/BOS_bg.png') no-repeat 50% 70%;
 }
 :root.brooklyn {
-  --mainColor: #000;
+  --mainColor: #111;
   --mainColorAlt: #000;
   --secondaryColor: #fff;
-  --secondaryColorAlt: #fff;
+  --secondaryColorAlt: #efefef;
 
   --thirdColor: #fff;
   --textColor: #000;
-  --statusTag: #000;
+  --statusTag: #333;
   --statusTagText: #fff;
   --backgroundTeamLogo: url('./assets/team_logos/BKN_bg.png') no-repeat 50% 70%;
 }
@@ -53,9 +53,10 @@
   --secondaryColor: #00788c;
   --secondaryColorAlt: #016b7d;
 
-  --thirdColor: #00788c;
+  --thirdColor: #a1a1a4;
   --textColor: #ffffff;
-  --statusTag: #fff;
+  --statusTag: #a1a1a4;
+  --statusTagText: #fff;
   --backgroundTeamLogo: url('./assets/team_logos/CHA_bg.png') no-repeat 50% 70%;
 }
 :root.chicago {
@@ -276,13 +277,13 @@
 :root.philadelphia {
   --mainColor: #006bb6;
   --mainColorAlt: #005a99;
-  --secondaryColor: #ed174c;
-  --secondaryColorAlt: #ed174c;
+  --secondaryColor: #ffffff;
+  --secondaryColorAlt: #efefef;
 
   --thirdColor: #ed174c;
-  --textColor: #fff;
-  --statusTag: #fff;
-  --statusTagText: #000;
+  --textColor: #000;
+  --statusTag: #ed174c;
+  --statusTagText: #fff;
   --backgroundTeamLogo: url('./assets/team_logos/PHI_bg.png') no-repeat 50% 70%;
 }
 :root.phoenix {
@@ -352,7 +353,7 @@
   --secondaryColorAlt: #e69419;
 
   --thirdColor: #00471b;
-  --textColor: #000;
+  --textColor: #fff;
   --statusTag: #fff;
   --statusTagText: #000;
   --backgroundTeamLogo: url('./assets/team_logos/UTA_bg.png') no-repeat 50% 70%;
