@@ -2,12 +2,14 @@
   <div>
     <div ref="gmb" class="level gameBoxCtn">
       <gameboxes
+        v-if="todaysGames !== null"
         ref="gameBoxes"
         class="level-item"
         :todaysGames="todaysGames"
         @scrollGamesLeft="gameBoxesScrollToLeft"
         @scrollGamesRight="gameBoxesScrollToRight"
       ></gameboxes>
+      <div class="level-item noGames" v-if="todaysGames == null">No games</div>
     </div>
     <section class="main-container">
       <div class="columns is-multiline pbp-container">
@@ -78,6 +80,7 @@ export default {
 <style lang="scss" scoped>
 .gameBoxCtn {
   // background-image: linear-gradient(#cccccc, #efefef);
+  min-height: 120px;
   background-image: linear-gradient(
     var(--secondaryColor),
     var(--secondaryColorAlt)
@@ -89,6 +92,10 @@ export default {
   box-shadow: 0 2px 5px 0 rgba(black, 0.4);
   border-top: 2px solid var(--thirdColor);
   border-bottom: 2px solid var(--thirdColor);
+}
+.noGames {
+  font-size: 1.5em;
+  color: var(--textColor);
 }
 
 .main-container {
