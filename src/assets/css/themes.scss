@@ -14,12 +14,12 @@
 :root.atlanta {
   --mainColor: #e03a3e;
   --mainColorAlt: #e03a3e;
-  --secondaryColor: #c1d32f;
-  --secondaryColorAlt: #c1d32f;
+  --secondaryColor: #26282a;
+  --secondaryColorAlt: #26282a;
 
   --thirdColor: #c1d32f;
-  --textColor: #000;
-  --statusTag: #fff;
+  --textColor: #fff;
+  --statusTag: #c1d32f;
   --statusTagText: #000;
   --backgroundTeamLogo: url('./assets/team_logos/ATL_bg.png') no-repeat 50% 70%;
 }
@@ -89,10 +89,10 @@
   --secondaryColor: #b8c4ca;
   --secondaryColorAlt: #b8c4ca;
 
-  --thirdColor: #b8c4ca;
+  --thirdColor: #002b5e;
   --textColor: #000;
-  --statusTag: #ffffff;
-  --statusTagText: #000;
+  --statusTag: #002b5e;
+  --statusTagText: #fff;
   --backgroundTeamLogo: url('./assets/team_logos/DAL_bg.png') no-repeat 50% 70%;
 }
 :root.denver {
@@ -103,8 +103,8 @@
 
   --thirdColor: #8b2131;
   --textColor: #000;
-  --statusTag: #fff;
-  --statusTagText: #000;
+  --statusTag: #8b2131;
+  --statusTagText: #fff;
   --backgroundTeamLogo: url('./assets/team_logos/DEN_bg.png') no-repeat 50% 70%;
 }
 :root.detroit {
@@ -113,10 +113,10 @@
   --secondaryColor: #006bb6;
   --secondaryColorAlt: #006bb6;
 
-  --thirdColor: #006bb6;
+  --thirdColor: #bec0c2;
   --textColor: #fff;
-  --statusTag: #fff;
-  --statusTagText: #000;
+  --statusTag: #bec0c2;
+  --statusTagText: #fff;
   --backgroundTeamLogo: url('./assets/team_logos/DET_bg.png') no-repeat 50% 70%;
 }
 :root.goldenstate {
@@ -137,10 +137,10 @@
   --secondaryColor: #c4ced4;
   --secondaryColorAlt: #c4ced4;
 
-  --thirdColor: #c4ced4;
+  --thirdColor: #000000;
   --textColor: #000;
-  --statusTag: #fff;
-  --statusTagText: #000;
+  --statusTag: #000000;
+  --statusTagText: #fff;
   --backgroundTeamLogo: url('./assets/team_logos/HOU_bg.png') no-repeat 50% 70%;
 }
 :root.indiana {
@@ -149,10 +149,10 @@
   --secondaryColor: #fdbb30;
   --secondaryColorAlt: #fdbb30;
 
-  --thirdColor: #fdbb30;
+  --thirdColor: #bec0c2;
   --textColor: #000;
-  --statusTag: #fff;
-  --statusTagText: #000;
+  --statusTag: #bec0c2;
+  --statusTagText: #fff;
   --backgroundTeamLogo: url('./assets/team_logos/IND_bg.png') no-repeat 50% 70%;
 }
 :root.la-clippers {
@@ -161,10 +161,10 @@
   --secondaryColor: #1d428a;
   --secondaryColorAlt: #1d428a;
 
-  --thirdColor: #1d428a;
+  --thirdColor: #bec0c2;
   --textColor: #fff;
-  --statusTag: #fff;
-  --statusTagText: #000;
+  --statusTag: #bec0c2;
+  --statusTagText: #fff;
   --backgroundTeamLogo: url('./assets/team_logos/LAC_bg.png') no-repeat 50% 70%;
 }
 :root.la-lakers {
@@ -172,10 +172,10 @@
   --mainColorAlt: #552583;
   --secondaryColor: #fdb927;
   --secondaryColorAlt: #f0b12b;
-  --thirdColor: #f0b12b;
+  --thirdColor: #000000;
   --textColor: #000;
-  --statusTag: #fff;
-  --statusTagText: #000;
+  --statusTag: #000000;
+  --statusTagText: #fff;
   --backgroundTeamLogo: url('./assets/team_logos/LAL_bg.png') no-repeat 50% 70%;
 }
 :root.memphis {
@@ -186,7 +186,7 @@
 
   --thirdColor: #f5b112;
   --textColor: #ffffff;
-  --statusTag: #fff;
+  --statusTag: #f5b112;
   --statusTagText: #000;
   --backgroundTeamLogo: url('./assets/team_logos/MEM_bg.png') no-repeat 50% 70%;
 }
@@ -198,8 +198,8 @@
 
   --thirdColor: #f9a01b;
   --textColor: #fff;
-  --statusTag: #fff;
-  --statusTagText: #000;
+  --statusTag: #f9a01b;
+  --statusTagText: #fff;
   --backgroundTeamLogo: url('./assets/team_logos/MIA_bg.png') no-repeat 50% 70%;
 }
 :root.milwaukee {
@@ -208,10 +208,10 @@
   --secondaryColor: #eee1c6;
   --secondaryColorAlt: #eee1c6;
 
-  --thirdColor: #eee1c6;
+  --thirdColor: #0077c0;
   --textColor: #000;
-  --statusTag: #fff;
-  --statusTagText: #000;
+  --statusTag: #0077c0;
+  --statusTagText: #fff;
   --backgroundTeamLogo: url('./assets/team_logos/MIL_bg.png') no-repeat 50% 70%;
 }
 :root.minnesota {
@@ -222,8 +222,8 @@
 
   --thirdColor: #78be20;
   --textColor: #fff;
-  --statusTag: #fff;
-  --statusTagText: #000;
+  --statusTag: #78be20;
+  --statusTagText: #fff;
   --backgroundTeamLogo: url('./assets/team_logos/MIN_bg.png') no-repeat 50% 70%;
 }
 :root.new-orleans {
@@ -234,8 +234,8 @@
 
   --thirdColor: #c8102e;
   --textColor: #fff;
-  --statusTag: #fff;
-  --statusTagText: #000;
+  --statusTag: #c8102e;
+  --statusTagText: #fff;
   --backgroundTeamLogo: url('./assets/team_logos/NOP_bg.png') no-repeat 50% 70%;
 }
 :root.new-york {
@@ -244,10 +244,10 @@
   --secondaryColor: #f58426;
   --secondaryColorAlt: #f58426;
 
-  --thirdColor: #f58426;
+  --thirdColor: #bec0c2;
   --textColor: #fff;
-  --statusTag: #fff;
-  --statusTagText: #000;
+  --statusTag: #bec0c2;
+  --statusTagText: #fff;
   --backgroundTeamLogo: url('./assets/team_logos/NYK_bg.png') no-repeat 50% 70%;
 }
 :root.oklahoma-city {
@@ -258,8 +258,8 @@
 
   --thirdColor: #ef3b24;
   --textColor: #fff;
-  --statusTag: #fff;
-  --statusTagText: #000;
+  --statusTag: #ef3b24;
+  --statusTagText: #fff;
   --backgroundTeamLogo: url('./assets/team_logos/OKC_bg.png') no-repeat 50% 70%;
 }
 :root.orlando {
@@ -270,8 +270,8 @@
 
   --thirdColor: #c4ced4;
   --textColor: #000;
-  --statusTag: #fff;
-  --statusTagText: #000;
+  --statusTag: #000000;
+  --statusTagText: #fff;
   --backgroundTeamLogo: url('./assets/team_logos/ORL_bg.png') no-repeat 50% 70%;
 }
 :root.philadelphia {
@@ -294,8 +294,8 @@
 
   --thirdColor: #e56020;
   --textColor: #fff;
-  --statusTag: #fff;
-  --statusTagText: #000;
+  --statusTag: #63727a;
+  --statusTagText: #fff;
   --backgroundTeamLogo: url('./assets/team_logos/PHX_bg.png') no-repeat 50% 70%;
 }
 :root.portland {
@@ -323,12 +323,12 @@
   --backgroundTeamLogo: url('./assets/team_logos/SAC_bg.png') no-repeat 50% 70%;
 }
 :root.san-antonio {
-  --mainColor: #000000;
+  --mainColor: #111;
   --mainColorAlt: #000000;
   --secondaryColor: #c4ced4;
-  --secondaryColorAlt: #c4ced4;
+  --secondaryColorAlt: #b4b4b4;
 
-  --thirdColor: #000000;
+  --thirdColor: #c4ced4;
   --textColor: #000;
   --statusTag: #fff;
   --statusTagText: #000;
@@ -340,21 +340,21 @@
   --secondaryColor: #ce1141;
   --secondaryColorAlt: #ce1141;
 
-  --thirdColor: #ce1141;
+  --thirdColor: #a1a1a4;
   --textColor: #fff;
-  --statusTag: #fff;
-  --statusTagText: #000;
+  --statusTag: #a1a1a4;
+  --statusTagText: #fff;
   --backgroundTeamLogo: url('./assets/team_logos/TOR_bg.png') no-repeat 50% 70%;
 }
 :root.utah {
   --mainColor: #002b5c;
-  --mainColorAlt: #00234a;
-  --secondaryColor: #f9a01b;
-  --secondaryColorAlt: #e69419;
+  --mainColorAlt: #002b5c;
+  --secondaryColor: #00471b;
+  --secondaryColorAlt: #00471b;
 
-  --thirdColor: #00471b;
+  --thirdColor: #f9a01b;
   --textColor: #fff;
-  --statusTag: #fff;
+  --statusTag: #f9a01b;
   --statusTagText: #000;
   --backgroundTeamLogo: url('./assets/team_logos/UTA_bg.png') no-repeat 50% 70%;
 }
@@ -364,9 +364,9 @@
   --secondaryColor: #e31837;
   --secondaryColorAlt: #e31837;
 
-  --thirdColor: #e31837;
+  --thirdColor: #c4ced4;
   --textColor: #fff;
-  --statusTag: #fff;
+  --statusTag: #c4ced4;
   --statusTagText: #000;
   --backgroundTeamLogo: url('./assets/team_logos/WAS_bg.png') no-repeat 50% 70%;
 }

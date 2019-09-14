@@ -5,7 +5,7 @@
         <div class="is-size-4 banner level-item level-left">
           <router-link tag="span" to="/">
             <a class="is-size-4" to="/">
-              <i class="fas fa-basketball-ball ball-icon"></i>
+              <!-- <i class="fas fa-basketball-ball ball-icon"></i> -->
               <span class="playbyplay-title">pbptoday.com</span>
             </a>
           </router-link>

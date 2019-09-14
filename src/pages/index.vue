@@ -91,7 +91,7 @@ export default {
   margin-bottom: 0 !important;
   box-shadow: 0 2px 5px 0 rgba(black, 0.4);
   border-top: 2px solid var(--thirdColor);
-  border-bottom: 2px solid var(--thirdColor);
+  // border-bottom: 2px solid var(--thirdColor);
 }
 .noGames {
   font-size: 1.5em;
