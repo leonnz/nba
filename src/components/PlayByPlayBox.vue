@@ -194,6 +194,7 @@ export default {
     }
   },
   methods: {
+    // TODO: Update to prod pic url at botto of this file.
     getPlayerPhoto: function(playerId) {
       return `https://ak-static.cms.nba.com/wp-content/uploads/headshots/dleague/${playerId}.png`;
     },
