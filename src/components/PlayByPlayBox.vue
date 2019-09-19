@@ -251,7 +251,7 @@ export default {
       .get()
       .then(doc => {
         if (doc.exists) {
-          this.pbp = doc.data().plays.reverse();
+          this.pbp = doc.data().plays;
           this.pbpQueue = doc.data().plays;
         } else {
           console.log("No such document!");
