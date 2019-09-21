@@ -117,7 +117,7 @@
                 </div>
               </div>
             </transition-group>
-            <div v-if="pbp.length == 0 && gameActive" class="dots">
+            <div v-if="pbp.length == 0" class="dots">
               <div></div>
               <div></div>
               <div></div>
@@ -266,7 +266,9 @@ export default {
     // by the node process gameTimeService.js
     nba.onSnapshot(doc => {
       if (doc.exists) {
-        this.pbpQueue = doc.data().plays;
+        // this.pbpQueue = doc.data().plays;
+        this.pbp = doc.data().plays.orderBy("event", "desc");
+        console.log(this.pbp);
       } else {
         console.log("No such document!");
       }
@@ -278,7 +280,7 @@ export default {
     };
     // Code that will run only after the entire view has been rendered
     this.$nextTick(function() {
-      this.pbpQueueManager();
+      // this.pbpQueueManager();
       setTimeout(() => {
         this.playEventItemClassActive = true;
       }, 1000);
