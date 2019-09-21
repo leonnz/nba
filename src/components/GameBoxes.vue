@@ -223,6 +223,7 @@ div.game-box + div.game-box {
 }
 .live {
   background-color: red;
+  color: #ffffff;
 }
 .final {
   color: var(--statusTagText);
