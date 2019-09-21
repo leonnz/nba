@@ -242,33 +242,27 @@ export default {
           startPosition++;
         }
       }, 5000);
+    },
+    compare(a, b) {
+      let aInt = parseInt(a.event);
+      let bInt = parseInt(b.event);
+
+      if (aInt < bInt) {
+        return 1;
+      }
+      if (aInt > bInt) {
+        return -1;
+      }
+      return 0;
     }
   },
   created() {
     const nba = db.collection("playbyplay").doc("game-" + this.gameData.gameId);
 
-    // Set the main pbp events.
-    nba
-      .get()
-      .then(doc => {
-        if (doc.exists) {
-          this.pbp = doc.data().plays;
-          this.pbpQueue = doc.data().plays;
-        } else {
-          console.log("No such document!");
-        }
-      })
-      .catch(err => {
-        console.log("Error getting document", err);
-      });
-
-    // Set the pbpQueue and watch for changes, the queue update time is determined
-    // by the node process gameTimeService.js
     nba.onSnapshot(doc => {
       if (doc.exists) {
-        // this.pbpQueue = doc.data().plays;
-        this.pbp = doc.data().plays.orderBy("event", "desc");
-        console.log(this.pbp);
+        console.log(doc.data().plays);
+        this.pbp = doc.data().plays.reverse();
       } else {
         console.log("No such document!");
       }
@@ -280,7 +274,6 @@ export default {
     };
     // Code that will run only after the entire view has been rendered
     this.$nextTick(function() {
-      // this.pbpQueueManager();
       setTimeout(() => {
         this.playEventItemClassActive = true;
       }, 1000);
