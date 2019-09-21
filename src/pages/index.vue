@@ -1,16 +1,19 @@
 <template>
   <div>
     <div ref="gmb" class="level gameBoxCtn">
+      <div class="level-item noGames" v-if="todaysGames.length == 0">
+        No games today
+      </div>
       <gameboxes
-        v-if="todaysGames !== null"
+        v-else
         ref="gameBoxes"
         class="level-item"
         :todaysGames="todaysGames"
         @scrollGamesLeft="gameBoxesScrollToLeft"
         @scrollGamesRight="gameBoxesScrollToRight"
       ></gameboxes>
-      <div class="level-item noGames" v-if="todaysGames == null">No games</div>
     </div>
+
     <section class="main-container">
       <div class="columns is-multiline pbp-container">
         <playbyplay
