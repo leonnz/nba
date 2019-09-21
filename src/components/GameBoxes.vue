@@ -222,7 +222,7 @@ div.game-box + div.game-box {
   background-color: var(--statusTag);
 }
 .live {
-  background-color: red;
+  background-color: #ff0000;
   color: #ffffff;
 }
 .final {
