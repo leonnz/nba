@@ -246,18 +246,6 @@ export default {
         }
       }, 5000);
     },
-    compare(a, b) {
-      let aInt = parseInt(a.event);
-      let bInt = parseInt(b.event);
-
-      if (aInt < bInt) {
-        return 1;
-      }
-      if (aInt > bInt) {
-        return -1;
-      }
-      return 0;
-    }
   },
   created() {
     const nba = db.collection("playbyplay").doc("game-" + this.gameData.gameId);
