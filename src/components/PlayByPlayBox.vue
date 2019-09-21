@@ -264,7 +264,6 @@ export default {
 
     nba.onSnapshot(doc => {
       if (doc.exists) {
-        console.log(doc.data().plays);
         this.pbp = doc.data().plays.reverse();
       } else {
         console.log("No such document!");
