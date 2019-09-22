@@ -142,6 +142,7 @@ export default {
       playerIds: playerIds,
       pbp: [],
       pbpQueue: [],
+      startPosition: 0,
       pbpQueueStartLength: 100,
       interval: null,
       scrolling: false,
@@ -234,13 +235,19 @@ export default {
     },
     pbpQueueManager: function() {
       // let startPosition = 76; // This would be starting length of the pbpQueue
-      let startPosition = this.pbpQueue.length;
+      // let startPosition = this.pbpQueue.length;
       // Every 5 seconds push a new event onto start of pbp from the pbpQueue if a new event exists
       this.interval = setInterval(() => {
-        if (startPosition > this.pbp.length) {
-          let event = this.pbpQueue[startPosition];
+        console.log(
+          this.gameActive,
+          this.startPosition,
+          this.pbpQueue.length,
+          this.pbp.length
+        );
+        if (this.gameActive && this.pbpQueue.length > this.pbp.length) {
+          let event = this.pbpQueue[this.startPosition];
           this.pbp.unshift(event);
-          startPosition++;
+          this.startPosition++;
         }
       }, 5000);
     }
@@ -253,7 +260,8 @@ export default {
       .then(doc => {
         if (doc.exists) {
           this.pbp = doc.data().plays.reverse();
-          this.pbpQueue = doc.data().plays.reverse();
+          this.pbpQueue = doc.data().plays;
+          this.startPosition = this.pbpQueue.length;
         } else {
           console.log("No such document!");
         }
@@ -263,7 +271,7 @@ export default {
       });
     nba.onSnapshot(doc => {
       if (doc.exists) {
-        this.pbpQueue = doc.data().plays.reverse();
+        this.pbpQueue = doc.data().plays;
       } else {
         console.log("No such document!");
       }
