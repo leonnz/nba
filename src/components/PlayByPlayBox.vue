@@ -293,10 +293,12 @@ export default {
     };
     // Code that will run only after the entire view has been rendered
     this.$nextTick(function() {
-      this.pbpQueueManager();
-      setTimeout(() => {
-        this.playEventItemClassActive = true;
-      }, 1000);
+      if (this.gameStatus !== 3 && this.gameActive) {
+        this.pbpQueueManager();
+        setTimeout(() => {
+          this.playEventItemClassActive = true;
+        }, 1000);
+      }
     });
     console.log(sessionStorage);
   },
