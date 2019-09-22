@@ -245,6 +245,7 @@ export default {
       }, 5000);
     }
   },
+
   created() {
     const nba = db.collection("playbyplay").doc("game-" + this.gameData.gameId);
     nba
