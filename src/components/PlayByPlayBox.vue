@@ -78,7 +78,19 @@
             >
               Game starting.
             </div>
-
+            <div v-if="pbp.length == 0 && gameActive" class="dots">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div
+              v-if="pbp.length == 0 && !gameActive && gameStatus == 3"
+              class="dots"
+            >
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
             <transition-group
               v-if="pbp.length !== 0"
               name="slide"
@@ -117,11 +129,6 @@
                 </div>
               </div>
             </transition-group>
-            <div v-if="pbp.length == 0" class="dots">
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
           </div>
         </div>
       </div>
@@ -180,6 +187,9 @@ export default {
     },
     gameActive: function() {
       return this.gameData.game.isGameActivated;
+    },
+    gameStatus: function() {
+      return this.gameData.game.statusNum;
     },
     gamePeriod: function() {
       return this.gameData.game.period.current;
