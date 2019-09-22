@@ -257,6 +257,7 @@ export default {
         if (this.gameActive && this.pbpQueue.length > this.pbp.length) {
           let event = this.pbpQueue[this.startPosition];
           this.pbp.unshift(event);
+          // TODO: call the getTodaysGames in store to refresh gameBox data.
           this.startPosition++;
         }
       }, 5000);
