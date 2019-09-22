@@ -208,63 +208,61 @@ export default {
       console.log("emition");
       this.down = true;
     },
-    showTopButton() {
+    showTopButton: function() {
       if (this.$refs.pbp.scrollTop > 20) {
         this.scrolling = true;
       } else {
         this.scrolling = false;
       }
     },
-    scrollToTop() {
+    scrollToTop: function() {
       this.$refs.pbp.scrollTop = 0;
     },
-    closePbp(gameId) {
+    closePbp: function(gameId) {
       // this.$emit("close-pbp", this.gameData.gameId);
       let index = this.$store.getters.getSelectedGames.indexOf(gameId);
       if (index !== -1) {
         this.$store.commit("removeSelectedGame", index);
       }
     },
-    getTeamLogo(team) {
+    getTeamLogo: function(team) {
       try {
         return require("../assets/team_logos/" + team + ".png");
       } catch (error) {
         console.log("Problem with team images: " + error);
       }
     },
-    pbpQueueManager() {
-      let startPosition = 76; // This would be starting length of the pbpQueue
+    pbpQueueManager: function() {
+      // let startPosition = 76; // This would be starting length of the pbpQueue
+      let startPosition = this.pbpQueue.length;
       // Every 5 seconds push a new event onto start of pbp from the pbpQueue if a new event exists
-      setInterval(() => {
-        // if (this.pbpQueueStartLength > this.pbp.length) {
-        // console.log(startPosition, this.pbpQueue.length, this.pbp.length);
-        // Testing version
-        if (startPosition < this.pbp.length) {
+      this.interval = setInterval(() => {
+        if (startPosition > this.pbp.length) {
           let event = this.pbpQueue[startPosition];
           this.pbp.unshift(event);
           startPosition++;
         }
       }, 5000);
-    },
-    compare(a, b) {
-      let aInt = parseInt(a.event);
-      let bInt = parseInt(b.event);
-
-      if (aInt < bInt) {
-        return 1;
-      }
-      if (aInt > bInt) {
-        return -1;
-      }
-      return 0;
     }
   },
   created() {
     const nba = db.collection("playbyplay").doc("game-" + this.gameData.gameId);
-
+    nba
+      .get()
+      .then(doc => {
+        if (doc.exists) {
+          this.pbp = doc.data().plays.reverse();
+          this.pbpQueue = doc.data().plays.reverse();
+        } else {
+          console.log("No such document!");
+        }
+      })
+      .catch(err => {
+        console.log("Error getting document", err);
+      });
     nba.onSnapshot(doc => {
       if (doc.exists) {
-        this.pbp = doc.data().plays.reverse();
+        this.pbpQueue = doc.data().plays.reverse();
       } else {
         console.log("No such document!");
       }
@@ -276,16 +274,17 @@ export default {
     };
     // Code that will run only after the entire view has been rendered
     this.$nextTick(function() {
+      this.pbpQueueManager();
       setTimeout(() => {
         this.playEventItemClassActive = true;
       }, 1000);
     });
     console.log(sessionStorage);
-  }
+  },
 
-  // destroyed() {
-  //   console.log("destroyed");
-  // }
+  destroyed() {
+    clearInterval(this.interval);
+  }
 };
 </script>
 
