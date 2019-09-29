@@ -69,24 +69,22 @@
             >
               back to top
             </button>
-            <div class="pbp-message" v-if="!gameActive && gamePeriod == '1'">
-              Game has not started.
-            </div>
             <div
               class="pbp-message"
-              v-if="gameActive && gamePeriod == '1' && !gameData.game.clock"
+              v-if="pbp.length == 0 && !gameActive && gamePeriod == '0'"
             >
-              Game starting.
+              Game has not started.
             </div>
-            <div v-if="pbp.length == 0 && gameActive" class="dots">
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
+
             <div
-              v-if="pbp.length == 0 && !gameActive && gameStatus == '3'"
+              v-if="pbp.length == 0 && gameActive && gamePeriod !== '0'"
               class="dots"
             >
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div v-if="pbp.length == 0 && getEndTime !== ''" class="dots">
               <div></div>
               <div></div>
               <div></div>
@@ -201,10 +199,13 @@ export default {
       return this.gameData.game.hTeamName;
     },
     visitingTeamScore: function() {
-      return this.pbp[0].visitor_score;
+      return this.gameData.game.vTeamScore;
     },
     homeTeamScore: function() {
-      return this.pbp[0].home_score;
+      return this.gameData.game.hTeamScore;
+    },
+    getEndTime: function() {
+      return this.gameData.game.endTimeUTC;
     }
   },
   methods: {
