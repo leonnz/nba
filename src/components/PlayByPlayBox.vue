@@ -271,7 +271,6 @@ export default {
       .then(doc => {
         if (doc.exists) {
           this.pbp = doc.data().zPlayByPlay.reverse();
-          console.log(this.pbp);
           this.pbpQueue = doc.data().zPlayByPlay;
           this.startPosition = this.pbpQueue.length;
         } else {

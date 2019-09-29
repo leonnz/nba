@@ -35,7 +35,9 @@
         {{ "LIVE" }}
       </div>
       <div class="status-tag" v-else>
-        <span class="not-started">{{ game.startTimeUTC }}</span>
+        <span class="not-started">{{
+          getGameStartTime(game.startTimeUTC)
+        }}</span>
       </div>
       <div class="level is-mobile scores">
         <div class="level-item level-left">
@@ -84,6 +86,7 @@
 </template>
 
 <script>
+import { DateTime } from "luxon";
 export default {
   props: ["todaysGames"],
   data() {
@@ -102,6 +105,12 @@ export default {
     window.addEventListener("resize", this.setGameBoxesOverflowing);
   },
   methods: {
+    getGameStartTime: function(utcStartTime) {
+      let gameStartTime = DateTime.fromISO(utcStartTime)
+        .toLocaleString(DateTime.TIME_SIMPLE)
+        .toString();
+      return gameStartTime;
+    },
     showGamePlayByPlay: function(gameId) {
       if (this.selectedGames.indexOf(gameId) === -1) {
         this.$store.commit("addSelectedGame", gameId);
