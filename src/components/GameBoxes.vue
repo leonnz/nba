@@ -30,12 +30,12 @@
       </div>
       <div
         class="status-tag live"
-        v-else-if="game.isGameActivated && game.period.current !== 0"
+        v-else-if="game.isGameActivated && game.period !== '0'"
       >
         {{ "LIVE" }}
       </div>
       <div class="status-tag" v-else>
-        <span class="not-started">{{ game.startTimeEastern }}</span>
+        <span class="not-started">{{ game.startTimeUTC }}</span>
       </div>
       <div class="level is-mobile scores">
         <div class="level-item level-left">

@@ -69,12 +69,12 @@
             >
               back to top
             </button>
-            <div class="pbp-message" v-if="!gameActive && gamePeriod == 0">
+            <div class="pbp-message" v-if="!gameActive && gamePeriod == '1'">
               Game has not started.
             </div>
             <div
               class="pbp-message"
-              v-if="gameActive && gamePeriod == 1 && !gameData.game.clock"
+              v-if="gameActive && gamePeriod == '1' && !gameData.game.clock"
             >
               Game starting.
             </div>
@@ -84,7 +84,7 @@
               <div></div>
             </div>
             <div
-              v-if="pbp.length == 0 && !gameActive && gameStatus == 3"
+              v-if="pbp.length == 0 && !gameActive && gameStatus == '3'"
               class="dots"
             >
               <div></div>
@@ -271,7 +271,8 @@ export default {
       .then(doc => {
         if (doc.exists) {
           this.pbp = doc.data().zPlayByPlay.reverse();
-          this.pbpQueue = doc.data().plays;
+          console.log(this.pbp);
+          this.pbpQueue = doc.data().zPlayByPlay;
           this.startPosition = this.pbpQueue.length;
         } else {
           console.log("No such document!");
@@ -282,7 +283,7 @@ export default {
       });
     nba.onSnapshot(doc => {
       if (doc.exists) {
-        this.pbpQueue = doc.data().plays;
+        this.pbpQueue = doc.data().zPlayByPlay;
       } else {
         console.log("No such document!");
       }
@@ -294,7 +295,7 @@ export default {
     };
     // Code that will run only after the entire view has been rendered
     this.$nextTick(function() {
-      if (this.gameStatus !== 3 && this.gameActive) {
+      if (this.gameStatus !== "3" && this.gameActive) {
         this.pbpQueueManager();
         setTimeout(() => {
           this.playEventItemClassActive = true;
