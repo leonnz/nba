@@ -192,13 +192,13 @@ export default {
       return this.gameData.game.statusNum;
     },
     gamePeriod: function() {
-      return this.gameData.game.period.current;
+      return this.gameData.game.period;
     },
     visitingTeam: function() {
-      return this.gameData.game.vTeam.triCode;
+      return this.gameData.game.vTeamName;
     },
     homeTeam: function() {
-      return this.gameData.game.hTeam.triCode;
+      return this.gameData.game.hTeamName;
     },
     visitingTeamScore: function() {
       return this.pbp[0].visitor_score;
@@ -270,7 +270,7 @@ export default {
       .get()
       .then(doc => {
         if (doc.exists) {
-          this.pbp = doc.data().plays.reverse();
+          this.pbp = doc.data().zPlayByPlay.reverse();
           this.pbpQueue = doc.data().plays;
           this.startPosition = this.pbpQueue.length;
         } else {

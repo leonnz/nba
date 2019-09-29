@@ -63,19 +63,44 @@ export default {
       this.$refs.gmb.scrollLeft = 2000;
     }
   },
+  // TODO: Use the new data model
   mounted() {
-    const nba = db.collection("playbyplay").doc("nba");
-    nba.onSnapshot(doc => {
-      if (doc.exists) {
-        this.$store.commit("addTodaysGames", doc.data().todaysGames);
-      } else {
-        console.log("No such document!");
-      }
-    });
-    console.log(this.selectedGames);
-    console.log(sessionStorage);
-    // sessionStorage.clear();
-    // localStorage.clear();
+    // const nba = db.collection("playbyplay").doc("nba");
+    // nba.onSnapshot(doc => {
+    //   if (doc.exists) {
+    //     this.$store.commit("addTodaysGames", doc.data().todaysGames);
+    //   } else {
+    //     console.log("No such document!");
+    //   }
+    // });
+
+    let todaysGames = [];
+
+    const pbpCollection = db.collection("playbyplay").get();
+
+    pbpCollection
+      .then(snapshot => {
+        snapshot.forEach(doc => {
+          if (doc.exists) {
+            let data = doc.data();
+            todaysGames.push({
+              gameId: data.gameId,
+              isGameActivated: data.isGameActivated,
+              startTimeUTC: data.startTimeUTC,
+              endTimeUTC: data.endTimeUTC,
+              period: data.period,
+              vTeamName: data.vTeamName,
+              vTeamScore: data.vTeamScore,
+              hTeamName: data.hTeamName,
+              hTeamScore: data.hTeamScore
+            });
+          }
+        });
+        this.$store.commit("addTodaysGames", todaysGames);
+      })
+      .catch(function(error) {
+        console.log("Error getting documents: ", error);
+      });
   }
 };
 </script>

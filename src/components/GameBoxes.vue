@@ -44,13 +44,13 @@
               class="is-size-6"
               :class="{ 'higher-score': leadingTeam(game) === 'vteam' }"
             >
-              {{ game.vTeam.triCode }}
+              {{ game.vTeamName }}
             </div>
             <div
               class="is-size-6"
               :class="{ 'higher-score': leadingTeam(game) === 'hteam' }"
             >
-              {{ game.hTeam.triCode }}
+              {{ game.hTeamName }}
             </div>
           </div>
         </div>
@@ -60,13 +60,13 @@
               class="is-size-6"
               :class="{ 'higher-score': leadingTeam(game) === 'vteam' }"
             >
-              {{ game.vTeam.score || "0" }}
+              {{ game.vTeamScore || "0" }}
             </div>
             <div
               class="is-size-6"
               :class="{ 'higher-score': leadingTeam(game) === 'hteam' }"
             >
-              {{ game.hTeam.score || "0" }}
+              {{ game.hTeamScore || "0" }}
             </div>
           </div>
         </div>
@@ -111,8 +111,8 @@ export default {
       return require("../assets/team_logos/" + team + ".png");
     },
     leadingTeam: function(game) {
-      let vteamScore = parseInt(game.vTeam.score);
-      let hteamScore = parseInt(game.hTeam.score);
+      let vteamScore = parseInt(game.vTeamScore);
+      let hteamScore = parseInt(game.hTeamScore);
 
       if (vteamScore > hteamScore) {
         return "vteam";
