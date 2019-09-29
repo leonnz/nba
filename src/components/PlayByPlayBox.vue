@@ -76,15 +76,7 @@
               Game has not started.
             </div>
 
-            <div
-              v-if="pbp.length == 0 && gameActive && gamePeriod !== '0'"
-              class="dots"
-            >
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
-            <div v-if="pbp.length == 0 && getEndTime !== ''" class="dots">
+            <div v-if="!playsExist && gameStatus !== '1'" class="dots">
               <div></div>
               <div></div>
               <div></div>
@@ -174,7 +166,7 @@ export default {
     },
     getPeriod: function() {
       return this.periodMap.filter(period => {
-        return period[this.gameData.game.period.current];
+        return period[this.gameData.game.period];
       });
     },
     playsExist: function() {
@@ -281,13 +273,14 @@ export default {
       .catch(err => {
         console.log("Error getting document", err);
       });
-    nba.onSnapshot(doc => {
-      if (doc.exists) {
-        this.pbpQueue = doc.data().zPlayByPlay;
-      } else {
-        console.log("No such document!");
-      }
-    });
+
+    // nba.onSnapshot(doc => {
+    //   if (doc.exists) {
+    //     this.pbpQueue = doc.data().zPlayByPlay;
+    //   } else {
+    //     console.log("No such document!");
+    //   }
+    // });
   },
   mounted() {
     this.$refs.pbp.onscroll = () => {

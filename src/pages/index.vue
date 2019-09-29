@@ -86,6 +86,7 @@ export default {
             todaysGames.push({
               gameId: data.gameId,
               isGameActivated: data.isGameActivated,
+              statusNum: data.statusNum,
               startTimeUTC: data.startTimeUTC,
               endTimeUTC: data.endTimeUTC,
               period: data.period,
