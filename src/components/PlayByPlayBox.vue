@@ -77,9 +77,14 @@
             </div>
 
             <div
-              v-if="!playsExist && gameStatus !== '1' && gamePeriod != -'0'"
+              v-if="!playsExist && gameStatus !== '1' && gamePeriod !== '0'"
               class="dots"
             >
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div v-else-if="!playsExist && gamePeriod !== '0'" class="dots">
               <div></div>
               <div></div>
               <div></div>
@@ -319,7 +324,6 @@ export default {
         }, 1000);
       }
     });
-    console.log(sessionStorage);
   },
 
   destroyed() {
