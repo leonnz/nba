@@ -76,7 +76,10 @@
               Game has not started.
             </div>
 
-            <div v-if="!playsExist && gameStatus !== '1'" class="dots">
+            <div
+              v-if="!playsExist && gameStatus !== '1' && gamePeriod != -'0'"
+              class="dots"
+            >
               <div></div>
               <div></div>
               <div></div>
