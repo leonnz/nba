@@ -147,9 +147,6 @@ export default {
       teams: "",
       playerIds: playerIds,
       pbp: [],
-      pbpQueue: [],
-      startPosition: 0,
-      pbpQueueStartLength: 100,
       interval: null,
       scrolling: false,
       playEventItemClassActive: false,
@@ -181,9 +178,7 @@ export default {
     playsExist: function() {
       return this.pbp.length > 0 ? true : false;
     },
-    pbpQueueExists: function() {
-      return this.pbpQueue.length > 0 ? true : false;
-    },
+
     gameActive: function() {
       return this.gameData.game.isGameActivated;
     },
@@ -244,25 +239,6 @@ export default {
       } catch (error) {
         console.log("Problem with team images: " + error);
       }
-    },
-    pbpQueueManager: function() {
-      // let startPosition = 76; // This would be starting length of the pbpQueue
-      // let startPosition = this.pbpQueue.length;
-      // Every 5 seconds push a new event onto start of pbp from the pbpQueue if a new event exists
-      this.interval = setInterval(() => {
-        console.log(
-          this.gameActive,
-          this.startPosition,
-          this.pbpQueue.length,
-          this.pbp.length
-        );
-        if (this.gameActive && this.pbpQueue.length > this.pbp.length) {
-          let event = this.pbpQueue[this.startPosition];
-          this.pbp.unshift(event);
-          // TODO: call the getTodaysGames in store to refresh gameBox data.
-          this.startPosition++;
-        }
-      }, 5000);
     }
   },
 
@@ -273,8 +249,6 @@ export default {
       .then(doc => {
         if (doc.exists) {
           this.pbp = doc.data().zPlayByPlay.reverse();
-          this.pbpQueue = doc.data().zPlayByPlay;
-          this.startPosition = this.pbpQueue.length;
         } else {
           console.log("No such document!");
         }
@@ -283,18 +257,17 @@ export default {
         console.log("Error getting document", err);
       });
     if (this.gameStatus !== "3" && this.gameActive) {
-      // nba.onSnapshot(snapshot => {
-      //   if (snapshot.exists) {
-      //     // this.pbpQueue = doc.data().zPlayByPlay;
-      //     if (this.pbp.length < snapshot.data().zPlayByPlay.length) {
-      //       let eventsLength = snapshot.data().zPlayByPlay.length;
-      //       let lastEvent = snapshot.data().zPlayByPlay[eventsLength - 1];
-      //       this.pbp.unshift(lastEvent);
-      //     }
-      //   } else {
-      //     console.log("No such document!");
-      //   }
-      // });
+      nba.onSnapshot(snapshot => {
+        if (snapshot.exists) {
+          if (this.pbp.length < snapshot.data().zPlayByPlay.length) {
+            let eventsLength = snapshot.data().zPlayByPlay.length;
+            let lastEvent = snapshot.data().zPlayByPlay[eventsLength - 1];
+            this.pbp.unshift(lastEvent);
+          }
+        } else {
+          console.log("No such document!");
+        }
+      });
     }
   },
   mounted() {
@@ -309,7 +282,6 @@ export default {
           .doc("game-" + this.gameData.gameId);
         nba.onSnapshot(snapshot => {
           if (snapshot.exists) {
-            // this.pbpQueue = doc.data().zPlayByPlay;
             if (this.pbp.length < snapshot.data().zPlayByPlay.length) {
               let eventsLength = snapshot.data().zPlayByPlay.length;
               let lastEvent = snapshot.data().zPlayByPlay[eventsLength - 1];
@@ -319,7 +291,6 @@ export default {
             console.log("No such document!");
           }
         });
-        // this.pbpQueueManager();
         setTimeout(() => {
           this.playEventItemClassActive = true;
         }, 1000);
