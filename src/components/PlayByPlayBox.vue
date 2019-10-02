@@ -71,20 +71,20 @@
             </button>
             <div
               class="pbp-message"
-              v-if="pbp.length == 0 && !gameActive && gamePeriod == '0'"
+              v-if="pbp.length == 0 && !gameActive && gamePeriod == 0"
             >
               Game has not started.
             </div>
 
             <div
-              v-if="!playsExist && gameStatus !== '1' && gamePeriod !== '0'"
+              v-if="!playsExist && gameStatus !== 1 && gamePeriod !== 0"
               class="dots"
             >
               <div></div>
               <div></div>
               <div></div>
             </div>
-            <div v-else-if="!playsExist && gamePeriod !== '0'" class="dots">
+            <div v-else-if="!playsExist && gamePeriod !== 0" class="dots">
               <div></div>
               <div></div>
               <div></div>

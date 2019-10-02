@@ -75,6 +75,7 @@ export default {
           let gameData = {
             gameId: data.gameId,
             isGameActivated: data.isGameActivated,
+            statusNum: data.statusNum,
             endTimeUTC: data.endTimeUTC,
             startTimeUTC: data.startTimeUTC,
             period: data.period,
