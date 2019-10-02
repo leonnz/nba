@@ -136,6 +136,7 @@
 
 
 <script>
+// TODO Handle start events, they no clock value.
 import { db } from "../services/firebase";
 import playerIds from "../assets/data/playerIds.json";
 
