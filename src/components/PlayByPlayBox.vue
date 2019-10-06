@@ -127,7 +127,7 @@
                   <div class="clock">
                     {{ getClock(event) }}
                   </div>
-                  <div class="description">{{ event.description }}</div>
+                  <div class="description">{{ getDescription(event) }}</div>
                 </div>
               </div>
             </transition-group>
@@ -255,6 +255,22 @@ export default {
       } else {
         return event.clock;
       }
+    },
+    getQuarter: function(period) {
+      return this.periodMap.filter(quarter => {
+        return quarter[parseInt(period)];
+      });
+    },
+    getDescription: function(event) {
+      if (
+        event.description == "Start Period" ||
+        event.description == "End Period"
+      ) {
+        return `Start Period (${
+          this.getQuarter(event.period)[0][event.period]
+        })`;
+      }
+      return event.description;
     }
   },
 
