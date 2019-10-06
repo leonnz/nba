@@ -257,13 +257,12 @@ export default {
       });
     },
     getDescription: function(event) {
-      if (
-        event.description == "Start Period" ||
-        event.description == "End Period"
-      ) {
+      if (event.description == "Start Period") {
         return `Start Period (${
           this.getQuarter(event.period)[0][event.period]
         })`;
+      } else if (event.description == "End Period") {
+        return `End Period (${this.getQuarter(event.period)[0][event.period]})`;
       }
       return event.description;
     }
@@ -271,33 +270,23 @@ export default {
 
   created() {
     const nba = db.collection("playbyplay").doc("game-" + this.gameData.gameId);
-    nba
-      .get()
-      .then(doc => {
-        if (doc.exists) {
-          this.pbp = doc.data().zPlayByPlay.reverse();
-        } else {
-          console.log("No such document!");
-        }
-      })
-      .catch(err => {
-        console.log("Error getting document", err);
-      });
-    // if (this.gameStatus !== 3 && this.gameActive) {
-    if (this.gameStatus == 3 && this.gameActive == false) {
-      // For testing only, finished games with status of 3.
-      nba.onSnapshot(snapshot => {
-        if (snapshot.exists) {
+
+    nba.onSnapshot(snapshot => {
+      if (snapshot.exists) {
+        this.pbp = snapshot.data().zPlayByPlay.reverse();
+        // if (this.gameStatus !== "3" && this.gameActive) {
+        if (this.gameStatus == 3 && this.gameActive == false) {
+          // For testing only, finished games with status of 3.
           if (this.pbp.length < snapshot.data().zPlayByPlay.length) {
             let eventsLength = snapshot.data().zPlayByPlay.length;
             let lastEvent = snapshot.data().zPlayByPlay[eventsLength - 1];
             this.pbp.unshift(lastEvent);
           }
-        } else {
-          console.log("No such document!");
         }
-      });
-    }
+      } else {
+        console.log("No such document!");
+      }
+    });
   },
   mounted() {
     this.$refs.pbp.onscroll = () => {
@@ -305,27 +294,9 @@ export default {
     };
     // Code that will run only after the entire view has been rendered
     this.$nextTick(function() {
-      // if (this.gameStatus !== "3" && this.gameActive) {
-      if (this.gameStatus == 3 && this.gameActive == false) {
-        // For testing only, finished games with status of 3.
-        const nba = db
-          .collection("playbyplay")
-          .doc("game-" + this.gameData.gameId);
-        nba.onSnapshot(snapshot => {
-          if (snapshot.exists) {
-            if (this.pbp.length < snapshot.data().zPlayByPlay.length) {
-              let eventsLength = snapshot.data().zPlayByPlay.length;
-              let lastEvent = snapshot.data().zPlayByPlay[eventsLength - 1];
-              this.pbp.unshift(lastEvent);
-            }
-          } else {
-            console.log("No such document!");
-          }
-        });
-        setTimeout(() => {
-          this.playEventItemClassActive = true;
-        }, 1000);
-      }
+      setTimeout(() => {
+        this.playEventItemClassActive = true;
+      }, 1000);
     });
   },
 
