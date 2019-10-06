@@ -41,7 +41,11 @@
                     v-if="gameActive && playsExist"
                     class="title is-size-5 live-tag"
                   >
-                    {{ pbp[0].clock }}
+                    {{
+                      pbp[0].description == "Start Period"
+                        ? "12:00"
+                        : pbp[0].clock
+                    }}
                   </p>
                 </div>
               </div>
@@ -106,7 +110,9 @@
                 <div class="media" v-if="event.description.includes('PTS)')">
                   <div class="media-content">
                     <div class="content event">
-                      <div class="clock">{{ event.clock }}</div>
+                      <div class="clock">
+                        {{ event.clock }}
+                      </div>
                       <div class="description">{{ event.description }}</div>
                     </div>
                   </div>
@@ -122,7 +128,9 @@
                   </figure>
                 </div>
                 <div v-else class="event">
-                  <div class="clock">{{ event.clock }}</div>
+                  <div class="clock">
+                    {{ getClock(event) }}
+                  </div>
                   <div class="description">{{ event.description }}</div>
                 </div>
               </div>
@@ -238,6 +246,18 @@ export default {
         return require("../assets/team_logos/" + team + ".png");
       } catch (error) {
         console.log("Problem with team images: " + error);
+      }
+    },
+    getClock: function(event) {
+      if (event.description == "Start Period") {
+        return "12:00";
+      } else if (
+        event.description.includes("Jump Ball") &&
+        event.period == "1"
+      ) {
+        return "12:00";
+      } else {
+        return event.clock;
       }
     }
   },
