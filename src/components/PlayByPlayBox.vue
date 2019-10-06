@@ -436,6 +436,7 @@ export default {
   box-shadow: 2px 2px 5px 0 rgba(black, 0.4);
 }
 .scrollToTopButton {
+  border-radius: 4px;
   position: sticky;
   display: block;
   margin: auto;
