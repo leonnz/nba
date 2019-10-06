@@ -41,11 +41,7 @@
                     v-if="gameActive && playsExist"
                     class="title is-size-5 live-tag"
                   >
-                    {{
-                      pbp[0].description == "Start Period"
-                        ? "12:00"
-                        : pbp[0].clock
-                    }}
+                    {{ getClock(pbp[0]) }}
                   </p>
                 </div>
               </div>
@@ -180,7 +176,7 @@ export default {
     },
     getPeriod: function() {
       return this.periodMap.filter(period => {
-        return period[this.gameData.game.period];
+        return period[parseInt(this.pbp[0].period)];
       });
     },
     playsExist: function() {
