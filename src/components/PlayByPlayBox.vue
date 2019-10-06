@@ -245,10 +245,7 @@ export default {
     getClock: function(event) {
       if (event.description == "Start Period") {
         return "12:00";
-      } else if (
-        event.description.includes("Jump Ball") &&
-        event.period == "1"
-      ) {
+      } else if (event.description.includes("Jump Ball") && event.period == 1) {
         return "12:00";
       } else {
         return event.clock;
@@ -256,7 +253,7 @@ export default {
     },
     getQuarter: function(period) {
       return this.periodMap.filter(quarter => {
-        return quarter[parseInt(period)];
+        return quarter[period];
       });
     },
     getDescription: function(event) {
@@ -286,7 +283,9 @@ export default {
       .catch(err => {
         console.log("Error getting document", err);
       });
-    if (this.gameStatus !== "3" && this.gameActive) {
+    // if (this.gameStatus !== 3 && this.gameActive) {
+    if (this.gameStatus == 3 && this.gameActive == false) {
+      // For testing only, finished games with status of 3.
       nba.onSnapshot(snapshot => {
         if (snapshot.exists) {
           if (this.pbp.length < snapshot.data().zPlayByPlay.length) {
@@ -306,7 +305,9 @@ export default {
     };
     // Code that will run only after the entire view has been rendered
     this.$nextTick(function() {
-      if (this.gameStatus !== "3" && this.gameActive) {
+      // if (this.gameStatus !== "3" && this.gameActive) {
+      if (this.gameStatus == 3 && this.gameActive == false) {
+        // For testing only, finished games with status of 3.
         const nba = db
           .collection("playbyplay")
           .doc("game-" + this.gameData.gameId);
