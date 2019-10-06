@@ -393,7 +393,7 @@ export default {
   cursor: pointer;
 }
 .live-tag {
-  color: red;
+  color: white;
   letter-spacing: 2px;
 }
 .pbp-container {
