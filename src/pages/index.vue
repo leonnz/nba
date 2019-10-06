@@ -63,7 +63,6 @@ export default {
       this.$refs.gmb.scrollLeft = 2000;
     }
   },
-  // TODO: Use the new data model
   mounted() {
     const nba = db.collection("playbyplay");
 

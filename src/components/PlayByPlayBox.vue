@@ -140,7 +140,6 @@
 
 
 <script>
-// TODO Handle start events, they no clock value.
 import { db } from "../services/firebase";
 import playerIds from "../assets/data/playerIds.json";
 
@@ -209,9 +208,8 @@ export default {
     }
   },
   methods: {
-    // TODO: Update to prod pic url at botto of this file.
     getPlayerPhoto: function(playerId) {
-      return `https://ak-static.cms.nba.com/wp-content/uploads/headshots/dleague/${playerId}.png`;
+      return `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${playerId}.png`;
     },
     imgError: function() {
       return require("../assets/site_images/default_player_small.svg");
