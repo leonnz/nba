@@ -270,23 +270,34 @@ export default {
 
   created() {
     const nba = db.collection("playbyplay").doc("game-" + this.gameData.gameId);
-
-    nba.onSnapshot(snapshot => {
-      if (snapshot.exists) {
-        this.pbp = snapshot.data().zPlayByPlay.reverse();
-        // if (this.gameStatus !== "3" && this.gameActive) {
-        if (this.gameStatus == 3 && this.gameActive == false) {
-          // For testing only, finished games with status of 3.
-          if (this.pbp.length < snapshot.data().zPlayByPlay.length) {
-            let eventsLength = snapshot.data().zPlayByPlay.length;
-            let lastEvent = snapshot.data().zPlayByPlay[eventsLength - 1];
-            this.pbp.unshift(lastEvent);
-          }
+    nba
+      .get()
+      .then(doc => {
+        if (doc.exists) {
+          this.pbp = doc.data().zPlayByPlay.reverse();
+          nba.onSnapshot(snapshot => {
+            if (snapshot.exists) {
+              // if (this.gameStatus !== "3" && this.gameActive) {
+              if (this.gameStatus == 3 && this.gameActive == false) {
+                // For testing only, finished games with status of 3.
+                if (this.pbp.length < snapshot.data().zPlayByPlay.length) {
+                  let eventsLength = snapshot.data().zPlayByPlay.length;
+                  let lastEvent = snapshot.data().zPlayByPlay[eventsLength - 1];
+                  this.pbp.unshift(lastEvent);
+                  console.log(this.pbp);
+                }
+              }
+            } else {
+              console.log("No such document!");
+            }
+          });
+        } else {
+          console.log("No such document!");
         }
-      } else {
-        console.log("No such document!");
-      }
-    });
+      })
+      .catch(err => {
+        console.log("Error getting document", err);
+      });
   },
   mounted() {
     this.$refs.pbp.onscroll = () => {
