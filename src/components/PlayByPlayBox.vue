@@ -245,7 +245,7 @@ export default {
     getClock: function(event) {
       if (event.description == "Start Period") {
         return "12:00";
-      } else if (event.description.includes("Jump Ball") && event.period == 1) {
+      } else if (event.description.includes("Jump Ball") && event.period == 1 && event.clock == "") {
         return "12:00";
       } else {
         return event.clock;
