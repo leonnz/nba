@@ -22,19 +22,16 @@
       :key="game.gameId"
       @click="showGamePlayByPlay(game.gameId)"
     >
-      <div
-        class="status-tag final"
-        v-if="!game.isGameActivated && game.endTimeUTC"
-      >
+      <div class="status-tag " v-if="!game.isGameActivated && game.endTimeUTC">
         {{ "FINAL" }}
       </div>
       <div
-        class="status-tag live"
+        class="status-tag"
         v-else-if="game.isGameActivated && game.period !== '0'"
       >
         {{ "LIVE" }}
       </div>
-      <div v-else class="status-tag not-started">
+      <div v-else class="status-tag">
         {{ getGameStartTime(game.startTimeUTC) }}
       </div>
       <div class="level is-mobile scores">
@@ -236,9 +233,6 @@ div.game-box + div.game-box {
 .final {
   color: var(--statusTagText);
   background-color: var(--statusTag);
-}
-.not-started {
-  letter-spacing: 0px;
 }
 </style>
 
