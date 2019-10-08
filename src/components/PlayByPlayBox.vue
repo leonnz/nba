@@ -44,7 +44,7 @@
                     {{ getClock(pbp[0]) }}
                   </p>
 
-                  <p v-else class="status-tag not-started">
+                  <p v-else class="title is-size-5 not-started">
                     {{ getGameStartTime(getStartTime) }}
                   </p>
                 </div>
@@ -426,6 +426,9 @@ export default {
   color: white;
   letter-spacing: 2px;
 }
+.not-started {
+  color: white;
+}
 .pbp-container {
   // border: 1px solid var(--baseColor);
   border: 1px solid var(--mainColor);
@@ -501,26 +504,6 @@ export default {
   to {
     opacity: 0;
   }
-}
-.status-tag {
-  width: 80px;
-  height: 100%;
-  text-align: center;
-  letter-spacing: 1px;
-  border-radius: 3px;
-  margin: 0.2rem 0.2rem 0.5rem 0.2rem;
-  font-size: 18px;
-}
-.live {
-  background-color: #ff0000;
-  color: #ffffff;
-}
-.final {
-  color: var(--statusTagText);
-  background-color: var(--statusTag);
-}
-.not-started {
-  letter-spacing: 0px;
 }
 </style>
 
