@@ -34,7 +34,7 @@
       >
         {{ "LIVE" }}
       </div>
-      <div class="status-tag not-started" v-else>
+      <div v-else class="status-tag not-started">
         {{ getGameStartTime(game.startTimeUTC) }}
       </div>
       <div class="level is-mobile scores">
@@ -220,7 +220,6 @@ div.game-box + div.game-box {
 }
 .status-tag {
   height: 100%;
-  color: #efefef;
   text-align: center;
   letter-spacing: 1px;
   border-radius: 3px;

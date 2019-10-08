@@ -43,6 +43,10 @@
                   >
                     {{ getClock(pbp[0]) }}
                   </p>
+
+                  <p v-else class="status-tag not-started">
+                    {{ getGameStartTime(getStartTime) }}
+                  </p>
                 </div>
               </div>
               <div class="level-item has-text-centered">
@@ -141,6 +145,7 @@
 
 <script>
 import { db } from "../services/firebase";
+import { DateTime } from "luxon";
 import playerIds from "../assets/data/playerIds.json";
 
 export default {
@@ -203,6 +208,9 @@ export default {
     homeTeamScore: function() {
       return this.gameData.game.hTeamScore;
     },
+    getStartTime: function() {
+      return this.gameData.game.startTimeUTC;
+    },
     getEndTime: function() {
       return this.gameData.game.endTimeUTC;
     }
@@ -229,7 +237,6 @@ export default {
       this.$refs.pbp.scrollTop = 0;
     },
     closePbp: function(gameId) {
-      // this.$emit("close-pbp", this.gameData.gameId);
       let index = this.$store.getters.getSelectedGames.indexOf(gameId);
       if (index !== -1) {
         this.$store.commit("removeSelectedGame", index);
@@ -245,7 +252,11 @@ export default {
     getClock: function(event) {
       if (event.description == "Start Period") {
         return "12:00";
-      } else if (event.description.includes("Jump Ball") && event.period == 1 && event.clock == "") {
+      } else if (
+        event.description.includes("Jump Ball") &&
+        event.period == 1 &&
+        event.clock == ""
+      ) {
         return "12:00";
       } else {
         return event.clock;
@@ -265,6 +276,12 @@ export default {
         return `End Period (${this.getQuarter(event.period)[0][event.period]})`;
       }
       return event.description;
+    },
+    getGameStartTime: function(utcStartTime) {
+      let gameStartTime = DateTime.fromISO(utcStartTime)
+        .toLocaleString(DateTime.TIME_SIMPLE)
+        .toString();
+      return gameStartTime;
     }
   },
 
@@ -484,6 +501,26 @@ export default {
   to {
     opacity: 0;
   }
+}
+.status-tag {
+  width: 80px;
+  height: 100%;
+  text-align: center;
+  letter-spacing: 1px;
+  border-radius: 3px;
+  margin: 0.2rem 0.2rem 0.5rem 0.2rem;
+  font-size: 18px;
+}
+.live {
+  background-color: #ff0000;
+  color: #ffffff;
+}
+.final {
+  color: var(--statusTagText);
+  background-color: var(--statusTag);
+}
+.not-started {
+  letter-spacing: 0px;
 }
 </style>
 
