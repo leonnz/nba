@@ -6,7 +6,7 @@ function gameService() {
     const date = response.data.links.currentDate;
 
     axios.get(`/prod/v2/${date}/scoreboard.json`).then(response => {
-      let todaysGames = [];
+      let todaysGames = {};
       response.data.games.forEach(game => {
         const gameData = {
           gameId: game.gameId,
@@ -22,7 +22,7 @@ function gameService() {
           hTeamScore: game.hTeam.score || '0',
           zPlayByPlay: []
         };
-        todaysGames.push(gameData);
+        todaysGames[game.gameId] = gameData;
       });
       store.commit('addTodaysGames', todaysGames);
     });

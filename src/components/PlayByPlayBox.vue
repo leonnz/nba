@@ -188,31 +188,31 @@ export default {
     },
 
     gameActive: function() {
-      return this.gameData.game.isGameActivated;
+      return this.gameData.isGameActivated;
     },
     gameStatus: function() {
-      return this.gameData.game.statusNum;
+      return this.gameData.statusNum;
     },
     gamePeriod: function() {
-      return this.gameData.game.period;
+      return this.gameData.period;
     },
     visitingTeam: function() {
-      return this.gameData.game.vTeamName;
+      return this.gameData.vTeamName;
     },
     homeTeam: function() {
-      return this.gameData.game.hTeamName;
+      return this.gameData.hTeamName;
     },
     visitingTeamScore: function() {
-      return this.gameData.game.vTeamScore;
+      return this.gameData.vTeamScore;
     },
     homeTeamScore: function() {
-      return this.gameData.game.hTeamScore;
+      return this.gameData.hTeamScore;
     },
     getStartTime: function() {
-      return this.gameData.game.startTimeUTC;
+      return this.gameData.startTimeUTC;
     },
     getEndTime: function() {
-      return this.gameData.game.endTimeUTC;
+      return this.gameData.endTimeUTC;
     }
   },
   methods: {

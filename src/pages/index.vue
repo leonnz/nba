@@ -23,13 +23,18 @@
 
     <section class="main-container">
       <div class="columns is-multiline pbp-container">
-        <playbyplay
+        <!-- <playbyplay
           v-for="game in selectedGames"
           :key="game"
           :gameData="{
             gameId: game,
             game: todaysGames.filter(e => e.gameId === game)[0]
           }"
+        ></playbyplay> -->
+        <playbyplay
+          v-for="game in selectedGames"
+          :key="game"
+          :gameData="todaysGames[game]"
         ></playbyplay>
       </div>
     </section>

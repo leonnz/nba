@@ -12,7 +12,7 @@ export const store = new Vuex.Store({
     })
   ],
   state: {
-    todaysGames: [],
+    todaysGames: {},
     selectedGames: []
   },
   getters: {
@@ -20,6 +20,7 @@ export const store = new Vuex.Store({
       return state.selectedGames;
     },
     getTodaysGames: state => {
+      console.log(state.todaysGames);
       return state.todaysGames;
     }
   },
