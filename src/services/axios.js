@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'https://cors-anywhere.herokuapp.com/http://data.nba.net'
+  baseURL: 'https://cors-anywhere.herokuapp.com/http://data.nba.net',
+  headers: { 'X-Requested-With': 'XMLHttpRequest' }
 });
 
 // instance.get('/prod/v3/today.json').then(response => {

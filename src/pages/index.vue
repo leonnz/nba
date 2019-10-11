@@ -4,11 +4,18 @@
       <div class="level-item noGames" v-if="todaysGames.length == 0">
         No games today
       </div>
-      <gameboxes
+      <!-- <gameboxes
         v-else
         ref="gameBoxes"
         class="level-item"
         :todaysGames="todaysGames"
+        @scrollGamesLeft="gameBoxesScrollToLeft"
+        @scrollGamesRight="gameBoxesScrollToRight"
+      ></gameboxes> -->
+      <gameboxes
+        v-else
+        ref="gameBoxes"
+        class="level-item"
         @scrollGamesLeft="gameBoxesScrollToLeft"
         @scrollGamesRight="gameBoxesScrollToRight"
       ></gameboxes>
@@ -34,7 +41,8 @@
 <script>
 import playbyplay from "../components/PlayByPlayBox";
 import gameboxes from "../components/GameBoxes";
-import { db } from "../services/firebase";
+// import { db } from "../services/firebase";
+import gameService from "../services/gameService";
 
 export default {
   name: "app",
@@ -64,30 +72,30 @@ export default {
     }
   },
   mounted() {
-    const nba = db.collection("playbyplay");
-
-    nba.onSnapshot(snapshot => {
-      if (!snapshot.empty) {
-        let todaysGames = [];
-        snapshot.docs.forEach(game => {
-          let data = game.data();
-          let gameData = {
-            gameId: data.gameId,
-            isGameActivated: data.isGameActivated,
-            statusNum: data.statusNum,
-            endTimeUTC: data.endTimeUTC,
-            startTimeUTC: data.startTimeUTC,
-            period: data.period,
-            vTeamName: data.vTeamName,
-            vTeamScore: data.vTeamScore,
-            hTeamName: data.hTeamName,
-            hTeamScore: data.hTeamScore
-          };
-          todaysGames.push(gameData);
-        });
-        this.$store.commit("addTodaysGames", todaysGames);
-      }
-    });
+    gameService();
+    // const nba = db.collection("playbyplay");
+    // nba.onSnapshot(snapshot => {
+    //   if (!snapshot.empty) {
+    //     let todaysGames = [];
+    //     snapshot.docs.forEach(game => {
+    //       let data = game.data();
+    //       let gameData = {
+    //         gameId: data.gameId,
+    //         isGameActivated: data.isGameActivated,
+    //         statusNum: data.statusNum,
+    //         endTimeUTC: data.endTimeUTC,
+    //         startTimeUTC: data.startTimeUTC,
+    //         period: data.period,
+    //         vTeamName: data.vTeamName,
+    //         vTeamScore: data.vTeamScore,
+    //         hTeamName: data.hTeamName,
+    //         hTeamScore: data.hTeamScore
+    //       };
+    //       todaysGames.push(gameData);
+    //     });
+    //     this.$store.commit("addTodaysGames", todaysGames);
+    //   }
+    // });
   }
 };
 </script>

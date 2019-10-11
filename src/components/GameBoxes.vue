@@ -83,17 +83,34 @@
 <script>
 import { DateTime } from "luxon";
 export default {
-  props: ["todaysGames"],
+  // props: ["todaysGames"],
   data() {
     return {
       justifyBoxes: false,
       gameBoxesOverflowingRight: false,
-      gameBoxesOverflowingLeft: false
+      gameBoxesOverflowingLeft: false,
+      periodMap: [
+        { 0: "" },
+        { 1: "Q1" },
+        { 2: "Q2" },
+        { 3: "Q3" },
+        { 4: "Q4" },
+        { 5: "OT" },
+        { 6: "2OT" },
+        { 7: "3OT" },
+        { 8: "4OT" },
+        { 9: "5OT" },
+        { 10: "6OT" }
+      ]
     };
   },
+
   computed: {
-    selectedGames: function() {
+    selectedGames() {
       return this.$store.getters.getSelectedGames;
+    },
+    todaysGames() {
+      return this.$store.getters.getTodaysGames;
     }
   },
   created() {
@@ -147,6 +164,24 @@ export default {
       this.$emit("scrollGamesLeft");
       this.gameBoxesOverflowingLeft = false;
       this.gameBoxesOverflowingRight = true;
+    },
+    getClock: function(event) {
+      if (event.description == "Start Period") {
+        return "12:00";
+      } else if (
+        event.description.includes("Jump Ball") &&
+        event.period == 1 &&
+        event.clock == ""
+      ) {
+        return "12:00";
+      } else {
+        return event.clock;
+      }
+    },
+    getQuarter: function(period) {
+      return this.periodMap.filter(quarter => {
+        return quarter[period];
+      });
     }
   },
   mounted() {
