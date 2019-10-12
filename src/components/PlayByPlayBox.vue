@@ -291,42 +291,8 @@ export default {
 
   created() {
     pbpService(this.gameData.gameId);
-
-    // console.log(this.$store.getters.getGamePbp(this.gameData.gameId));
-    // const nba = db.collection("playbyplay").doc("game-" + this.gameData.gameId);
-    // nba
-    //   .get()
-    //   .then(doc => {
-    //     if (doc.exists) {
-    //       this.pbp = doc.data().zPlayByPlay.reverse();
-    //       nba.onSnapshot(snapshot => {
-    //         if (snapshot.exists) {
-    //           // if (this.gameStatus !== "3" && this.gameActive) {
-    //           if (this.gameStatus == 3 && this.gameActive == false) {
-    //             // For testing only, finished games with status of 3.
-    //             if (this.pbp.length < snapshot.data().zPlayByPlay.length) {
-    //               let eventsLength = snapshot.data().zPlayByPlay.length;
-    //               let lastEvent = snapshot.data().zPlayByPlay[eventsLength - 1];
-    //               this.pbp.unshift(lastEvent);
-    //               console.log(this.pbp);
-    //             }
-    //           }
-    //         } else {
-    //           console.log("No such document!");
-    //         }
-    //       });
-    //     } else {
-    //       console.log("No such document!");
-    //     }
-    //   })
-    //   .catch(err => {
-    //     console.log("Error getting document", err);
-    //   });
   },
   mounted() {
-    // this.pbp = this.$store.getters.getGamePbp(this.gameData.gameId);
-    // console.log(this.pbp);
-
     this.$refs.pbp.onscroll = () => {
       this.showTopButton();
     };
@@ -351,13 +317,10 @@ export default {
 }
 .description {
   margin-left: 1rem;
-  // display: flex;
-  // flex-direction: column;
 }
 .points-scored {
   text-shadow: 1px 0px 0px black;
   background: #efefef;
-  // border: 1px solid #efefef;
   border-radius: 5px;
   margin-top: 1rem;
 }
@@ -407,7 +370,6 @@ export default {
 }
 .pbp-header {
   padding: 1rem;
-  // background-image: linear-gradient(var(--baseColorAlt), var(--baseColor));
   background-image: linear-gradient(var(--mainColor), var(--mainColorAlt));
   color: white;
 }
@@ -424,7 +386,6 @@ export default {
   width: 100%;
   height: 60vh;
   overflow-x: hidden;
-  // scroll-behavior: smooth;
 }
 .close-pbp {
   float: right;
@@ -440,7 +401,6 @@ export default {
   color: white;
 }
 .pbp-container {
-  // border: 1px solid var(--baseColor);
   border: 1px solid var(--mainColor);
   border-radius: 5px;
   overflow: hidden;
@@ -466,12 +426,11 @@ export default {
   opacity: 1;
   cursor: pointer;
 }
-.slide-enter/* .list-leave-active below version 2.1.8 */ {
+.slide-enter {
   -webkit-transform: translate3d(0, -100px, 0);
   transform: translate3d(0, -100px, 0);
 }
 .play-event > div:first-of-type {
-  // text-shadow: 1px 0px 0px black;
   margin-top: -2rem;
   padding: 1rem 1rem;
 }
