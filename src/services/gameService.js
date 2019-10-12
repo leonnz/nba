@@ -3,7 +3,8 @@ import { store } from './store';
 
 const initGameService = function() {
   axios.get('/prod/v3/today.json').then(response => {
-    const date = response.data.links.currentDate;
+    // const date = response.data.links.currentDate;
+    const date = '20191011';
 
     store.commit('addGameDate', date);
 
@@ -31,6 +32,47 @@ const initGameService = function() {
   });
 };
 
-const updateGameService = function() {};
+const updateGameService = function() {
+  axios.get('/prod/v3/today.json').then(response => {
+    // const date = response.data.links.currentDate;
+    const date = '20191011';
+    store.commit('addGameDate', date);
+
+    setInterval(() => {
+      axios.get(`/prod/v2/${date}/scoreboard.json`).then(response => {
+        response.data.games.forEach(game => {
+          const gameStore = store.getters.getTodaysGames[game.gameId];
+          let updateGamePayload = { gameId: game.gameId };
+
+          if (game.isGameActivated !== gameStore.isGameActivated) {
+            updateGamePayload.isGameActivated = game.isGameActivated;
+          }
+          if (game.statusNum !== gameStore.statusNum) {
+            updateGamePayload.statusNum = game.statusNum;
+          }
+          if (game.clock !== gameStore.clock) {
+            updateGamePayload.clock = game.clock;
+          }
+          if (game.endTimeUTC !== gameStore.endTimeUTC) {
+            updateGamePayload.endTimeUTC = game.endTimeUTC;
+          }
+          if (game.period.current !== gameStore.period) {
+            updateGamePayload.period = game.period;
+          }
+          if (game.vTeam.score !== gameStore.vTeamScore) {
+            updateGamePayload.vTeamScore = game.vTeam.score;
+          }
+          if (game.hTeam.score !== gameStore.hTeamScore) {
+            updateGamePayload.hTeamScore = game.hTeam.score;
+          }
+          if (Object.keys(updateGamePayload).length > 1) {
+            store.commit('updateGame', updateGamePayload);
+          }
+        });
+      });
+      console.log('this ran');
+    }, 5000);
+  });
+};
 
 export { initGameService, updateGameService };

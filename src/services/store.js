@@ -42,6 +42,15 @@ export const store = new Vuex.Store({
     addTodaysGames: (state, todaysGames) => {
       state.todaysGames = todaysGames;
     },
+    updateGame: (state, data) => {
+      console.log(data);
+
+      for (var key in data) {
+        if (data.hasOwnProperty(key)) {
+          console.log(data[key]);
+        }
+      }
+    },
     updatePbp: (state, data) => {
       state.todaysGames[data.gameId].zPlayByPlay = data.pbp;
     }
