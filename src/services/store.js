@@ -8,23 +8,31 @@ export const store = new Vuex.Store({
   plugins: [
     createPersistedState({
       storage: window.sessionStorage
-      // paths: ['selectedGames']
     })
   ],
   state: {
+    gameDate: '',
     todaysGames: {},
     selectedGames: []
   },
   getters: {
+    getGameDate: state => {
+      return state.gameDate;
+    },
     getSelectedGames: state => {
       return state.selectedGames;
     },
     getTodaysGames: state => {
-      console.log(state.todaysGames);
       return state.todaysGames;
+    },
+    getGamePbp: state => gameId => {
+      return state.todaysGames[gameId].zPlayByPlay.reverse();
     }
   },
   mutations: {
+    addGameDate: (state, gameDate) => {
+      state.gameDate = gameDate;
+    },
     addSelectedGame: (state, gameId) => {
       state.selectedGames.push(gameId);
     },
@@ -33,6 +41,9 @@ export const store = new Vuex.Store({
     },
     addTodaysGames: (state, todaysGames) => {
       state.todaysGames = todaysGames;
+    },
+    updatePbp: (state, data) => {
+      state.todaysGames[data.gameId].zPlayByPlay = data.pbp;
     }
   }
 });

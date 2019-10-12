@@ -5,6 +5,8 @@ function gameService() {
   axios.get('/prod/v3/today.json').then(response => {
     const date = response.data.links.currentDate;
 
+    store.commit('addGameDate', date);
+
     axios.get(`/prod/v2/${date}/scoreboard.json`).then(response => {
       let todaysGames = {};
       response.data.games.forEach(game => {

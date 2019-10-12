@@ -29,7 +29,7 @@
                 <div>
                   <span
                     class="is-size-5 title has-text-white"
-                    v-if="!gameActive && gameData.game.endTimeUTC"
+                    v-if="!gameActive && gameData.endTimeUTC"
                     >Final</span
                   >
                   <span
@@ -144,9 +144,10 @@
 
 
 <script>
-import { db } from "../services/firebase";
+// import { db } from "../services/firebase";
 import { DateTime } from "luxon";
 import playerIds from "../assets/data/playerIds.json";
+import pbpService from "../services/pbpService";
 
 export default {
   props: { gameData: {} },
@@ -154,7 +155,7 @@ export default {
     return {
       teams: "",
       playerIds: playerIds,
-      pbp: [],
+      // pbp: [],
       interval: null,
       scrolling: false,
       playEventItemClassActive: false,
@@ -174,6 +175,9 @@ export default {
     };
   },
   computed: {
+    pbp() {
+      return this.$store.getters.getGamePbp(this.gameData.gameId);
+    },
     selectedGames() {
       console.log(this.$store.getters.getSelectedGames);
       return this.$store.getters.getSelectedGames;
@@ -286,37 +290,43 @@ export default {
   },
 
   created() {
-    const nba = db.collection("playbyplay").doc("game-" + this.gameData.gameId);
-    nba
-      .get()
-      .then(doc => {
-        if (doc.exists) {
-          this.pbp = doc.data().zPlayByPlay.reverse();
-          nba.onSnapshot(snapshot => {
-            if (snapshot.exists) {
-              // if (this.gameStatus !== "3" && this.gameActive) {
-              if (this.gameStatus == 3 && this.gameActive == false) {
-                // For testing only, finished games with status of 3.
-                if (this.pbp.length < snapshot.data().zPlayByPlay.length) {
-                  let eventsLength = snapshot.data().zPlayByPlay.length;
-                  let lastEvent = snapshot.data().zPlayByPlay[eventsLength - 1];
-                  this.pbp.unshift(lastEvent);
-                  console.log(this.pbp);
-                }
-              }
-            } else {
-              console.log("No such document!");
-            }
-          });
-        } else {
-          console.log("No such document!");
-        }
-      })
-      .catch(err => {
-        console.log("Error getting document", err);
-      });
+    pbpService(this.gameData.gameId);
+
+    // console.log(this.$store.getters.getGamePbp(this.gameData.gameId));
+    // const nba = db.collection("playbyplay").doc("game-" + this.gameData.gameId);
+    // nba
+    //   .get()
+    //   .then(doc => {
+    //     if (doc.exists) {
+    //       this.pbp = doc.data().zPlayByPlay.reverse();
+    //       nba.onSnapshot(snapshot => {
+    //         if (snapshot.exists) {
+    //           // if (this.gameStatus !== "3" && this.gameActive) {
+    //           if (this.gameStatus == 3 && this.gameActive == false) {
+    //             // For testing only, finished games with status of 3.
+    //             if (this.pbp.length < snapshot.data().zPlayByPlay.length) {
+    //               let eventsLength = snapshot.data().zPlayByPlay.length;
+    //               let lastEvent = snapshot.data().zPlayByPlay[eventsLength - 1];
+    //               this.pbp.unshift(lastEvent);
+    //               console.log(this.pbp);
+    //             }
+    //           }
+    //         } else {
+    //           console.log("No such document!");
+    //         }
+    //       });
+    //     } else {
+    //       console.log("No such document!");
+    //     }
+    //   })
+    //   .catch(err => {
+    //     console.log("Error getting document", err);
+    //   });
   },
   mounted() {
+    // this.pbp = this.$store.getters.getGamePbp(this.gameData.gameId);
+    // console.log(this.pbp);
+
     this.$refs.pbp.onscroll = () => {
       this.showTopButton();
     };
