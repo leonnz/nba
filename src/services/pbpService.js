@@ -1,7 +1,9 @@
 import axios from './axios';
 import { store } from './store';
 
-function pbpService(gameId) {
+let schedule;
+
+const startPbpService = function(gameId) {
   const currentDate = store.getters.getGameDate;
 
   const pbpApiUrl = `/json/cms/noseason/game/${currentDate}/${gameId}/pbp_all.json`;
@@ -9,29 +11,18 @@ function pbpService(gameId) {
   axios.get(pbpApiUrl).then(response => {
     let pbp = response.data.sports_content.game.play;
     store.commit('updatePbp', { gameId, pbp });
-
-    // axios.get(`/prod/v2/${date}/scoreboard.json`).then(response => {
-    //   let todaysGames = {};
-    //   response.data.games.forEach(game => {
-    //     const gameData = {
-    //       gameId: game.gameId,
-    //       isGameActivated: game.isGameActivated,
-    //       statusNum: game.statusNum,
-    //       clock: game.clock,
-    //       startTimeUTC: game.startTimeUTC,
-    //       endTimeUTC: game.endTimeUTC || '',
-    //       period: game.period.current,
-    //       vTeamName: game.vTeam.triCode,
-    //       vTeamScore: game.vTeam.score || '0',
-    //       hTeamName: game.hTeam.triCode,
-    //       hTeamScore: game.hTeam.score || '0',
-    //       zPlayByPlay: []
-    //     };
-    //     todaysGames[game.gameId] = gameData;
-    //   });
-    //   store.commit('addTodaysGames', todaysGames);
-    // });
   });
-}
 
-export default pbpService;
+  /**
+   * Make the pbp queue manager here
+   */
+  schedule = setInterval(() => {
+    console.log(gameId);
+  }, 2000);
+};
+
+const stopPbpService = function() {
+  clearInterval(schedule);
+};
+
+export { startPbpService, stopPbpService };

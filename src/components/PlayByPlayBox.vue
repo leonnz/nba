@@ -147,7 +147,7 @@
 // import { db } from "../services/firebase";
 import { DateTime } from "luxon";
 import playerIds from "../assets/data/playerIds.json";
-import pbpService from "../services/pbpService";
+import { startPbpService, stopPbpService } from "../services/pbpService";
 
 export default {
   props: { gameData: {} },
@@ -244,6 +244,7 @@ export default {
       let index = this.$store.getters.getSelectedGames.indexOf(gameId);
       if (index !== -1) {
         this.$store.commit("removeSelectedGame", index);
+        stopPbpService();
       }
     },
     getTeamLogo: function(team) {
@@ -290,7 +291,7 @@ export default {
   },
 
   created() {
-    pbpService(this.gameData.gameId);
+    startPbpService(this.gameData.gameId);
   },
   mounted() {
     this.$refs.pbp.onscroll = () => {

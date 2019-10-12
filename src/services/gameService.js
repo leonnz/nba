@@ -1,7 +1,7 @@
 import axios from './axios';
 import { store } from './store';
 
-function gameService() {
+const initGameService = function() {
   axios.get('/prod/v3/today.json').then(response => {
     const date = response.data.links.currentDate;
 
@@ -29,6 +29,8 @@ function gameService() {
       store.commit('addTodaysGames', todaysGames);
     });
   });
-}
+};
 
-export default gameService;
+const updateGameService = function() {};
+
+export { initGameService, updateGameService };

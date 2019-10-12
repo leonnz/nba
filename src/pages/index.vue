@@ -47,7 +47,7 @@
 import playbyplay from "../components/PlayByPlayBox";
 import gameboxes from "../components/GameBoxes";
 // import { db } from "../services/firebase";
-import gameService from "../services/gameService";
+import { initGameService } from "../services/gameService";
 
 export default {
   name: "app",
@@ -77,7 +77,7 @@ export default {
     }
   },
   mounted() {
-    gameService();
+    initGameService();
     // const nba = db.collection("playbyplay");
     // nba.onSnapshot(snapshot => {
     //   if (!snapshot.empty) {
