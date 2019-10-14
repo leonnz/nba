@@ -26,6 +26,7 @@ export const store = new Vuex.Store({
       return state.todaysGames;
     },
     getGamePbp: state => gameId => {
+      // console.log(state.todaysGames[gameId]);
       return state.todaysGames[gameId].zPlayByPlay.reverse();
     }
   },
@@ -43,8 +44,6 @@ export const store = new Vuex.Store({
       state.todaysGames = todaysGames;
     },
     updateGame: (state, data) => {
-      console.log(data);
-
       for (var key in data) {
         if (data.hasOwnProperty(key)) {
           console.log(data[key]);

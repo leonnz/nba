@@ -155,7 +155,7 @@ export default {
     return {
       teams: "",
       playerIds: playerIds,
-      // pbp: [],
+      pbp: [],
       interval: null,
       scrolling: false,
       playEventItemClassActive: false,
@@ -175,9 +175,10 @@ export default {
     };
   },
   computed: {
-    pbp() {
-      return this.$store.getters.getGamePbp(this.gameData.gameId);
-    },
+    // pbp() {
+    //   console.log(this.gameData.gameId);
+    //   return this.$store.getters.getGamePbp(this.gameData.gameId);
+    // },
     selectedGames() {
       console.log(this.$store.getters.getSelectedGames);
       return this.$store.getters.getSelectedGames;
@@ -291,9 +292,14 @@ export default {
   },
 
   created() {
-    startPbpService(this.gameData.gameId);
+    // startPbpService(this.gameData.gameId);
+    // console.log(this.$store.getters.getGamePbp(this.gameData.gameId));
+    this.pbp = this.$store.getters.getGamePbp(this.gameData.gameId);
   },
   mounted() {
+    console.log(this.gameData.gameId);
+    console.log(this.$store.getters.getTodaysGames);
+
     this.$refs.pbp.onscroll = () => {
       this.showTopButton();
     };
